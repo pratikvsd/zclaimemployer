@@ -1,0 +1,15 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="safetysuitezclaimemployer.controller.Master"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="masterPage" title="Master Page">
+		<content>
+			<!--<Button text="Page2" press="onPage2"/>-->
+			<List headerText="Received Claims">
+				<StandardListItem title="Mental Stress" info="14.09.2022"></StandardListItem>
+				<StandardListItem title=" Stress" info="14.09.2022"></StandardListItem>
+			</List>
+		</content>
+		<footer>
+			<Toolbar></Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

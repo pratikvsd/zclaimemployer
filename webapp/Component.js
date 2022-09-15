@@ -22,6 +22,27 @@ sap.ui.define([
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
+		},
+
+		createContent: function() {
+			// debugger;
+			var oApp = new sap.ui.view("app", {
+				viewName: "safetysuitezclaimemployer.view.App",
+				type: "XML"
+			});
+			var oMasterPage = new sap.ui.view("masterPage", {
+				viewName: "safetysuitezclaimemployer.view.Master",
+				type: "XML"
+			});
+			var oDetailPage = new sap.ui.view("detailPage", {
+				viewName: "safetysuitezclaimemployer.view.Detail",
+				type: "XML"
+			});
+			var oParentPage = oApp.byId("app");
+			oParentPage.addMasterPage(oMasterPage);
+			oParentPage.addDetailPage(oDetailPage);
+
+			return oApp;
 		}
 	});
 });
