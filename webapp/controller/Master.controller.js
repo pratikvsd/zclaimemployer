@@ -6,7 +6,8 @@ sap.ui.define([
 	return Controller.extend("safetysuitezclaimemployer.controller.Master", {
 
 		onInit: function() {
-			debugger;
+			var oModel = this.getOwnerComponent().getModel("employerList");
+			this.getView().setModel(oModel);
 		},
 
 		onPage2: function() {

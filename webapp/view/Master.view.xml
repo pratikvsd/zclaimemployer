@@ -2,10 +2,10 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="masterPage" title="Master Page">
 		<content>
-			<!--<Button text="Page2" press="onPage2"/>-->
-			<List headerText="Received Claims">
-				<StandardListItem title="Mental Stress" info="14.09.2022"></StandardListItem>
-				<StandardListItem title=" Stress" info="14.09.2022"></StandardListItem>
+			<List items="{/employerdata}">
+				<items>
+					<StandardListItem icon="sap-icon://employee" title="{inquiryfor}" description="{bday}" info="{fname}" type="Navigation" press="createemp"/>
+				</items>
 			</List>
 		</content>
 		<footer>

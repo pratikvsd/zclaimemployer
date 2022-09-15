@@ -61,14 +61,18 @@
 				"settings": {
 					"bundleName": "safetysuitezclaimemployer.i18n.i18n"
 				}
+			},
+			"employerList": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/employerdata.json",
+				"settings": {},
+				"preload": false
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		}
 	}
 }
