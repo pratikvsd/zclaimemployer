@@ -2,9 +2,9 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="masterPage" title="Master Page">
 		<content>
-			<List items="{/employerdata}">
+			<List mode="SingleSelectMaster" selectionChange="clickClaimBtn" items="{/employerdata}">
 				<items>
-					<StandardListItem icon="sap-icon://employee" title="{inquiryfor}" description="{bday}" info="{fname}" type="Navigation" press="createemp"/>
+					<StandardListItem  icon="sap-icon://employee" title="{inquiryfor}" description="{bday}" info="{fname}"/>
 				</items>
 			</List>
 		</content>

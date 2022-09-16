@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:u="sap.ui.unified"
+	xmlns:layout="sap.ui.layout">
+	<Dialog id="wizardDialog" showHeader="false" verticalScrolling="false" contentHeight="90%" contentWidth="90%">
+		<f:DynamicPage stickySubheaderProvider="claimFormWizard" toggleHeaderOnTitleClick="false" class="sapUiNoContentPadding" showFooter="true">
+			<f:content>
+				<Wizard id="claimFormWizard" showNextButton="false">
+					<WizardStep id="personalDetailStep" title="{i18n>claimFormWizardPersonalDetails}">
+						<core:Fragment fragmentName="safetysuitezclaimemployer.fragment.personalDetail" type="XML"/>
+					</WizardStep>
+					<WizardStep id="injuryDetailStep" title="{i18n>claimFormWizardInjuryDetails}"></WizardStep>
+					<WizardStep id="employmentDetailStep" title="{i18n>claimFormWizardEmploymentDetails}"></WizardStep>
+					<WizardStep id="workerEarningStep" title="{i18n>claimFormWizardWorkersprimaryearning}"></WizardStep>
+					<WizardStep id="returntoWorkStep" title="{i18n>claimFormWizardReturntowork}"></WizardStep>
+					<WizardStep id="workerDecStep" title="{i18n>claimFormWizardWorkerdeclaration}"></WizardStep>
+					<WizardStep id="attachmentStep" title="{i18n>claimFormWizardAttachments}"></WizardStep>
+				</Wizard>
+			</f:content>
+			<f:footer>
+				<OverflowToolbar>
+					<Button text="{i18n>WizardFooterCancelBtn}" type="Reject" press="handleWizardCancel"/>
+					<ToolbarSpacer/>
+					<Button text="{i18n>WizardFooterPreviousBtn}" icon="sap-icon://navigation-left-arrow" type="Emphasized" visible="{/backButtonVisible}"
+						press="onDialogBackButton"/>
+					<Button text="{i18n>WizardFooterNextBtn}" icon="sap-icon://navigation-right-arrow" type="Emphasized" enabled="{/nextButtonEnabled}"
+						visible="{/nextButtonVisible}" press="onDialogNextButton"/>
+					<MenuButton type="Accept" text="{i18n>WizardFooterSaveBtn}" visible="{/finishButtonVisible}">
+						<menu>
+							<Menu>
+								<MenuItem text="{i18n>WizardFooterSubmitBtn}" icon="sap-icon://save" press="onPress"/>
+								<MenuItem text="{i18n>WizardFooterSaveasdraftBtn}" icon="sap-icon://open-folder" press="onPress"/>
+							</Menu>
+						</menu>
+					</MenuButton>
+					<!--<Button text="Save" type="Emphasized" visible="{/finishButtonVisible}" press="handleWizardSubmit"/>-->
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+	</Dialog>
+</core:FragmentDefinition>
