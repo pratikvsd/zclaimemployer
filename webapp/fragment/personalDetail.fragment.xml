@@ -1,7 +1,111 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:u="sap.ui.unified"
-	xmlns:layout="sap.ui.layout">
-	<form:SimpleForm editable="true">
-		<Label text="Name"></Label>
-		<Input enabled="false"/>
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified" xmlns:layout="sap.ui.layout">
+	<form:SimpleForm>
+		<form:content>
+			<VBox>
+				<HBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Title"/>
+						<Select width="200px" items="{ path: '/selectionDataForPersonalDetail'}">
+							<core:Item key="{selectionId}" text="{selection}"/>
+						</Select>
+					</VBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Family Name"/>
+						<Input width="390px"/>
+					</VBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Given Name"/>
+						<Input width="390px"/>
+					</VBox>
+				</HBox>
+				<HBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Other known or previous legal names eg. Maiden name"/>
+						<Input width="800px"/>
+					</VBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Date of Birth"/>
+						<DatePicker/>
+					</VBox>
+				</HBox>
+				<HBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Gender"/>
+						<Select width="600px" items="{ path: '/genderSelectionForPersonalDetail'}">
+							<core:Item key="{genderId}" text="{genderSelection}"/>
+						</Select>
+					</VBox>
+				</HBox>
+				<HBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Address"/>
+						<Input width="600px"/>
+					</VBox>
+				</HBox>
+				<HBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Suburb"/>
+						<Input width="330px"/>
+					</VBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="State"/>
+						<Select width="330px" items="{ path: '/stateSelectionForPersonalDetail'}">
+							<core:Item key="{stateId}" text="{stateSelection}"/>
+						</Select>
+					</VBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Postcode"/>
+						<Input width="330px"/>
+					</VBox>
+				</HBox>
+				<HBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Postal address for correspondence"/>
+						<Input width="600px"/>
+					</VBox>
+				</HBox>
+				<HBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Mobile"/>
+						<Input width="330px"/>
+					</VBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Work"/>
+						<Input width="330px"/>
+					</VBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Home"/>
+						<Input width="330px"/>
+					</VBox>
+				</HBox>
+				<HBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Email Addess"/>
+						<Input width="500px"/>
+					</VBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Do you agree to 'Communicating with you' Conditions?"/>
+						<Select width="500px" items="{ path: '/datax'}">
+							<core:Item key="{dataId}" text="{xx}"/>
+						</Select>
+					</VBox>
+				</HBox>
+				<HBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="If you need an interpreter, what language do you speak?"/>
+						<Select width="500px" items="{ path: '/datax'}">
+							<core:Item key="{dataId}" text="{xx}"/>
+						</Select>
+					</VBox>
+					<VBox class="sapUiResponsiveContentPadding">
+						<Label text="Do you have special communication needs because of disability?"/>
+						<Select width="500px" items="{ path: '/datax'}">
+							<core:Item key="{dataId}" text="{xx}"/>
+						</Select>
+					</VBox>
+				</HBox>
+			</VBox>
+		</form:content>
 	</form:SimpleForm>
 </core:FragmentDefinition>

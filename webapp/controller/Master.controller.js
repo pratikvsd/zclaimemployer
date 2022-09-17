@@ -8,6 +8,7 @@ sap.ui.define([
 		onInit: function() {
 			var oModel = this.getOwnerComponent().getModel("employerList");
 			this.getView().setModel(oModel);
+			
 		},
 		clickClaimBtn: function() {
 			if (!this.empDialog) {

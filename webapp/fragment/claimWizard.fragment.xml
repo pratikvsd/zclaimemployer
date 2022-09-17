@@ -12,6 +12,7 @@
 					<WizardStep id="workerEarningStep" title="{i18n>claimFormWizardWorkersprimaryearning}"></WizardStep>
 					<WizardStep id="returntoWorkStep" title="{i18n>claimFormWizardReturntowork}"></WizardStep>
 					<WizardStep id="workerDecStep" title="{i18n>claimFormWizardWorkerdeclaration}"></WizardStep>
+					<WizardStep id="employerLodgementStep" title="{i18n>claimFormWizardWorkerEmployerLodgement}"></WizardStep>
 					<WizardStep id="attachmentStep" title="{i18n>claimFormWizardAttachments}"></WizardStep>
 				</Wizard>
 			</f:content>
