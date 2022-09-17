@@ -69,6 +69,7 @@
 					<VBox class="sapUiResponsiveContentPadding">
 						<Label text="Mobile"/>
 						<Input width="330px"/>
+						
 					</VBox>
 					<VBox class="sapUiResponsiveContentPadding">
 						<Label text="Work"/>
