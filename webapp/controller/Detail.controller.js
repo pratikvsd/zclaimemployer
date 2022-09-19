@@ -9,7 +9,7 @@ sap.ui.define([
 
 		},
 		onPage2: function() {
-			var page = this.getView()
+			var page = this.getView();
 		}
 
 	});

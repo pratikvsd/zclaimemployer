@@ -1,6 +1,7 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function(Controller) {
+	"sap/ui/core/mvc/Controller",
+	"sap/ui/core/Fragment"
+], function(Controller, Fragment) {
 	"use strict";
 
 	return Controller.extend("safetysuitezclaimemployer.controller.Master", {
@@ -8,14 +9,20 @@ sap.ui.define([
 		onInit: function() {
 			var oModel = this.getOwnerComponent().getModel("employerList");
 			this.getView().setModel(oModel);
-			
+
 		},
-		clickClaimBtn: function() {
+
+		clickClaimBtn: function(oEvent) {
+			var oSelectedItem = oEvent.getParameter("listItem").setSelected(false);
 			if (!this.empDialog) {
-				this.empDialog = sap.ui.xmlfragment("safetysuitezclaimemployer.fragment.claimWizard", this);
+				this.empDialog = new sap.ui.xmlfragment("safetysuitezclaimemployer.fragment.claimWizard", this);
 				this.getView().addDependent(this.empDialog);
+				this.empDialog.open();
+			} else if (this.empDialog === oSelectedItem) {
+				this.empDialog.open();
+			} else {
+				this.empDialog.open();
 			}
-			this.empDialog.open();
 		},
 
 		handleWizardCancel: function(oEvent) {

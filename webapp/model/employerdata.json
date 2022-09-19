@@ -1,26 +1,4 @@
 {
-	"selectionDataForPersonalDetail": [{
-		"selectionId": "1",
-		"selection": "Mr."
-	}, {
-		"selectionId": "2",
-		"selection": "Mrs."
-	}, {
-		"selectionId": "3",
-		"selection": "Miss."
-	}],
-
-	"genderSelectionForPersonalDetail": [{
-		"genderId": "1",
-		"genderSelection": "Male"
-	}, {
-		"genderId": "2",
-		"genderSelection": "Female"
-	}, {
-		"genderId": "3",
-		"genderSelection": "Other"
-	}],
-	
 	"stateSelectionForPersonalDetail": [{
 		"stateId": "1",
 		"stateSelection": "NSW"

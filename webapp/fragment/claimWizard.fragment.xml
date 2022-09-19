@@ -1,40 +1,363 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:u="sap.ui.unified"
 	xmlns:layout="sap.ui.layout">
 	<Dialog id="wizardDialog" showHeader="false" verticalScrolling="false" contentHeight="90%" contentWidth="90%">
-		<f:DynamicPage stickySubheaderProvider="claimFormWizard" toggleHeaderOnTitleClick="false" class="sapUiNoContentPadding" showFooter="true">
-			<f:content>
-				<Wizard id="claimFormWizard" showNextButton="false">
-					<WizardStep id="personalDetailStep" title="{i18n>claimFormWizardPersonalDetails}">
-						<core:Fragment fragmentName="safetysuitezclaimemployer.fragment.personalDetail" type="XML"/>
-					</WizardStep>
-					<WizardStep id="injuryDetailStep" title="{i18n>claimFormWizardInjuryDetails}"></WizardStep>
-					<WizardStep id="employmentDetailStep" title="{i18n>claimFormWizardEmploymentDetails}"></WizardStep>
-					<WizardStep id="workerEarningStep" title="{i18n>claimFormWizardWorkersprimaryearning}"></WizardStep>
-					<WizardStep id="returntoWorkStep" title="{i18n>claimFormWizardReturntowork}"></WizardStep>
-					<WizardStep id="workerDecStep" title="{i18n>claimFormWizardWorkerdeclaration}"></WizardStep>
-					<WizardStep id="employerLodgementStep" title="{i18n>claimFormWizardWorkerEmployerLodgement}"></WizardStep>
-					<WizardStep id="attachmentStep" title="{i18n>claimFormWizardAttachments}"></WizardStep>
-				</Wizard>
-			</f:content>
-			<f:footer>
-				<OverflowToolbar>
-					<Button text="{i18n>WizardFooterCancelBtn}" type="Reject" press="handleWizardCancel"/>
-					<ToolbarSpacer/>
-					<Button text="{i18n>WizardFooterPreviousBtn}" icon="sap-icon://navigation-left-arrow" type="Emphasized" visible="{/backButtonVisible}"
-						press="onDialogBackButton"/>
-					<Button text="{i18n>WizardFooterNextBtn}" icon="sap-icon://navigation-right-arrow" type="Emphasized" enabled="{/nextButtonEnabled}"
-						visible="{/nextButtonVisible}" press="onDialogNextButton"/>
-					<MenuButton type="Accept" text="{i18n>WizardFooterSaveBtn}" visible="{/finishButtonVisible}">
-						<menu>
-							<Menu>
-								<MenuItem text="{i18n>WizardFooterSubmitBtn}" icon="sap-icon://save" press="onPress"/>
-								<MenuItem text="{i18n>WizardFooterSaveasdraftBtn}" icon="sap-icon://open-folder" press="onPress"/>
-							</Menu>
-						</menu>
-					</MenuButton>
-					<!--<Button text="Save" type="Emphasized" visible="{/finishButtonVisible}" press="handleWizardSubmit"/>-->
-				</OverflowToolbar>
-			</f:footer>
-		</f:DynamicPage>
+		<content>
+			<f:DynamicPage stickySubheaderProvider="claimFormWizard" toggleHeaderOnTitleClick="false" class="sapUiNoContentPadding" showFooter="true">
+				<f:content>
+					<Wizard id="claimFormWizard" showNextButton="false" class="sapUiResponsivePadding--header sapUiResponsivePadding--content">
+						<WizardStep id="personalDetailStep" title="{i18n>claimFormWizardPersonalDetails}">
+							<VBox class="sapUiSmallMargin">
+								<form:SimpleForm id="personalDetailsForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+									singleContainerFullSize="false">
+									<form:content>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_Title}"/>
+										<Select>
+											<items>
+												<core:Item text="Mr."/>
+												<core:Item text="Mrs."/>
+												<core:Item text="Miss."/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_FamilyName}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_GivenName}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_OtherKnown}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_DOB}"/>
+										<DatePicker id="claimFormBirthDate"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_Gender}"/>
+										<Select>
+											<items>
+												<core:Item text="Male"/>
+												<core:Item text="Female"/>
+												<core:Item text="Other"/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_Address}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_Suburb}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_State}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_Postcode}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_PAFC}"/>
+										<Input type="Text"/>
+										<core:Title text="{i18n>WizardPersonalDetailFormContactDetails}" level="H5"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_Mobile}"/>
+										<Input type="Number"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_Work}"/>
+										<Input type="Number"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_Home}"/>
+										<Input type="Number"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_Email}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_question1}"/>
+										<Select>
+											<items>
+												<core:Item text="I agree"/>
+												<core:Item text="I do not agree"/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_question2}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardPersonalDetailFormLabel_question3}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+									</form:content>
+								</form:SimpleForm>
+							</VBox>
+						</WizardStep>
+						<WizardStep id="injuryDetailStep" title="{i18n>claimFormWizardInjuryDetails}">
+							<VBox class="sapUiSmallMargin">
+								<form:SimpleForm id="injuryDetailsForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+									singleContainerFullSize="false">
+									<form:content>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryBodyPart}"/>
+										<Input/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryType}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_HowInjured}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_TaskWhenInjured}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_WorkLocationWhenInjured}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_AddressOfInjury}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_Suburb}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_State}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_Postcode}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_ResposibleManAtWorkplace}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_ActivityonTimeofInjury}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_AccidentReportingStation}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_RegNoOfInvoledVehicle}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_State}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_question1}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryDateTime}"/>
+										<DatePicker/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_FirstNoticeInjuryCondition}"/>
+										<DatePicker/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_StoppedWorkDateTime}"/>
+										<DatePicker/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_ReportInjuryToEmployee}"/>
+										<DatePicker/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_question2}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_question3}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_question4}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_question5}"/>
+										<Textarea/>
+									</form:content>
+								</form:SimpleForm>
+							</VBox>
+						</WizardStep>
+						<WizardStep id="employmentDetailStep" title="{i18n>claimFormWizardEmploymentDetails}">
+							<VBox class="sapUiSmallMargin">
+								<form:SimpleForm id="employementDetailsForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+									singleContainerFullSize="false">
+									<form:content>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_NameofOrg}"/>
+										<Input/>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_AddressOfUsualWorkplace}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_Suburb}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_State}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_Postcode}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_NameandContactofEmployer}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_UsualOccupation}"/>
+										<Input type="Text"/>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_FollowingAppiesToYou}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_WhenStartWorkingForEmployer}"/>
+										<DatePicker/>
+										<core:Title text="{i18n>WizardEmployementDetailsSecTitle_PleaseSelectAny}" level="H5"/>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_ADirectorofMyEmployersCompany}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_APartnerofMyEmployerCompany}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_ASaleTrader}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_ARelativeofMyEmployer}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardEmployementDetailsFormLabel_question1}"/>
+										<Textarea/>
+									</form:content>
+								</form:SimpleForm>
+							</VBox>
+						</WizardStep>
+						<WizardStep id="workerEarningStep" title="{i18n>claimFormWizardWorkersprimaryearning}">
+							<VBox class="sapUiSmallMargin">
+								<form:SimpleForm id="workerEarningForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+									singleContainerFullSize="false">
+									<form:content>
+										<Label text="{i18n>WizardworkerEarningFormLabel_question1}"/>
+										<Input/>
+										<Label text="{i18n>WizardworkerEarningFormLabel_question2}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardworkerEarningFormLabel_question3}"/>
+										<Input/>
+										<Label text="{i18n>WizardworkerEarningFormLabel_question4}"/>
+										<Input/>
+										<Label text="{i18n>WizardworkerEarningFormLabel_WeeklyShiftAllowence}"/>
+										<Input/>
+										<Label text="{i18n>WizardworkerEarningFormLabel_WeeklyOvertime}"/>
+										<Input/>
+									</form:content>
+								</form:SimpleForm>
+							</VBox>
+						</WizardStep>
+						<WizardStep id="returntoWorkStep" title="{i18n>claimFormWizardReturntowork}">
+							<VBox class="sapUiSmallMargin">
+								<form:SimpleForm id="returntoWorkForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+									singleContainerFullSize="false">
+									<form:content>
+										<Label text="{i18n>WizardreturntoWorkFormLabel_question1}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardreturntoWorkFormLabel_ReturnDateQuestion}"/>
+										<DatePicker/>
+										<Label text="{i18n>WizardreturntoWorkFormLabel_question2}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardreturntoWorkFormLabel_question3}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardreturntoWorkFormLabel_question4}"/>
+										<Textarea/>
+										<Label text="{i18n>WizardreturntoWorkFormLabel_ClaimFormSubmissionDate}"/>
+										<DatePicker/>
+										<Label text="{i18n>WizardreturntoWorkFormLabel_question5}"/>
+										<Select>
+											<items>
+												<core:Item text=""/>
+												<core:Item text=""/>
+												<core:Item text=""/>
+											</items>
+										</Select>
+										<Label text="{i18n>WizardreturntoWorkFormLabel_MedicalCertificateSubmissionDate}"/>
+										<DatePicker/>
+									</form:content>
+								</form:SimpleForm>
+							</VBox>
+						</WizardStep>
+						<WizardStep id="workerDecStep" title="{i18n>claimFormWizardWorkerdeclaration}">
+							<VBox class="sapUiSmallMargin">
+								<form:SimpleForm id="workerDecForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+									singleContainerFullSize="false">
+									<form:content>
+										<VBox class="sapUiResponsiveContentPadding">
+											<HTML xmlns="sap.ui.core" content="{i18n>firstParagraph}"/>
+											<HBox>
+												<Label text="{i18n>WizardworkerDecFormmLabel_WorkerSignature}"/>
+												<Input/>
+												<Label text="{i18n>WizardworkerDecFormmLabel_Date}"/>
+												<DatePicker/>
+											</HBox>
+										</VBox>
+									</form:content>
+								</form:SimpleForm>
+							</VBox>
+						</WizardStep>
+						<WizardStep id="employerLodgementStep" title="{i18n>claimFormWizardWorkerEmployerLodgement}"></WizardStep>
+						<WizardStep id="attachmentStep" title="{i18n>claimFormWizardAttachments}">
+							<Panel width="auto" class="sapUiResponsiveMargin">
+								<headerToolbar>
+									<OverflowToolbar>
+										<Title text="Please Attach any supporting document"/>
+										<ToolbarSpacer/>
+										<Button icon="sap-icon://sort"/>
+										<Button icon="sap-icon://filter"/>
+										<Button icon="sap-icon://add" press="onOpenUploadAttachment"/>
+									</OverflowToolbar>
+								</headerToolbar>
+								<content>
+									<List id="ShortProductList" headerText="Employee Attachments">
+										<items>
+											<StandardListItem title="" description=""/>
+										</items>
+									</List>
+								</content>
+							</Panel>
+						</WizardStep>
+					</Wizard>
+				</f:content>
+				<f:footer>
+					<OverflowToolbar>
+						<Button text="{i18n>WizardFooterCancelBtn}" type="Reject" press="handleWizardCancel"/>
+						<ToolbarSpacer/>
+						<Button text="{i18n>WizardFooterPreviousBtn}" icon="sap-icon://navigation-left-arrow" type="Emphasized" visible="{/backButtonVisible}"
+							press="onDialogBackButton"/>
+						<Button text="{i18n>WizardFooterNextBtn}" icon="sap-icon://navigation-right-arrow" type="Emphasized" enabled="{/nextButtonEnabled}"
+							press="onDialogNextButton"/>
+						<MenuButton type="Accept" text="{i18n>WizardFooterSaveBtn}" icon="sap-icon://save">
+							<menu>
+								<Menu>
+									<MenuItem text="{i18n>WizardFooterSubmitBtn}" icon="sap-icon://accept" press="onPress"/>
+									<MenuItem text="{i18n>WizardFooterSaveasdraftBtn}" icon="sap-icon://open-folder" press="onPress"/>
+								</Menu>
+							</menu>
+						</MenuButton>
+						<!--<Button text="Save" type="Emphasized" visible="{/finishButtonVisible}" press="handleWizardSubmit"/>-->
+					</OverflowToolbar>
+				</f:footer>
+			</f:DynamicPage>
+		</content>
 	</Dialog>
 </core:FragmentDefinition>

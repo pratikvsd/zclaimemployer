@@ -1,6 +1,6 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="safetysuitezclaimemployer.controller.Detail"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page id="detailPage" title="Detail Page">
+	<Page id="detailPage" title="{i18n>detailPageTitle}">
 		<Panel class="sapUiTinyMargin">
 			<content>
 				<HTML xmlns="sap.ui.core" content="{i18n>firstParagraph}" />

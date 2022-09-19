@@ -1,10 +1,10 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="safetysuitezclaimemployer.controller.Master"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page id="masterPage" title="Master Page">
+	<Page id="masterPage" title="{i18n>masterPageTitle}">
 		<content>
 			<List mode="SingleSelectMaster" selectionChange="clickClaimBtn" items="{/employerdata}">
 				<items>
-					<StandardListItem  icon="sap-icon://employee" title="{inquiryfor}" description="{bday}" info="{fname}"/>
+					<StandardListItem icon="sap-icon://employee" title="{inquiryfor}" description="{bday}" info="{fname}"/>
 				</items>
 			</List>
 		</content>
