@@ -1,12 +1,15 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/Fragment"
-], function(Controller, Fragment) {
+	"sap/ui/core/Fragment",
+	"sap/m/MessageBox",
+	"sap/ui/Device"
+], function(Controller, Fragment, MessageBox, Device) {
 	"use strict";
 
 	return Controller.extend("safetysuitezclaimemployer.controller.Master", {
 
 		onInit: function() {
+			this.WizardTitle = "";
 			var oModel = this.getOwnerComponent().getModel("employerList");
 			this.getView().setModel(oModel);
 
@@ -23,10 +26,49 @@ sap.ui.define([
 			} else {
 				this.empDialog.open();
 			}
+			sap.m.MessageBox.show("Please Review the claim information lodged by the employee", {
+				icon: sap.m.MessageBox.Icon.NONE,
+				title: "",
+				actions: ["Accept"],
+				emphasizedAction: "Accept",
+				// actions: sap.m.MessageBox.Action.Accept,
+				// emphasizedAction: sap.m.MessageBox.Action.Accept,
+				textDirection: sap.ui.core.TextDirection.Inherit
+			});
 		},
 
-		handleWizardCancel: function(oEvent) {
-			this.empDialog.close();
+		// onOpenUploadAttachment: function(oEvent) {
+		// 	if (!this.AttachmentDialog) {
+		// 		this.AttachmentDialog = sap.ui.xmlfragment("safetysuitezclaimemployee.fragment.AttchmentUpload", this);
+		// 		this.getView().addDependent(this.AttachmentDialog);
+
+		// 	}
+		// 	this.WizardTitle = "Attachment";
+		// 	this.AttachmentDialog.open();
+		// },
+
+		onDialogNextButton: function() {
+			this._oWizard = sap.ui.getCore().byId("claimFormWizard");
+			this._iSelectedStepIndex = this._oWizard.getCurrentStep();
+			var oNextStep = this._oWizard.getSteps()[this._iSelectedStepIndex + 1];
+
+			if (this._oSelectedStep && !this._oSelectedStep.bLast) {
+				this._oWizard.goToStep(oNextStep, true);
+
+			} else {
+				this._oWizard.nextStep();
+			}
+			this._iSelectedStepIndex++;
+			this._oSelectedStep = oNextStep;
+
+			if (this._oWizard.getCurrentStep() === "attachmentStep") {
+				sap.ui.getCore().byId("claimWizardNextBtn").setVisible(false);
+			} else if (this._oWizard.getCurrentStep() === "personalDetailStep") {
+				sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
+			} else {
+				sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
+				sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(true);
+			}
 		},
 
 		onDialogBackButton: function() {
@@ -38,30 +80,20 @@ sap.ui.define([
 			} else {
 				this._oWizard.previousStep();
 			}
-
+			if (this._oWizard.getCurrentStep() === "attachmentStep") {
+				sap.ui.getCore().byId("claimWizardNextBtn").setVisible(false);
+			} else if (this._oWizard.getCurrentStep() === "personalDetailStep") {
+				sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
+			} else {
+				sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
+				sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(true);
+			}
 			this._iSelectedStepIndex--;
 			this._oSelectedStep = oPreviousStep;
 		},
 
-		onDialogNextButton: function() {
-			this._oWizard = sap.ui.getCore().byId("claimFormWizard");
-			this._iSelectedStepIndex = this._oWizard.getCurrentStep();
-			var oNextStep = this._oWizard.getSteps()[this._iSelectedStepIndex + 1];
-
-			if (this._oSelectedStep && !this._oSelectedStep.bLast) {
-				this._oWizard.goToStep(oNextStep, true);
-			} else {
-				this._oWizard.nextStep();
-			}
-
-			this._iSelectedStepIndex++;
-			this._oSelectedStep = oNextStep;
-		},
-
-		handleNavigationChange: function(oEvent) {
-			this._oSelectedStep = oEvent.getParameter("step");
-			this._iSelectedStepIndex = this._oWizard.getSteps().indexOf(this._oSelectedStep);
-			this.handleButtonsVisibility();
+		handleWizardCancel: function(oEvent) {
+			this.empDialog.close();
 		}
 
 	});
