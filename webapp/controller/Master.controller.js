@@ -2,8 +2,9 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/Fragment",
 	"sap/m/MessageBox",
-	"sap/ui/Device"
-], function(Controller, Fragment, MessageBox, Device) {
+	"sap/ui/Device",
+	"sap/m/PDFViewer"
+], function(Controller, Fragment, MessageBox, Device, PDFViewer) {
 	"use strict";
 
 	return Controller.extend("safetysuitezclaimemployer.controller.Master", {
@@ -12,7 +13,6 @@ sap.ui.define([
 			this.WizardTitle = "";
 			var oModel = this.getOwnerComponent().getModel("employerList");
 			this.getView().setModel(oModel);
-
 		},
 
 		clickClaimBtn: function(oEvent) {
@@ -26,17 +26,15 @@ sap.ui.define([
 			} else {
 				this.empDialog.open();
 			}
-			sap.m.MessageBox.show("Please Review the claim information lodged by the employee", {
-				icon: sap.m.MessageBox.Icon.NONE,
-				title: "",
-				actions: ["Accept"],
-				emphasizedAction: "Accept",
-				// actions: sap.m.MessageBox.Action.Accept,
-				// emphasizedAction: sap.m.MessageBox.Action.Accept,
-				textDirection: sap.ui.core.TextDirection.Inherit
-			});
-		},
 
+			MessageBox.show("Please Review the claim information lodged by the employee", {
+				icon: MessageBox.Icon.INFORMATION,
+				title: "Information",
+				actions: ["Accept"],
+				emphasizedAction: ["Accept"],
+				Stretch: "False"
+			});
+		},                        //Dialog to open claimWizard fragment
 		// onOpenUploadAttachment: function(oEvent) {
 		// 	if (!this.AttachmentDialog) {
 		// 		this.AttachmentDialog = sap.ui.xmlfragment("safetysuitezclaimemployee.fragment.AttchmentUpload", this);
@@ -69,7 +67,7 @@ sap.ui.define([
 				sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
 				sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(true);
 			}
-		},
+		},                            // Next button for claimWizard fragment
 
 		onDialogBackButton: function() {
 			this._iSelectedStepIndex = this._oWizard.getCurrentStep();
@@ -90,11 +88,40 @@ sap.ui.define([
 			}
 			this._iSelectedStepIndex--;
 			this._oSelectedStep = oPreviousStep;
-		},
+		},                              // Previous buttom for claimWizard fragment
 
 		handleWizardCancel: function(oEvent) {
 			this.empDialog.close();
-		}
+		},
+
+		claimWizardSubmitBtn: function() {
+			var sUrl = sap.ui.require.toUrl("safetysuitezclaimemployer/saplogo.pdf");
+			var pdfViewer = new PDFViewer();
+			pdfViewer.setSource(sUrl);
+			pdfViewer.open();
+
+			MessageBox.success("Your Form is sucessfully submitted!", {
+				title: "Success",
+				actions: ["Accept"],
+				emphasizedAction: ["Accept"],
+				Stretch: "False"
+			});
+
+			this.empDialog.close();
+		},                          // Submit button in save manue for claimWizard fragment
+
+		claimWizardSaveDraftBtn: function() {
+			MessageBox.success("Your form is saved in draft", {
+				title: "Success",
+				onClose: null,
+				styleClass: "",
+				actions: sap.m.MessageBox.Action.OK,
+				emphasizedAction: sap.m.MessageBox.Action.OK,
+				initialFocus: null,
+				textDirection: sap.ui.core.TextDirection.Inherit
+			});
+			this.empDialog.close();
+		}                           // Save in Draft button in save manue for claimWizard fragment
 
 	});
 

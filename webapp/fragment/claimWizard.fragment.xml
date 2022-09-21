@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:u="sap.ui.unified"
 	xmlns:layout="sap.ui.layout">
-		<Dialog id="wizardDialog" showHeader="false" verticalScrolling="false" contentHeight="90%" contentWidth="90%">
+	<Dialog id="wizardDialog" showHeader="false" verticalScrolling="false" contentHeight="90%" contentWidth="90%">
 		<content>
 			<Page showHeader="false">
 				<content>
@@ -36,9 +36,9 @@
 									<Label text="{i18n>WizardPersonalDetailFormLabel_State}"/>
 									<Select>
 										<items>
-											<core:Item text=""/>
-											<core:Item text=""/>
-											<core:Item text=""/>
+											<core:Item text="Queensland"/>
+											<core:Item text="NSW"/>
+											<core:Item text="Victoria"/>
 										</items>
 									</Select>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Postcode}"/>
@@ -64,17 +64,16 @@
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question2}"/>
 									<Select>
 										<items>
-											<core:Item text=""/>
-											<core:Item text=""/>
-											<core:Item text=""/>
+											<core:Item text="English"/>
+											<core:Item text="Hindi"/>
+											<core:Item text="Other"/>
 										</items>
 									</Select>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question3}"/>
 									<Select>
 										<items>
-											<core:Item text=""/>
-											<core:Item text=""/>
-											<core:Item text=""/>
+											<core:Item text="Yes"/>
+											<core:Item text="No"/>
 										</items>
 									</Select>
 								</form:content>
@@ -104,9 +103,9 @@
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_State}"/>
 										<Select>
 											<items>
-												<core:Item text=""/>
-												<core:Item text=""/>
-												<core:Item text=""/>
+												<core:Item text="Queensland"/>
+												<core:Item text="NSW"/>
+												<core:Item text="Victoria"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_Postcode}"/>
@@ -137,9 +136,9 @@
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_State}"/>
 										<Select>
 											<items>
-												<core:Item text=""/>
-												<core:Item text=""/>
-												<core:Item text=""/>
+											<core:Item text="Queensland"/>
+											<core:Item text="NSW"/>
+											<core:Item text="Victoria"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question1}"/>
@@ -172,9 +171,9 @@
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_State}"/>
 										<Select>
 											<items>
-												<core:Item text=""/>
-												<core:Item text=""/>
-												<core:Item text=""/>
+											<core:Item text="Queensland"/>
+											<core:Item text="NSW"/>
+											<core:Item text="Victoria"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_Postcode}"/>
@@ -264,7 +263,7 @@
 									<form:content>
 										<core:Title text="{i18n>WizardFormPrimaryDetails}" level="H5"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question1}"/>
-										<Textarea/>
+										<TextArea/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ReturnDateQuestion}"/>
 										<DatePicker/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question2}"/>
@@ -276,10 +275,10 @@
 											</items>
 										</Select>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question3}"/>
-										<Textarea/>
+										<TextArea/>
 										<core:Title text="{i18n>WizardFormSecondaryDetails}" level="H5"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question4}"/>
-										<Textarea/>
+										<TextArea/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ClaimFormSubmissionDate}"/>
 										<DatePicker/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question5}"/>
@@ -391,8 +390,8 @@
 						<MenuButton type="Accept" text="{i18n>WizardFooterSaveBtn}" icon="sap-icon://save">
 							<menu>
 								<Menu>
-									<MenuItem text="{i18n>WizardFooterSubmitBtn}" icon="sap-icon://accept" press="onPress"/>
-									<MenuItem text="{i18n>WizardFooterSaveasdraftBtn}" icon="sap-icon://open-folder" press="onPress"/>
+									<MenuItem text="{i18n>WizardFooterSubmitBtn}" icon="sap-icon://accept" press="claimWizardSubmitBtn"/>
+									<MenuItem text="{i18n>WizardFooterSaveasdraftBtn}" icon="sap-icon://open-folder" press="claimWizardSaveDraftBtn"/>
 								</Menu>
 							</menu>
 							<layoutData>
