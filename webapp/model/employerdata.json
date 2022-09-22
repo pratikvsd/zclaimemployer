@@ -1,15 +1,4 @@
 {
-	"stateSelectionForPersonalDetail": [{
-		"stateId": "1",
-		"stateSelection": "NSW"
-	}, {
-		"stateId": "2",
-		"stateSelection": "Queensland"
-	}, {
-		"stateId": "3",
-		"stateSelection": "Victoria"
-	}],
-
 	"employerdata": [{
 		"fname": "Name1",
 		"inquiryfor": "Mental Stress",
@@ -34,5 +23,26 @@
 		"lname": "",
 		"bday": "",
 		"mnum": ""
-	}
+	},
+
+	"items": [{
+		"documentId": "64469d2f-b3c4-a517-20d6-f91ebf85b9da",
+		"fileName": "Blood Report.pdf",
+		"mimeType": "file",
+		"thumbnailUrl": "",
+		"url": "/webapp/Attachment_Sample_Files/2056106_E_20220914.pdf",
+		"attributes": [{
+			"title": "Uploaded By",
+			"text": "Susan Baker",
+			"active": false
+		}, {
+			"title": "Uploaded On",
+			"text": "2014-09-03",
+			"active": false
+		}, {
+			"title": "File Size",
+			"text": "5",
+			"active": false
+		}]
+	}]
 }

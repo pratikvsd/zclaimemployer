@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:u="sap.ui.unified"
-	xmlns:layout="sap.ui.layout">
+	xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc">
 	<Dialog id="wizardDialog" showHeader="false" verticalScrolling="false" contentHeight="90%" contentWidth="90%">
 		<content>
 			<Page showHeader="false">
@@ -10,19 +10,19 @@
 								labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 								singleContainerFullSize="false">
 								<form:content>
-									<core:Title text="{i18n>WizardFormPrimaryDetails}" level="H5"/>
+									<core:Title text="" level="H5"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Title}"/>
-									<Input/>
+									<Input enabled="false" value="Mr."/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_FamilyName}"/>
-									<Input type="Text"/>
+									<Input type="Text" enabled="false" value="Family Name 1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_GivenName}"/>
-									<Input type="Text"/>
+									<Input type="Text" enabled="false" value="Given Naame1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_OtherKnown}"/>
-									<Input type="Text"/>
+									<Input type="Text" enabled="false" value="Other Name"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_DOB}"/>
-									<DatePicker id="claimFormBirthDate"/>
+									<DatePicker id="claimFormBirthDate" enabled="false" value="12.03.2000"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Gender}"/>
-									<Select>
+									<Select enabled="false">
 										<items>
 											<core:Item text="Male"/>
 											<core:Item text="Female"/>
@@ -30,11 +30,11 @@
 										</items>
 									</Select>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Address}"/>
-									<Input type="Text"/>
+									<Input type="Text" enabled="false" value="Address1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Suburb}"/>
-									<Input type="Text"/>
+									<Input type="Text" enabled="false" value="Suburb1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_State}"/>
-									<Select>
+									<Select enabled="false">
 										<items>
 											<core:Item text="Queensland"/>
 											<core:Item text="NSW"/>
@@ -42,27 +42,27 @@
 										</items>
 									</Select>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Postcode}"/>
-									<Input type="Text"/>
+									<Input type="Text" enabled="false" value="Postcode1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_PAFC}"/>
-									<TextArea/>
+									<TextArea enabled="false" value="Postal Address1"/>
 									<core:Title text="{i18n>WizardPersonalDetailFormContactDetails}" level="H5"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Mobile}"/>
-									<Input type="Number"/>
+									<Input type="Number" enabled="false" value="123456789"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Work}"/>
-									<Input type="Number"/>
+									<Input type="Number" enabled="false" value="123456789"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Home}"/>
-									<Input type="Number"/>
+									<Input type="Number" enabled="false" value="123456789"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Email}"/>
-									<Input type="Text"/>
+									<Input type="Text" enabled="false" value="abc@mail.com"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question1}"/>
-									<Select>
+									<Select enabled="false">
 										<items>
 											<core:Item text="I agree"/>
 											<core:Item text="I do not agree"/>
 										</items>
 									</Select>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question2}"/>
-									<Select>
+									<Select enabled="false">
 										<items>
 											<core:Item text="English"/>
 											<core:Item text="Hindi"/>
@@ -70,7 +70,7 @@
 										</items>
 									</Select>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question3}"/>
-									<Select>
+									<Select enabled="false">
 										<items>
 											<core:Item text="Yes"/>
 											<core:Item text="No"/>
@@ -85,23 +85,23 @@
 									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 									singleContainerFullSize="false">
 									<form:content>
-										<core:Title text="{i18n>WizardFormPrimaryDetails}" level="H5"/>
+										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryBodyPart}"/>
-										<Input/>
+										<Input enabled="false" value="Body Part"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryType}"/>
-										<Input type="Text"/>
+										<Input type="Text" enabled="false" value="Injury Type"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_HowInjured}"/>
-										<Textarea/>
+										<Textarea enabled="false" value="Reason for Injury"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_TaskWhenInjured}"/>
-										<Textarea/>
+										<Textarea enabled="false" value="Task"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_WorkLocationWhenInjured}"/>
-										<Textarea/>
+										<Textarea enabled="false" value="worksite"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_AddressOfInjury}"/>
-										<Textarea/>
+										<Textarea enabled="false" value="Address"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_Suburb}"/>
-										<Input type="Text"/>
+										<Input type="Text" enabled="false" value="Suburb"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_State}"/>
-										<Select>
+										<Select enabled="false">
 											<items>
 												<core:Item text="Queensland"/>
 												<core:Item text="NSW"/>
@@ -109,48 +109,48 @@
 											</items>
 										</Select>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_Postcode}"/>
-										<Input type="Text"/>
+										<Input enabled="false" value="Postcode" type="Text"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryDateTime}"/>
-										<DatePicker/>
+										<DatePicker enabled="false" value="Sep 5, 2022"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_FirstNoticeInjuryCondition}"/>
-										<DatePicker/>
+										<DatePicker enabled="false" value="Oct 1, 2022"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_StoppedWorkDateTime}"/>
-										<DatePicker/>
+										<DatePicker enabled="false" value="Jan 11, 2022"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ReportInjuryToEmployee}"/>
-										<DatePicker/>
-										<core:Title text="{i18n>WizardFormSecondaryDetails}" level="H5"/>
+										<DatePicker enabled="false" value="Jan 11, 2022"/>
+										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ResposibleManAtWorkplace}"/>
-										<Input type="Text"/>
+										<Input type="Text" enabled="false" value="Employer Name"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ActivityonTimeofInjury}"/>
-										<Select>
+										<Select enabled="false">
 											<items>
-												<core:Item text=""/>
-												<core:Item text=""/>
-												<core:Item text=""/>
+												<core:Item text="Activity1"/>
+												<core:Item text="Activity2"/>
+												<core:Item text="Activity3"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_AccidentReportingStation}"/>
-										<Input type="Text"/>
+										<Input type="Text" enabled="false" value="Name of the police station"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_RegNoOfInvoledVehicle}"/>
-										<Input type="Text"/>
+										<Input type="Text" enabled="false" value="Regristation number of vehicle"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_State}"/>
-										<Select>
+										<Select enabled="false">
 											<items>
-											<core:Item text="Queensland"/>
-											<core:Item text="NSW"/>
-											<core:Item text="Victoria"/>
+												<core:Item text="Queensland"/>
+												<core:Item text="NSW"/>
+												<core:Item text="Victoria"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question1}"/>
-										<Textarea/>
+										<TextArea height="100px" enabled="false" value="Yes/No"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question2}"/>
-										<Textarea/>
+										<TextArea enabled="false" value="Name of the person"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question3}"/>
-										<Textarea/>
+										<TextArea enabled="false" value="reason behind the delay"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question4}"/>
-										<Textarea/>
+										<TextArea enabled="false" value="Names and daytime contact detail of Person witnessed the incident"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question5}"/>
-										<Textarea/>
+										<TextArea enabled="false" value="previous Injury"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -161,7 +161,7 @@
 									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 									singleContainerFullSize="false">
 									<form:content>
-										<core:Title text="{i18n>WizardFormPrimaryDetails}" level="H5"/>
+										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_NameofOrg}"/>
 										<Input/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_AddressOfUsualWorkplace}"/>
@@ -171,9 +171,9 @@
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_State}"/>
 										<Select>
 											<items>
-											<core:Item text="Queensland"/>
-											<core:Item text="NSW"/>
-											<core:Item text="Victoria"/>
+												<core:Item text="Queensland"/>
+												<core:Item text="NSW"/>
+												<core:Item text="Victoria"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_Postcode}"/>
@@ -237,14 +237,14 @@
 									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 									singleContainerFullSize="false">
 									<form:content>
-										<core:Title text="{i18n>WizardFormPrimaryDetails}" level="H5"/>
+										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question1}"/>
 										<Input/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question2}"/>
 										<Textarea/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question3}"/>
 										<Input/>
-										<core:Title text="{i18n>WizardFormSecondaryDetails}" level="H5"/>
+										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question4}"/>
 										<Input/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_WeeklyShiftAllowence}"/>
@@ -261,7 +261,7 @@
 									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 									singleContainerFullSize="false">
 									<form:content>
-										<core:Title text="{i18n>WizardFormPrimaryDetails}" level="H5"/>
+										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question1}"/>
 										<TextArea/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ReturnDateQuestion}"/>
@@ -276,7 +276,7 @@
 										</Select>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question3}"/>
 										<TextArea/>
-										<core:Title text="{i18n>WizardFormSecondaryDetails}" level="H5"/>
+										<core:Title level="H5"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question4}"/>
 										<TextArea/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ClaimFormSubmissionDate}"/>
@@ -296,20 +296,21 @@
 							</VBox>
 						</WizardStep>
 						<WizardStep id="workerDecStep" title="{i18n>claimFormWizardWorkerdeclaration}">
-							<VBox class="sapUiSmallMargin">
-								<form:SimpleForm id="workerDecForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
-									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
-									singleContainerFullSize="false">
-									<form:content>
-										<core:Title text="{i18n>WizardFormPrimaryDetails}" level="H5"/>
-										<Label text="{i18n>WizardworkerDecFormmLabel_WorkerSignature}"/>
-										<Input/>
-										<core:Title text="{i18n>WizardFormSecondaryDetails}" level="H5"/>
-										<Label text="{i18n>WizardworkerDecFormmLabel_Date}"/>
-										<DatePicker/>
-									</form:content>
-								</form:SimpleForm>
-							</VBox>
+							<HTML xmlns="sap.ui.core" content="{i18n>workerDeclarationParagraph1}"/>
+							<HTML xmlns="sap.ui.core" content="{i18n>workerDeclarationParagraph2}"/>
+							<HTML xmlns="sap.ui.core" content="{i18n>workerDeclarationParagraph3}"/>
+							<form:SimpleForm id="workerDecForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+								labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+								singleContainerFullSize="false">
+								<form:content>
+									<core:Title text="" level="H5"/>
+									<Label text="{i18n>WizardworkerDecFormmLabel_WorkerSignature}"/>
+									<Input/>
+									<core:Title text="" level="H5"/>
+									<Label text="{i18n>WizardworkerDecFormmLabel_Date}"/>
+									<DatePicker/>
+								</form:content>
+							</form:SimpleForm>
 						</WizardStep>
 						<WizardStep id="employerLodgementStep" title="{i18n>claimFormWizardWorkerEmployerLodgement}">
 							<VBox class="sapUiSmallMargin">
@@ -317,7 +318,7 @@
 									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 									singleContainerFullSize="false">
 									<form:content>
-										<core:Title text="{i18n>WizardFormPrimaryDetails}" level="H5"/>
+										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardEmployerLodgement_question1}"/>
 										<DatePicker/>
 										<Label text="{i18n>WizardEmployerLodgement_question2}"/>
@@ -346,24 +347,23 @@
 							</VBox>
 						</WizardStep>
 						<WizardStep id="attachmentStep" title="{i18n>claimFormWizardAttachments}">
-							<Panel width="auto" class="sapUiResponsiveMargin">
-								<headerToolbar>
-									<OverflowToolbar>
-										<Title text="Please Attach any supporting document"/>
-										<ToolbarSpacer/>
-										<Button icon="sap-icon://sort"/>
-										<Button icon="sap-icon://filter"/>
-										<Button icon="sap-icon://add" press="onOpenUploadAttachment"/>
-									</OverflowToolbar>
-								</headerToolbar>
-								<content>
-									<List id="ShortProductList" headerText="Employee Attachments">
-										<items>
-											<StandardListItem title="" description=""/>
-										</items>
-									</List>
-								</content>
-							</Panel>
+							<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="deleteAttachmentListItems"
+								typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"
+								uploadTerminated="onUploadTerminated" items="{ path: '/items', templateShareable: false }"
+								numberOfAttachmentsText="{i18n>WizardAttachmentsListTitle}(1)" uploadEnabled="true">
+								<items>
+									<UploadCollectionItem documentId="{documentId}" fileName="{fileName}" mimeType="{mimeType}" thumbnailUrl="{thumbnailUrl}" url="{url}"
+										enableEdit="true" enableDelete="true" visibleDelete="true" visibleEdit="true" attributes="{path : 'attributes', templateShareable : false}"
+										statuses="{path : 'statuses', templateShareable : false}" selected="{selected}">
+										<attributes>
+											<ObjectAttribute title="{title}" text="{path : 'text', formatter : '.formatAttribute'}" active="{active}" press="onAttributePress"/>
+										</attributes>
+										<statuses>
+											<ObjectStatus title="{title}" text="{text}" state="{state}"/>
+										</statuses>
+									</UploadCollectionItem>
+								</items>
+							</UploadCollection>
 						</WizardStep>
 					</Wizard>
 				</content>
