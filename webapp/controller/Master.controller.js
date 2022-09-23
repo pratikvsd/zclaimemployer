@@ -70,7 +70,7 @@ sap.ui.define([
 				sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
 				sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(true);
 			}
-		}, // Next button for claimWizard fragment
+		}, // Code for next button in the main claim wizard control.
 
 		onDialogBackButton: function() {
 			this._iSelectedStepIndex = this._oWizard.getCurrentStep();
@@ -91,12 +91,15 @@ sap.ui.define([
 			}
 			this._iSelectedStepIndex--;
 			this._oSelectedStep = oPreviousStep;
-		}, // Previous buttom for claimWizard fragment
+		}, // Code for previous button in the main claim wizard control.
 
 		handleWizardCancel: function() {
 			this.empDialog.close();
-			this.startStep = this._oWizard._getStartingStep();
-			this._oWizard.setCurrentStep(this.startStep);
+			this.initalWizardStep = this._oWizard._getStartingStep();
+			this._oWizard.setCurrentStep(this.initalWizardStep);
+			sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
+			sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
+
 		},
 
 		onChange: function(oEvent) {
@@ -110,7 +113,6 @@ sap.ui.define([
 		}, // Mandotory event to set the header parameter for upload collection.
 
 		onUploadComplete: function(oEvent) {
-
 			var oUploadCollection = sap.ui.getCore().byId("UploadCollection");
 			var oData = oUploadCollection.getModel().getData();
 			var url = sap.ui.require.toUrl("safetysuitezclaimemployer/Attachment_Sample_Files/IdentityProof.png");
@@ -135,11 +137,9 @@ sap.ui.define([
 				}]
 			});
 			this.getView().getModel().refresh();
-
 			// Sets the text to the label
 			var aItems = sap.ui.getCore().byId("UploadCollection").getItems();
 			sap.ui.getCore().byId("UploadCollection").setNumberOfAttachmentsText("Employee Attachments(" + aItems.length + ")");
-
 			// delay the success message for to notice onChange message
 			setTimeout(function() {
 				sap.m.MessageToast.show("UploadComplete event triggered.");
@@ -187,8 +187,10 @@ sap.ui.define([
 							var sSource = sap.ui.require.toUrl("safetysuitezclaimemployer/Attachment_Sample_Files/2056106_E_20220914.pdf");
 							this.oApproveDialog.close();
 							this.empDialog.close();
-							this.startStep = this._oWizard._getStartingStep();
-							this._oWizard.setCurrentStep(this.startStep);
+							this.initalWizardStep = this._oWizard._getStartingStep();
+							this._oWizard.setCurrentStep(this.initalWizardStep);
+							sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
+							sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
 							this._pdfViewer = new sap.m.PDFViewer();
 							this.getView().addDependent(this._pdfViewer);
 							this._pdfViewer.setSource(sSource);
@@ -226,8 +228,10 @@ sap.ui.define([
 				}
 				this.oSuccessMessageDialog.open();
 				this.empDialog.close();
-				this.startStep = this._oWizard._getStartingStep();
-				this._oWizard.setCurrentStep(this.startStep);
+				this.initalWizardStep = this._oWizard._getStartingStep();
+				this._oWizard.setCurrentStep(this.initalWizardStep);
+				sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
+				sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
 			} // Save in Draft button in save manue for claimWizard fragment
 
 	});

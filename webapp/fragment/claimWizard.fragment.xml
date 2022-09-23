@@ -371,20 +371,20 @@
 					<Toolbar>
 						<Button text="{i18n>WizardFooterCancelBtn}" icon="sap-icon://sys-cancel-2" type="Reject" press="handleWizardCancel">
 							<layoutData>
-								<ToolbarLayoutData shrinkable="true"/>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
 							</layoutData>
 						</Button>
 						<ToolbarSpacer/>
 						<Button id="claimWizardPrevBtn" text="{i18n>WizardFooterPreviousBtn}" icon="sap-icon://navigation-left-arrow" type="Emphasized"
 							visible="false" press="onDialogBackButton">
 							<layoutData>
-								<ToolbarLayoutData shrinkable="true"/>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
 							</layoutData>
 						</Button>
 						<Button id="claimWizardNextBtn" text="{i18n>WizardFooterNextBtn}" icon="sap-icon://navigation-right-arrow" type="Emphasized"
 							press="onDialogNextButton">
 							<layoutData>
-								<ToolbarLayoutData shrinkable="true"/>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
 							</layoutData>
 						</Button>
 						<MenuButton type="Accept" text="{i18n>WizardFooterSaveBtn}" icon="sap-icon://save">
@@ -394,9 +394,6 @@
 									<MenuItem text="{i18n>WizardFooterSaveasdraftBtn}" icon="sap-icon://open-folder" press="claimWizardSaveDraftBtn"/>
 								</Menu>
 							</menu>
-							<layoutData>
-								<ToolbarLayoutData shrinkable="true"/>
-							</layoutData>
 						</MenuButton>
 					</Toolbar>
 				</footer>
