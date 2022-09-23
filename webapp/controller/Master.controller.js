@@ -4,7 +4,8 @@ sap.ui.define([
 	"sap/m/MessageBox",
 	"sap/ui/Device",
 	"sap/m/UploadCollectionParameter"
-], function(Controller, Fragment, MessageBox, Device, PDFViewer, UploadCollectionParameter) {
+
+], function(Controller, Fragment, MessageBox, Device, PDFViewer, UploadCollectionParameter, Dialog) {
 	"use strict";
 
 	return Controller.extend("safetysuitezclaimemployer.controller.Master", {
@@ -27,15 +28,26 @@ sap.ui.define([
 				this.empDialog.open();
 			}
 
-			MessageBox.show("Please Review the claim information lodged by the employee", {
-				type: sap.m.ButtonType.Emphasized,
-				icon: MessageBox.Icon.INFORMATION,
-				title: "Information",
-				actions: ["Accept"],
-				emphasizedAction: ["Accept"],
-				Stretch: "False"
-			});
+			if (!this.oDefaultMessageDialog) {
+				this.oDefaultMessageDialog = new sap.m.Dialog({
+					type: sap.m.DialogType.Message,
+					title: "Information",
+					content: new sap.m.Text({
+						text: "Please Review the claim information lodged by the employee"
+					}),
+					beginButton: new sap.m.Button({
+						type: sap.m.ButtonType.Emphasized,
+						text: "Accept",
+						press: function() {
+							this.oDefaultMessageDialog.close();
+						}.bind(this)
+					})
+				});
+			}
+
+			this.oDefaultMessageDialog.open();
 		},
+
 		onDialogNextButton: function() {
 			this._oWizard = sap.ui.getCore().byId("claimFormWizard");
 			this._iSelectedStepIndex = this._oWizard.getCurrentStep();
@@ -81,8 +93,10 @@ sap.ui.define([
 			this._oSelectedStep = oPreviousStep;
 		}, // Previous buttom for claimWizard fragment
 
-		handleWizardCancel: function(oEvent) {
+		handleWizardCancel: function() {
 			this.empDialog.close();
+			this.startStep = this._oWizard._getStartingStep();
+			this._oWizard.setCurrentStep(this.startStep);
 		},
 
 		onChange: function(oEvent) {
@@ -173,6 +187,8 @@ sap.ui.define([
 							var sSource = sap.ui.require.toUrl("safetysuitezclaimemployer/Attachment_Sample_Files/2056106_E_20220914.pdf");
 							this.oApproveDialog.close();
 							this.empDialog.close();
+							this.startStep = this._oWizard._getStartingStep();
+							this._oWizard.setCurrentStep(this.startStep);
 							this._pdfViewer = new sap.m.PDFViewer();
 							this.getView().addDependent(this._pdfViewer);
 							this._pdfViewer.setSource(sSource);
@@ -192,16 +208,27 @@ sap.ui.define([
 		},
 
 		claimWizardSaveDraftBtn: function() {
-				MessageBox.success("Your form is saved in draft", {
-					title: "Success",
-					onClose: null,
-					styleClass: "",
-					actions: sap.m.MessageBox.Action.OK,
-					emphasizedAction: sap.m.MessageBox.Action.OK,
-					initialFocus: null,
-					textDirection: sap.ui.core.TextDirection.Inherit
-				});
+				if (!this.oSuccessMessageDialog) {
+					this.oSuccessMessageDialog = new sap.m.Dialog({
+						type: sap.m.DialogType.Message,
+						title: "Success",
+						content: new sap.m.Text({
+							text: "Your draft has been saved successfully!"
+						}),
+						beginButton: new sap.m.Button({
+							type: sap.m.ButtonType.Emphasized,
+							text: "OK",
+							press: function() {
+								this.oSuccessMessageDialog.close();
+							}.bind(this)
+						})
+					});
+				}
+				this.oSuccessMessageDialog.open();
 				this.empDialog.close();
+				this.startStep = this._oWizard._getStartingStep();
+				this._oWizard.setCurrentStep(this.startStep);
 			} // Save in Draft button in save manue for claimWizard fragment
+
 	});
 });

@@ -1,1 +1,7 @@
 /* Enter your custom styles here */
+
+.sapMIBar-CTX .sapMTitle {
+    color: #32363a;
+    text-shadow: none;
+    font-weight: bold;
+}
