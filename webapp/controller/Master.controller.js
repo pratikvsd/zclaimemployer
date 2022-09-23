@@ -28,23 +28,14 @@ sap.ui.define([
 			}
 
 			MessageBox.show("Please Review the claim information lodged by the employee", {
+				type: sap.m.ButtonType.Emphasized,
 				icon: MessageBox.Icon.INFORMATION,
 				title: "Information",
 				actions: ["Accept"],
 				emphasizedAction: ["Accept"],
 				Stretch: "False"
 			});
-		}, //Dialog to open claimWizard fragment
-		// onOpenUploadAttachment: function(oEvent) {
-		// 	if (!this.AttachmentDialog) {
-		// 		this.AttachmentDialog = sap.ui.xmlfragment("safetysuitezclaimemployee.fragment.AttchmentUpload", this);
-		// 		this.getView().addDependent(this.AttachmentDialog);
-
-		// 	}
-		// 	this.WizardTitle = "Attachment";
-		// 	this.AttachmentDialog.open();
-		// },
-
+		},
 		onDialogNextButton: function() {
 			this._oWizard = sap.ui.getCore().byId("claimFormWizard");
 			this._iSelectedStepIndex = this._oWizard.getCurrentStep();
@@ -168,7 +159,6 @@ sap.ui.define([
 		}, // To delete the files from the attchment list.
 
 		claimWizardSubmitBtn: function() {
-			debugger;
 			if (!this.oApproveDialog) {
 				this.oApproveDialog = new sap.m.Dialog({
 					type: sap.m.DialogType.Message,

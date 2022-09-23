@@ -163,13 +163,13 @@
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_NameofOrg}"/>
-										<Input/>
+										<Input enabled="false" value="Name of organization"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_AddressOfUsualWorkplace}"/>
-										<Textarea/>
+										<Textarea enabled="false" value="Street address of your workplace"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_Suburb}"/>
-										<Input type="Text"/>
+										<Input enabled="false" value="Suburb" type="Text"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_State}"/>
-										<Select>
+										<Select enabled="false">
 											<items>
 												<core:Item text="Queensland"/>
 												<core:Item text="NSW"/>
@@ -177,56 +177,56 @@
 											</items>
 										</Select>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_Postcode}"/>
-										<Input type="Text"/>
+										<Input enabled="false" value="Postcode" type="Text"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_NameandContactofEmployer}"/>
-										<Textarea/>
+										<Textarea enabled="false" value="Name and daytime contact number of employer"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_UsualOccupation}"/>
-										<Input type="Text"/>
+										<Input enabled="false" value="Occupation" type="Text"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_FollowingAppiesToYou}"/>
-										<Select>
+										<Select enabled="false">
 											<items>
-												<core:Item text=""/>
-												<core:Item text=""/>
-												<core:Item text=""/>
+												<core:Item text="no.1"/>
+												<core:Item text="no.2"/>
+												<core:Item text="no.3"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_WhenStartWorkingForEmployer}"/>
-										<DatePicker/>
+										<DatePicker enabled="false" value="Sep 15, 2022"/>
 										<core:Title text="{i18n>WizardEmployementDetailsSecTitle_PleaseSelectAny}" level="H5"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_ADirectorofMyEmployersCompany}"/>
-										<Select>
+										<Select enabled="false">
 											<items>
-												<core:Item text=""/>
-												<core:Item text=""/>
-												<core:Item text=""/>
+												<core:Item text="Name 1"/>
+												<core:Item text="Name 2"/>
+												<core:Item text="Name 2"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_APartnerofMyEmployerCompany}"/>
-										<Select>
+										<Select enabled="false">
 											<items>
-												<core:Item text=""/>
-												<core:Item text=""/>
-												<core:Item text=""/>
+												<core:Item text="Name 1"/>
+												<core:Item text="Name 2"/>
+												<core:Item text="Name 2"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_ASoleTrader}"/>
-										<Select>
+										<Select enabled="false">
 											<items>
-												<core:Item text=""/>
-												<core:Item text=""/>
-												<core:Item text=""/>
+												<core:Item text="Name 1"/>
+												<core:Item text="Name 2"/>
+												<core:Item text="Name 2"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_ARelativeofMyEmployer}"/>
-										<Select>
+										<Select enabled="false">
 											<items>
-												<core:Item text=""/>
-												<core:Item text=""/>
-												<core:Item text=""/>
+												<core:Item text="Name 1"/>
+												<core:Item text="Name 2"/>
+												<core:Item text="Name 2"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_question1}"/>
-										<Textarea/>
+										<Textarea enabled="false" value="Yes/No"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -239,18 +239,18 @@
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question1}"/>
-										<Input/>
+										<Input enabled="false" value="Hours of work"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question2}"/>
-										<Textarea/>
+										<Textarea enabled="false" value="Usual working hours"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question3}"/>
-										<Input/>
+										<Input enabled="false" value="Pre-tax hourly rate"/>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question4}"/>
-										<Input/>
+										<Input enabled="false" value="Pre-tax weekly earnings"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_WeeklyShiftAllowence}"/>
-										<Input/>
+										<Input enabled="false" value="Weekly shift "/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_WeeklyOvertime}"/>
-										<Input/>
+										<Input enabled="false" value="Overtime hours"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -263,34 +263,34 @@
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question1}"/>
-										<TextArea/>
+										<TextArea height="120px" enabled="false" value="Name and contact details of hospital"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ReturnDateQuestion}"/>
-										<DatePicker/>
+										<DatePicker enabled="false" value="Sep 8, 2022"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question2}"/>
-										<Select>
+										<Select enabled="false">
 											<items>
-												<core:Item text=""/>
-												<core:Item text=""/>
-												<core:Item text=""/>
+												<core:Item text="Duty1"/>
+												<core:Item text="Duty2"/>
+												<core:Item text="Duty3"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question3}"/>
-										<TextArea/>
+										<TextArea enabled="false" value="Yes/No"/>
 										<core:Title level="H5"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question4}"/>
-										<TextArea/>
+										<TextArea height="120px" enabled="false" value="Yes/No"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ClaimFormSubmissionDate}"/>
-										<DatePicker/>
+										<DatePicker enabled="false" value="Sep 8, 2022"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question5}"/>
-										<Select>
+										<Select enabled="false">
 											<items>
-												<core:Item text=""/>
-												<core:Item text=""/>
-												<core:Item text=""/>
+												<core:Item text="1"/>
+												<core:Item text="2"/>
+												<core:Item text="3"/>
 											</items>
 										</Select>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_MedicalCertificateSubmissionDate}"/>
-										<DatePicker/>
+										<DatePicker enabled="false" value="Sep 8, 2022"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -305,10 +305,10 @@
 								<form:content>
 									<core:Title text="" level="H5"/>
 									<Label text="{i18n>WizardworkerDecFormmLabel_WorkerSignature}"/>
-									<Input/>
+									<Input enabled="false" value="Signature"/>
 									<core:Title text="" level="H5"/>
 									<Label text="{i18n>WizardworkerDecFormmLabel_Date}"/>
-									<DatePicker/>
+									<DatePicker enabled="false" value="Sep 8, 2022"/>
 								</form:content>
 							</form:SimpleForm>
 						</WizardStep>
@@ -320,28 +320,28 @@
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardEmployerLodgement_question1}"/>
-										<DatePicker/>
+										<DatePicker enabled="false" value="Sep 8, 2022"/>
 										<Label text="{i18n>WizardEmployerLodgement_question2}"/>
-										<DatePicker/>
+										<DatePicker enabled="false" value="Sep 8, 2022"/>
 										<Label text="{i18n>WizardEmployerLodgement_question3}"/>
-										<DatePicker/>
+										<DatePicker enabled="false" value="Sep 8, 2022"/>
 										<Label text="{i18n>WizardEmployerLodgement_estimatedCostOfClaimToDate}"/>
-										<Input/>
+										<Input enabled="false" value="Cost"/>
 										<core:Title text="{i18n>WizardEmployerLodgementHowManyDaysHaveBeenLost}" level="H5"/>
 										<Label text="{i18n>WizardEmployerLodgement_Days}"/>
-										<Input/>
+										<Input enabled="false" value="Days"/>
 										<Label text="{i18n>WizardEmployerLodgement_Hours}"/>
-										<Input/>
+										<Input enabled="false" value="Hours"/>
 										<Label text="{i18n>WizardEmployerLodgement_employeeSignature}"/>
-										<Input/>
+										<Input enabled="false" value="Signature"/>
 										<Label text="{i18n>WizardEmployerLodgement_Date}"/>
-										<DatePicker/>
+										<DatePicker enabled="false" value="Sep 8, 2022"/>
 										<Label text="{i18n>WizardEmployerLodgement_Name}"/>
-										<Input/>
+										<Input enabled="false" value="Name1"/>
 										<Label text="{i18n>WizardEmployerLodgement_Position}"/>
-										<Input/>
+										<Input enabled="false" value="Position"/>
 										<Label text="{i18n>WizardEmployerLodgement_employersSchemeRegistrationNumber}"/>
-										<Input/>
+										<Input enabled="false" value="Registration Number"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
