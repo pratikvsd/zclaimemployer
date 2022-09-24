@@ -296,9 +296,9 @@
 							</VBox>
 						</WizardStep>
 						<WizardStep id="workerDecStep" title="{i18n>claimFormWizardWorkerdeclaration}">
-							<HTML xmlns="sap.ui.core" content="{i18n>workerDeclarationParagraph1}"/>
-							<HTML xmlns="sap.ui.core" content="{i18n>workerDeclarationParagraph2}"/>
-							<HTML xmlns="sap.ui.core" content="{i18n>workerDeclarationParagraph3}"/>
+							<Text text="{i18n>workerDeclarationParagraph1}" class="sapUiSmallMarginTop"/>
+							<Text text="{i18n>workerDeclarationParagraph2}" class="sapUiSmallMarginTop"/>
+							<Text text="{i18n>workerDeclarationParagraph3}" class="sapUiSmallMarginTop"/>
 							<form:SimpleForm id="workerDecForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
 								labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 								singleContainerFullSize="false">
@@ -313,38 +313,36 @@
 							</form:SimpleForm>
 						</WizardStep>
 						<WizardStep id="employerLodgementStep" title="{i18n>claimFormWizardWorkerEmployerLodgement}">
-							<VBox class="sapUiSmallMargin">
-								<form:SimpleForm id="employerLodgement" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
-									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
-									singleContainerFullSize="false">
-									<form:content>
-										<core:Title text="" level="H5"/>
-										<Label text="{i18n>WizardEmployerLodgement_question1}"/>
-										<DatePicker value="Sep 8, 2022"/>
-										<Label text="{i18n>WizardEmployerLodgement_question2}"/>
-										<DatePicker value="Sep 8, 2022"/>
-										<Label text="{i18n>WizardEmployerLodgement_question3}"/>
-										<DatePicker value="Sep 8, 2022"/>
-										<Label text="{i18n>WizardEmployerLodgement_estimatedCostOfClaimToDate}"/>
-										<Input value="Cost"/>
-										<core:Title text="{i18n>WizardEmployerLodgementHowManyDaysHaveBeenLost}" level="H5"/>
-										<Label text="{i18n>WizardEmployerLodgement_Days}"/>
-										<Input value="Days"/>
-										<Label text="{i18n>WizardEmployerLodgement_Hours}"/>
-										<Input value="Hours"/>
-										<Label text="{i18n>WizardEmployerLodgement_employeeSignature}"/>
-										<Input value="Signature"/>
-										<Label text="{i18n>WizardEmployerLodgement_Date}"/>
-										<DatePicker value="Sep 8, 2022"/>
-										<Label text="{i18n>WizardEmployerLodgement_Name}"/>
-										<Input value="Name1"/>
-										<Label text="{i18n>WizardEmployerLodgement_Position}"/>
-										<Input value="Position"/>
-										<Label text="{i18n>WizardEmployerLodgement_employersSchemeRegistrationNumber}"/>
-										<Input value="Registration Number"/>
-									</form:content>
-								</form:SimpleForm>
-							</VBox>
+							<form:SimpleForm id="employerLodgementForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+								labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+								singleContainerFullSize="false">
+								<form:content>
+									<core:Title text="" level="H5"/>
+									<Label text="{i18n>WizardEmployerLodgement_question1}"/>
+									<DatePicker value="Sep 8, 2022"/>
+									<Label text="{i18n>WizardEmployerLodgement_question2}"/>
+									<DatePicker value="Sep 8, 2022"/>
+									<Label text="{i18n>WizardEmployerLodgement_question3}"/>
+									<DatePicker value="Sep 8, 2022"/>
+									<Label text="{i18n>WizardEmployerLodgement_estimatedCostOfClaimToDate}"/>
+									<Input value="Cost"/>
+									<core:Title text="{i18n>WizardEmployerLodgementHowManyDaysHaveBeenLost}" level="H5"/>
+									<Label text="{i18n>WizardEmployerLodgement_Days}"/>
+									<Input value="Days"/>
+									<Label text="{i18n>WizardEmployerLodgement_Hours}"/>
+									<Input value="Hours"/>
+									<Label text="{i18n>WizardEmployerLodgement_employeeSignature}"/>
+									<Input value="Signature"/>
+									<Label text="{i18n>WizardEmployerLodgement_Date}"/>
+									<DatePicker value="Sep 8, 2022"/>
+									<Label text="{i18n>WizardEmployerLodgement_Name}"/>
+									<Input value="Name1"/>
+									<Label text="{i18n>WizardEmployerLodgement_Position}"/>
+									<Input value="Position"/>
+									<Label text="{i18n>WizardEmployerLodgement_employersSchemeRegistrationNumber}"/>
+									<Input value="Registration Number"/>
+								</form:content>
+							</form:SimpleForm>
 						</WizardStep>
 						<WizardStep id="attachmentStep" title="{i18n>claimFormWizardAttachments}">
 							<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="deleteAttachmentListItems"
