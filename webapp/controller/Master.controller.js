@@ -15,19 +15,19 @@ sap.ui.define([
 			var oModel = this.getOwnerComponent().getModel("employerList");
 			this.getView().setModel(oModel);
 			
-			var alternativeLanguage = sap.ui.getCore().getConfiguration().getLanguage();
-			var i18nPath = "i18n/i18n";
-			if (alternativeLanguage === "de_DE") {
-				i18nPath = i18nPath + "_de.properties";
-			} else if (alternativeLanguage === "ja") {
-				i18nPath = i18nPath + "_ja.properties";
-			} else {
-				i18nPath = i18nPath + ".properties";
-			}
-			var oi18nModel = new sap.ui.model.resource.ResourceModel({
-				bundleUrl: i18nPath
-			});
-			sap.ui.getCore().setModel(oi18nModel, "i18n");
+			// var alternativeLanguage = sap.ui.getCore().getConfiguration().getLanguage();
+			// var i18nPath = "i18n/i18n";
+			// if (alternativeLanguage === "de_DE") {
+			// 	i18nPath = i18nPath + "_de.properties";
+			// } else if (alternativeLanguage === "ja") {
+			// 	i18nPath = i18nPath + "_ja.properties";
+			// } else {
+			// 	i18nPath = i18nPath + ".properties";
+			// }
+			// var oi18nModel = new sap.ui.model.resource.ResourceModel({
+			// 	bundleUrl: i18nPath
+			// });
+			// sap.ui.getCore().setModel(oi18nModel, "i18n");
 		},
 
 		clickClaimBtn: function(oEvent) {
