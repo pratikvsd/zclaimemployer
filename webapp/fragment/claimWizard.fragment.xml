@@ -20,27 +20,15 @@
 									<Label text="{i18n>WizardPersonalDetailFormLabel_OtherKnown}"/>
 									<Input type="Text" enabled="false" value="Other Name"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_DOB}"/>
-									<DatePicker id="claimFormBirthDate" enabled="false" value="12.03.2000"/>
+									<Input type="Text" enabled="false" value="Aug 31, 2022"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Gender}"/>
-									<Select enabled="false">
-										<items>
-											<core:Item text="Male"/>
-											<core:Item text="Female"/>
-											<core:Item text="Other"/>
-										</items>
-									</Select>
+									<Input type="Text" enabled="false" value="Male"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Address}"/>
 									<Input type="Text" enabled="false" value="Address1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Suburb}"/>
 									<Input type="Text" enabled="false" value="Suburb1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_State}"/>
-									<Select enabled="false">
-										<items>
-											<core:Item text="Queensland"/>
-											<core:Item text="NSW"/>
-											<core:Item text="Victoria"/>
-										</items>
-									</Select>
+									<Input type="Text" enabled="false" value="Queensland"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Postcode}"/>
 									<Input type="Text" enabled="false" value="Postcode1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_PAFC}"/>
@@ -55,27 +43,11 @@
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Email}"/>
 									<Input type="Text" enabled="false" value="abc@mail.com"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question1}"/>
-									<Select enabled="false">
-										<items>
-											<core:Item text="I agree"/>
-											<core:Item text="I do not agree"/>
-										</items>
-									</Select>
+									<Input type="Text" enabled="false" value="I agree"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question2}"/>
-									<Select enabled="false">
-										<items>
-											<core:Item text="English"/>
-											<core:Item text="Hindi"/>
-											<core:Item text="Other"/>
-										</items>
-									</Select>
+									<Input type="Text" enabled="false" value="English"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question3}"/>
-									<Select enabled="false">
-										<items>
-											<core:Item text="Yes"/>
-											<core:Item text="No"/>
-										</items>
-									</Select>
+									<Input type="Text" enabled="false" value="Yes"/>
 								</form:content>
 							</form:SimpleForm>
 						</WizardStep>
@@ -296,19 +268,17 @@
 							</VBox>
 						</WizardStep>
 						<WizardStep id="workerDecStep" title="{i18n>claimFormWizardWorkerdeclaration}">
-							<Text text="{i18n>workerDeclarationParagraph1}" class="sapUiSmallMarginTop"/>
-							<Text text="{i18n>workerDeclarationParagraph2}" class="sapUiSmallMarginTop"/>
-							<Text text="{i18n>workerDeclarationParagraph3}" class="sapUiSmallMarginTop"/>
+							<Text text="{i18n>workerDeclarationParagraph1}" class="sapUiSmallMargin"/>
+							<Text text="{i18n>workerDeclarationParagraph2}" class="sapUiSmallMargin"/>
+							<Text text="{i18n>workerDeclarationParagraph3}" class="sapUiSmallMargin"/>
 							<form:SimpleForm id="workerDecForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
 								labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 								singleContainerFullSize="false">
 								<form:content>
-									<core:Title text="" level="H5"/>
-									<Label text="{i18n>WizardworkerDecFormmLabel_WorkerSignature}"/>
-									<Input value="Signature"/>
-									<core:Title text="" level="H5"/>
-									<Label text="{i18n>WizardworkerDecFormmLabel_Date}"/>
-									<DatePicker value="Sep 8, 2022"/>
+									<core:Title text="{i18n>WizardworkerDecFormmLabel_WorkerSignature}"/>
+									<Image src="image/download.png" width="100px" height="100px"/>
+									<core:Title text="{i18n>WizardworkerDecFormmLabel_Date}"/>
+									<DatePicker/>
 								</form:content>
 							</form:SimpleForm>
 						</WizardStep>
