@@ -12,42 +12,42 @@
 								<form:content>
 									<core:Title text="" level="H5"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Title}"/>
-									<Input enabled="false" value="Mr."/>
+									<Text text="Mr."/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_FamilyName}"/>
-									<Input type="Text" enabled="false" value="Family Name 1"/>
+									<Text text="Family Name 1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_GivenName}"/>
-									<Input type="Text" enabled="false" value="Given Naame1"/>
+									<Text text="Given Naame1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_OtherKnown}"/>
-									<Input type="Text" enabled="false" value="Other Name"/>
+									<Text text="Other Name"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_DOB}"/>
-									<Input type="Text" enabled="false" value="Aug 31, 2022"/>
+									<Text text="Aug 31, 2022"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Gender}"/>
-									<Input type="Text" enabled="false" value="Male"/>
+									<Text text="Male"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Address}"/>
-									<Input type="Text" enabled="false" value="Address1"/>
+									<Text text="Address1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Suburb}"/>
-									<Input type="Text" enabled="false" value="Suburb1"/>
+									<Text text="Suburb1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_State}"/>
-									<Input type="Text" enabled="false" value="Queensland"/>
+									<Text text="Queensland"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Postcode}"/>
-									<Input type="Text" enabled="false" value="Postcode1"/>
+									<Text text="Postcode1"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_PAFC}"/>
-									<TextArea enabled="false" value="Postal Address1"/>
+									<Text text="Postal Address1"/>
 									<core:Title text="{i18n>WizardPersonalDetailFormContactDetails}" level="H5"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Mobile}"/>
-									<Input type="Number" enabled="false" value="123456789"/>
+									<Text text="123456789"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Work}"/>
-									<Input type="Number" enabled="false" value="123456789"/>
+									<Text text="123456789"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Home}"/>
-									<Input type="Number" enabled="false" value="123456789"/>
+									<Text text="123456789"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Email}"/>
-									<Input type="Text" enabled="false" value="abc@mail.com"/>
+									<Text text="abc@mail.com"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question1}"/>
-									<Input type="Text" enabled="false" value="I agree"/>
+									<Text text="I agree"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question2}"/>
-									<Input type="Text" enabled="false" value="English"/>
+									<Text text="English"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question3}"/>
-									<Input type="Text" enabled="false" value="Yes"/>
+									<Text text="Yes"/>
 								</form:content>
 							</form:SimpleForm>
 						</WizardStep>
@@ -59,70 +59,52 @@
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryBodyPart}"/>
-										<Input value="Body Part"/>
+										<Text text="Body Part"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryType}"/>
-										<Input type="Text" value="Injury Type"/>
+										<Text text="Injury Type"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_HowInjured}"/>
-										<Textarea value="Reason for Injury"/>
+										<Text text="Reason for Injury"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_TaskWhenInjured}"/>
-										<Textarea value="Task"/>
+										<Text text="Task"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_WorkLocationWhenInjured}"/>
-										<Textarea value="worksite"/>
+										<Text text="worksite"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_AddressOfInjury}"/>
-										<Textarea value="Address"/>
+										<Text text="Address"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_Suburb}"/>
-										<Input type="Text" value="Suburb"/>
+										<Text text="Suburb"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_State}"/>
-										<Select>
-											<items>
-												<core:Item text="Queensland"/>
-												<core:Item text="NSW"/>
-												<core:Item text="Victoria"/>
-											</items>
-										</Select>
+										<Text text="Queensland"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_Postcode}"/>
-										<Input value="Postcode" type="Text"/>
+										<Text text="Postcode"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryDateTime}"/>
-										<DatePicker value="Sep 5, 2022"/>
+										<Text text="Sep 5, 2022"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_FirstNoticeInjuryCondition}"/>
-										<DatePicker value="Oct 1, 2022"/>
+										<Text text="Oct 1, 2022"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_StoppedWorkDateTime}"/>
-										<DatePicker value="Jan 11, 2022"/>
+										<Text text="Jan 11, 2022"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ReportInjuryToEmployee}"/>
-										<DatePicker value="Jan 11, 2022"/>
+										<Text text="Jan 11, 2022"/>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ResposibleManAtWorkplace}"/>
-										<Input type="Text" value="Employer Name"/>
+										<Text text="Employer Name"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ActivityonTimeofInjury}"/>
-										<Select>
-											<items>
-												<core:Item text="Activity1"/>
-												<core:Item text="Activity2"/>
-												<core:Item text="Activity3"/>
-											</items>
-										</Select>
+										<Text text="Activity1"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_AccidentReportingStation}"/>
-										<Input type="Text" value="Name of the police station"/>
+										<Text text="Name of the police station"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_RegNoOfInvoledVehicle}"/>
-										<Input type="Text" value="Regristation number of vehicle"/>
+										<Text text="Regristation number of vehicle"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_State}"/>
-										<Select>
-											<items>
-												<core:Item text="Queensland"/>
-												<core:Item text="NSW"/>
-												<core:Item text="Victoria"/>
-											</items>
-										</Select>
+										<Text text="Queensland"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question1}"/>
-										<TextArea height="100px" value="Yes/No"/>
+										<Text text="Yes/No"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question2}"/>
-										<TextArea value="Name of the person"/>
+										<Text text="Name of the person"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question3}"/>
-										<TextArea value="reason behind the delay"/>
+										<Text text="reason behind the delay"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question4}"/>
-										<TextArea value="Names and daytime contact detail of Person witnessed the incident"/>
+										<Text text="Names and daytime contact detail of Person witnessed the incident"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question5}"/>
-										<TextArea value="previous Injury"/>
+										<Text text="previous Injury"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -135,70 +117,34 @@
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_NameofOrg}"/>
-										<Input value="Name of organization"/>
+										<Text text="Name of organization"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_AddressOfUsualWorkplace}"/>
-										<Textarea value="Street address of your workplace"/>
+										<Text text="Street address of your workplace"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_Suburb}"/>
-										<Input value="Suburb" type="Text"/>
+										<Text text="Suburb"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_State}"/>
-										<Select>
-											<items>
-												<core:Item text="Queensland"/>
-												<core:Item text="NSW"/>
-												<core:Item text="Victoria"/>
-											</items>
-										</Select>
+										<Text text="Queensland"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_Postcode}"/>
-										<Input value="Postcode" type="Text"/>
+										<Text text="Postcode"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_NameandContactofEmployer}"/>
-										<Textarea value="Name and daytime contact number of employer"/>
+										<Text text="Name and daytime contact number of employer"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_UsualOccupation}"/>
-										<Input value="Occupation" type="Text"/>
+										<Text text="Occupation"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_FollowingAppiesToYou}"/>
-										<Select>
-											<items>
-												<core:Item text="no.1"/>
-												<core:Item text="no.2"/>
-												<core:Item text="no.3"/>
-											</items>
-										</Select>
+										<Text text="no.1"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_WhenStartWorkingForEmployer}"/>
-										<DatePicker value="Sep 15, 2022"/>
+										<Text text="Sep 15, 2022"/>
 										<core:Title text="{i18n>WizardEmployementDetailsSecTitle_PleaseSelectAny}" level="H5"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_ADirectorofMyEmployersCompany}"/>
-										<Select>
-											<items>
-												<core:Item text="Name 1"/>
-												<core:Item text="Name 2"/>
-												<core:Item text="Name 3"/>
-											</items>
-										</Select>
+										<Text text="Name 1"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_APartnerofMyEmployerCompany}"/>
-										<Select>
-											<items>
-												<core:Item text="Name 1"/>
-												<core:Item text="Name 2"/>
-												<core:Item text="Name 3"/>
-											</items>
-										</Select>
+										<Text text="Name 1"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_ASoleTrader}"/>
-										<Select>
-											<items>
-												<core:Item text="Name 1"/>
-												<core:Item text="Name 2"/>
-												<core:Item text="Name 3"/>
-											</items>
-										</Select>
+										<Text text="Name 1"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_ARelativeofMyEmployer}"/>
-										<Select>
-											<items>
-												<core:Item text="Name 1"/>
-												<core:Item text="Name 2"/>
-												<core:Item text="Name 3"/>
-											</items>
-										</Select>
+										<Text text="Name 1"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_question1}"/>
-										<Textarea value="Yes/No"/>
+										<Text text="Yes/No"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -211,18 +157,18 @@
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question1}"/>
-										<Input value="Hours of work"/>
+										<Text text="Hours of work"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question2}"/>
-										<TextArea value="Usual working hours"/>
+										<Text text="Usual working hours"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question3}"/>
-										<Input value="Pre-tax hourly rate"/>
+										<Text text="Pre-tax hourly rate"/>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question4}"/>
-										<Input value="Pre-tax weekly earnings"/>
+										<Text text="Pre-tax weekly earnings"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_WeeklyShiftAllowence}"/>
-										<Input value="Weekly shift "/>
+										<Text text="Weekly shift"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_WeeklyOvertime}"/>
-										<Input value="Overtime hours"/>
+										<Text text="Overtime hours"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -235,34 +181,22 @@
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question1}"/>
-										<TextArea height="120px" value="Name and contact details of hospital"/>
+										<Text text="Name and contact details of hospital"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ReturnDateQuestion}"/>
-										<DatePicker value="Sep 8, 2022"/>
+										<Text text="Sep 8, 2022"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question2}"/>
-										<Select>
-											<items>
-												<core:Item text="Duty1"/>
-												<core:Item text="Duty2"/>
-												<core:Item text="Duty3"/>
-											</items>
-										</Select>
+										<Text text="Duty1"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question3}"/>
-										<TextArea value="Yes/No"/>
+										<Text text="Yes/No"/>
 										<core:Title level="H5"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question4}"/>
-										<TextArea height="120px" value="Yes/No"/>
+										<Text text="Yes/No"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ClaimFormSubmissionDate}"/>
-										<DatePicker value="Sep 8, 2022"/>
+										<Text text="Sep 8, 2022"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question5}"/>
-										<Select>
-											<items>
-												<core:Item text="1"/>
-												<core:Item text="2"/>
-												<core:Item text="3"/>
-											</items>
-										</Select>
+										<Text text="1"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_MedicalCertificateSubmissionDate}"/>
-										<DatePicker value="Sep 8, 2022"/>
+										<Text text="Sep 8, 2022"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -278,7 +212,7 @@
 									<core:Title text="{i18n>WizardworkerDecFormmLabel_WorkerSignature}"/>
 									<Image src="image/download.png" width="100px" height="100px"/>
 									<core:Title text="{i18n>WizardworkerDecFormmLabel_Date}"/>
-									<DatePicker/>
+									<Text text="Sep 8, 2022"/>
 								</form:content>
 							</form:SimpleForm>
 						</WizardStep>
@@ -355,14 +289,7 @@
 								<OverflowToolbarLayoutData priority="NeverOverflow"/>
 							</layoutData>
 						</Button>
-						<MenuButton type="Accept" text="{i18n>WizardFooterSaveBtn}" icon="sap-icon://save">
-							<menu>
-								<Menu>
-									<MenuItem text="{i18n>WizardFooterSubmitBtn}" icon="sap-icon://accept" press="claimWizardSubmitBtn"/>
-									<MenuItem text="{i18n>WizardFooterSaveasdraftBtn}" icon="sap-icon://open-folder" press="claimWizardSaveDraftBtn"/>
-								</Menu>
-							</menu>
-						</MenuButton>
+						<Button text="{i18n>WizardFooterSubmitBtn}" icon="sap-icon://accept" press="claimWizardSubmitBtn" type="Accept"/>
 					</Toolbar>
 				</footer>
 			</Page>

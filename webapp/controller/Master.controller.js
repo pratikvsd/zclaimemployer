@@ -14,7 +14,7 @@ sap.ui.define([
 			this.WizardTitle = "";
 			var oModel = this.getOwnerComponent().getModel("employerList");
 			this.getView().setModel(oModel);
-			
+
 			// var alternativeLanguage = sap.ui.getCore().getConfiguration().getLanguage();
 			// var i18nPath = "i18n/i18n";
 			// if (alternativeLanguage === "de_DE") {

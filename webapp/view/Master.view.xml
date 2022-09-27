@@ -4,7 +4,13 @@
 		<content>
 			<List mode="SingleSelectMaster" selectionChange="clickClaimBtn" items="{/employerdata}">
 				<items>
-					<StandardListItem icon="sap-icon://employee" title="{inquiryfor}" description="{bday}" info="{fname}"/>
+					<ObjectListItem title="{empName}" type="Active" press="onListItemPress" number="{empNo.}">
+						<firstStatus>
+							<ObjectStatus text="{inquryType}"/>
+						</firstStatus>
+						<ObjectAttribute text="{bodyPart}"/>
+						<ObjectAttribute text="{inquryDate}"/>
+					</ObjectListItem>
 				</items>
 			</List>
 		</content>

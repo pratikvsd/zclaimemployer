@@ -1,27 +1,30 @@
 {
 	"employerdata": [{
-		"fname": "Name1",
-		"inquiryfor": "Mental Stress",
-		"lname": "",
-		"bday": "01-01-2019",
+		"empName": "Name1",
+		"empNo.": "1",
+		"bodyPart": "Brain",
+		"inquryType": "Mental Stress",
+		"inquryDate": "01-01-2019",
 		"mnum": "9876565438"
 	}, {
-		"fname": "Name2",
-		"inquiryfor": "Chest Pain",
-		"lname": "",
-		"bday": "05-03-2021",
+		"empName": "Name2",
+		"empNo.": "2",
+		"bodyPart": "Right leg",
+		"inquryType": "Fracture",
+		"inquryDate": "05-03-2021",
 		"mnum": "9983283293"
 	}, {
-		"fname": "Name3",
-		"inquiryfor": "Diabetes",
-		"lname": "",
-		"bday": "13-11-1999",
+		"empName": "Name3",
+		"empNo.": "3",
+		"bodyPart": "Lungs",
+		"inquryType": "Asthma",
+		"inquryDate": "13-11-1999",
 		"mnum": "7832872323"
 	}],
 	"employerdata1": {
-		"fname": "",
-		"lname": "",
-		"bday": "",
+		"fame": "",
+		"lname.": "",
+		"date": "",
 		"mnum": ""
 	},
 
