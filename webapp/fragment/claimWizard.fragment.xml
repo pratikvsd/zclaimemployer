@@ -289,7 +289,7 @@
 								<OverflowToolbarLayoutData priority="NeverOverflow"/>
 							</layoutData>
 						</Button>
-						<Button text="{i18n>WizardFooterSubmitBtn}" icon="sap-icon://accept" press="claimWizardSubmitBtn" type="Accept"/>
+						<Button id="claimWizardSubmitBtn" text="{i18n>WizardFooterSubmitBtn}" icon="sap-icon://accept" press="claimWizardSubmitBtn" type="Accept"/>
 					</Toolbar>
 				</footer>
 			</Page>

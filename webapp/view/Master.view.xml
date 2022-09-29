@@ -5,10 +5,7 @@
 			<List mode="SingleSelectMaster" selectionChange="clickClaimBtn" items="{/employerdata}">
 				<items>
 					<ObjectListItem title="{empName}" type="Active" press="onListItemPress" number="{empNo.}">
-						<firstStatus>
-							<ObjectStatus text="{inquryType}"/>
-						</firstStatus>
-						<ObjectAttribute text="{bodyPart}"/>
+						<ObjectAttribute text="{inquryType}"/>
 						<ObjectAttribute text="{inquryDate}"/>
 					</ObjectListItem>
 				</items>

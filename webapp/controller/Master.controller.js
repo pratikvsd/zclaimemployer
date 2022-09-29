@@ -58,9 +58,69 @@ sap.ui.define([
 					})
 				});
 			}
-
+			this.WizardTitle = "StartClaim";
 			this.oDefaultMessageDialog.open();
-		},
+			sap.ui.getCore().byId("claimFormWizard")._getProgressNavigator().ontap = function() {};
+			sap.ui.getCore().byId("claimFormWizard")._scrollHandler = function() {
+				if (this._scrollLocked) {
+					return;
+				}
+				if (Device.browser === undefined) {
+					var scrollTop = document.documentElement.querySelector(".sapMWizardStepContainer").scrollTop;
+				} else {
+					var scrollTop = event.target.scrollTop;
+				}
+
+				var progressNavigator = this._getProgressNavigator(),
+					currentStepDOM = this._stepPath[progressNavigator.getCurrentStep() - 1].getDomRef();
+
+				if (!currentStepDOM) {
+					return;
+				} else {
+					var wizardStep = currentStepDOM.dataset.sapUi;
+					if (wizardStep === "attachmentStep") {
+						sap.ui.getCore().byId("claimWizardNextBtn").setVisible(false);
+					} else if (wizardStep === "personalDetailStep") {
+						sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
+					} else {
+						sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
+						sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(true);
+					}
+				}
+
+				var stepHeight = currentStepDOM.clientHeight,
+					stepOffset = currentStepDOM.offsetTop,
+					stepChangeThreshold = 100;
+
+				if (scrollTop + stepChangeThreshold >= stepOffset + stepHeight && progressNavigator._isActiveStep(progressNavigator._currentStep +
+						1)) {
+					progressNavigator.nextStep();
+				}
+
+				var aSteps = this.getSteps();
+				// change the navigator current step
+				for (var index = 0; index < aSteps.length; index++) {
+					if (scrollTop + stepChangeThreshold <= stepOffset) {
+						progressNavigator.previousStep();
+
+						// update the currentStep reference
+						currentStepDOM = this._stepPath[progressNavigator.getCurrentStep() - 1].getDomRef();
+
+						if (!currentStepDOM) {
+							break;
+						}
+
+						stepOffset = currentStepDOM.offsetTop;
+					}
+				}
+			};
+			if (sap.ui.getCore().byId("claimFormWizard").getCurrentStep() === "personalDetailStep") {
+				sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
+			}
+			sap.ui.getCore().byId("injuryDetailsTable").removeSelections();
+			sap.ui.getCore().byId("injuryTabStartBtn").setEnabled(false);
+			
+		}, // To open the main wizard dialog
 
 		onDialogNextButton: function() {
 			this._oWizard = sap.ui.getCore().byId("claimFormWizard");
