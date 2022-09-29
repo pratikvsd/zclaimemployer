@@ -58,6 +58,8 @@ sap.ui.define([
 					})
 				});
 			}
+			sap.ui.getCore().byId("claimWizardSubmitBtn").setEnabled(false);
+
 			this.WizardTitle = "StartClaim";
 			this.oDefaultMessageDialog.open();
 			sap.ui.getCore().byId("claimFormWizard")._getProgressNavigator().ontap = function() {};
@@ -114,12 +116,6 @@ sap.ui.define([
 					}
 				}
 			};
-			if (sap.ui.getCore().byId("claimFormWizard").getCurrentStep() === "personalDetailStep") {
-				sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
-			}
-			sap.ui.getCore().byId("injuryDetailsTable").removeSelections();
-			sap.ui.getCore().byId("injuryTabStartBtn").setEnabled(false);
-			
 		}, // To open the main wizard dialog
 
 		onDialogNextButton: function() {
@@ -138,6 +134,7 @@ sap.ui.define([
 
 			if (this._oWizard.getCurrentStep() === "attachmentStep") {
 				sap.ui.getCore().byId("claimWizardNextBtn").setVisible(false);
+				sap.ui.getCore().byId("claimWizardSubmitBtn").setEnabled(true);
 			} else if (this._oWizard.getCurrentStep() === "personalDetailStep") {
 				sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
 			} else {
@@ -281,32 +278,7 @@ sap.ui.define([
 				});
 			}
 			this.oApproveDialog.open();
-		},
-
-		claimWizardSaveDraftBtn: function() {
-				if (!this.oSuccessMessageDialog) {
-					this.oSuccessMessageDialog = new sap.m.Dialog({
-						type: sap.m.DialogType.Message,
-						title: "Success",
-						content: new sap.m.Text({
-							text: "Your draft has been saved successfully!"
-						}),
-						beginButton: new sap.m.Button({
-							type: sap.m.ButtonType.Emphasized,
-							text: "OK",
-							press: function() {
-								this.oSuccessMessageDialog.close();
-							}.bind(this)
-						})
-					});
-				}
-				this.oSuccessMessageDialog.open();
-				this.empDialog.close();
-				this.initalWizardStep = this._oWizard._getStartingStep();
-				this._oWizard.setCurrentStep(this.initalWizardStep);
-				sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
-				sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
-			} // Save in Draft button in save manue for claimWizard fragment
+		}
 
 	});
 });
