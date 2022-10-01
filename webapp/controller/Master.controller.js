@@ -11,7 +11,6 @@ sap.ui.define([
 	return Controller.extend("safetysuitezclaimemployer.controller.Master", {
 
 		onInit: function() {
-			this.WizardTitle = "";
 			var oModel = this.getOwnerComponent().getModel("employerList");
 			this.getView().setModel(oModel);
 
@@ -60,7 +59,6 @@ sap.ui.define([
 			}
 			sap.ui.getCore().byId("claimWizardSubmitBtn").setEnabled(false);
 
-			this.WizardTitle = "StartClaim";
 			this.oDefaultMessageDialog.open();
 			sap.ui.getCore().byId("claimFormWizard")._getProgressNavigator().ontap = function() {};
 			sap.ui.getCore().byId("claimFormWizard")._scrollHandler = function() {
@@ -166,7 +164,6 @@ sap.ui.define([
 
 		handleWizardCancel: function() {
 			this.empDialog.close();
-			this.initalWizardStep = this._oWizard._getStartingStep();
 			this._oWizard.setCurrentStep(this.initalWizardStep);
 			sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
 			sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
