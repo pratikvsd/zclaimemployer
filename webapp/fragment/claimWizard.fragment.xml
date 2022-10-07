@@ -223,28 +223,28 @@
 								<form:content>
 									<core:Title text="" level="H5"/>
 									<Label text="{i18n>WizardEmployerLodgement_question1}"/>
-									<DatePicker value="Sep 8, 2022"/>
+									<DatePicker/>
 									<Label text="{i18n>WizardEmployerLodgement_question2}"/>
-									<DatePicker value="Sep 8, 2022"/>
+									<DatePicker/>
 									<Label text="{i18n>WizardEmployerLodgement_question3}"/>
-									<DatePicker value="Sep 8, 2022"/>
+									<DatePicker/>
 									<Label text="{i18n>WizardEmployerLodgement_estimatedCostOfClaimToDate}"/>
-									<Input value="Cost"/>
+									<Input/>
 									<core:Title text="{i18n>WizardEmployerLodgementHowManyDaysHaveBeenLost}" level="H5"/>
 									<Label text="{i18n>WizardEmployerLodgement_Days}"/>
-									<Input value="Days"/>
+									<Input/>
 									<Label text="{i18n>WizardEmployerLodgement_Hours}"/>
-									<Input value="Hours"/>
+									<Input/>
 									<Label text="{i18n>WizardEmployerLodgement_employeeSignature}"/>
-									<Input value="Signature"/>
+									<Input/>
 									<Label text="{i18n>WizardEmployerLodgement_Date}"/>
-									<DatePicker value="Sep 8, 2022"/>
+									<DatePicker/>
 									<Label text="{i18n>WizardEmployerLodgement_Name}"/>
-									<Input value="Name1"/>
+									<Input/>
 									<Label text="{i18n>WizardEmployerLodgement_Position}"/>
-									<Input value="Position"/>
+									<Input/>
 									<Label text="{i18n>WizardEmployerLodgement_employersSchemeRegistrationNumber}"/>
-									<Input value="Registration Number"/>
+									<Input/>
 								</form:content>
 							</form:SimpleForm>
 						</WizardStep>
@@ -289,7 +289,8 @@
 								<OverflowToolbarLayoutData priority="NeverOverflow"/>
 							</layoutData>
 						</Button>
-						<Button id="claimWizardSubmitBtn" enabled="false" text="{i18n>WizardFooterSubmitBtn}" icon="sap-icon://accept" press="claimWizardSubmitBtn" type="Accept"/>
+						<Button id="claimWizardSubmitBtn" enabled="false" text="{i18n>WizardFooterSubmitBtn}" icon="sap-icon://accept" press="claimWizardSubmitBtn"
+							type="Accept"/>
 					</Toolbar>
 				</footer>
 			</Page>
