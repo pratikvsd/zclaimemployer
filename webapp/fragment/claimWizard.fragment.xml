@@ -236,7 +236,7 @@
 									<Label text="{i18n>WizardEmployerLodgement_Hours}"/>
 									<Input/>
 									<Label text="{i18n>WizardEmployerLodgement_employeeSignature}"/>
-									<Input/>
+									<Image src="image/download.png" width="100px" height="100px"/>
 									<Label text="{i18n>WizardEmployerLodgement_Date}"/>
 									<DatePicker/>
 									<Label text="{i18n>WizardEmployerLodgement_Name}"/>
