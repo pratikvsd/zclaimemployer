@@ -5,7 +5,6 @@ sap.ui.define([
 
 	return Controller.extend("safetysuitezclaimemployer.controller.App", {
 		onInit: function() {
-			debugger;
 		}
 	});
 });

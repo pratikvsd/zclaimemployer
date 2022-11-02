@@ -12,42 +12,43 @@
 								<form:content>
 									<core:Title text="" level="H5"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Title}"/>
-									<Text text="Mr."/>
+									<Text id="txtTitle" text="{IncidentSetData>/Title}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_FamilyName}"/>
-									<Text text="Family Name 1"/>
+									<Text id="txtFamilyName" text="{IncidentSetData>/FamilyName}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_GivenName}"/>
-									<Text text="Given Naame1"/>
+									<Text id="txtGivenName" text="{IncidentSetData>/Othnam}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_OtherKnown}"/>
-									<Text text="Other Name"/>
+									<Text id="txtMaidenName" text="{IncidentSetData>/Conname}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_DOB}"/>
-									<Text text="Aug 31, 2022"/>
+									<Text
+										text="{path:'IncidentSetData>/Dateofbirth', type: 'sap.ui.model.odata.type.Date', formatOptions: { style: 'medium', strictParsing: true } }"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Gender}"/>
-									<Text text="Male"/>
+									<Text id="txtGender" text="{IncidentSetData>/Gender}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Address}"/>
-									<Text text="Address1"/>
+									<Text id="txtAddress" text="{IncidentSetData>/Add1}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Suburb}"/>
-									<Text text="Suburb1"/>
+									<Text id="txtSuburb" text="{IncidentSetData>/Suburb}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_State}"/>
-									<Text text="Queensland"/>
+									<Text id="txtPersnlDetlState" text="{IncidentSetData>/State}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Postcode}"/>
-									<Text text="Postcode1"/>
+									<Text id="txtPostalAddress" text="{IncidentSetData>/Pstlz}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_PAFC}"/>
-									<Text text="Postal Address1"/>
+									<Text id="txtPostCode" text="{IncidentSetData>/PostalAddress}"/>
 									<core:Title text="{i18n>WizardPersonalDetailFormContactDetails}" level="H5"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Mobile}"/>
-									<Text text="123456789"/>
+									<Text id="txtMobile" text="{IncidentSetData>/Mobile}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Work}"/>
-									<Text text="123456789"/>
+									<Text id="txtWork" text="{IncidentSetData>/WorkN}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Home}"/>
-									<Text text="123456789"/>
+									<Text id="txtHome" text="{IncidentSetData>/Home}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Email}"/>
-									<Text text="abc@mail.com"/>
+									<Text id="txtEmail" text="{IncidentSetData>/Email}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question1}"/>
-									<Text text="I agree"/>
+									<Text id="txtPersnlDetlQue1" text="{IncidentSetData>/Agree}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question2}"/>
-									<Text text="English"/>
+									<Text id="txtPersnlDetlQue2" text="{IncidentSetData>/Language}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_question3}"/>
-									<Text text="Yes"/>
+									<Text id="txtPersnlDetlQue3" text="{IncidentSetData>/Communication}"/>
 								</form:content>
 							</form:SimpleForm>
 						</WizardStep>
@@ -59,52 +60,50 @@
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryBodyPart}"/>
-										<Text text="Body Part"/>
+										<Text id="txtInjuryBodyPart" text="{IncidentSetData>/BodypartDes}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryType}"/>
-										<Text text="Injury Type"/>
+										<Text id="txtInjurytype" text="{IncidentSetData>/Injurytype}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_HowInjured}"/>
-										<Text text="Reason for Injury"/>
+										<Text id="txtHowWereYouInjured" text="{IncidentSetData>/InjHapDes}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_TaskWhenInjured}"/>
-										<Text text="Task"/>
+										<Text id="txtWhatTaskWhenInjured" text="{IncidentSetData>/InjDoingDes}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_WorkLocationWhenInjured}"/>
-										<Text text="worksite"/>
+										<Text id="txtAreaOfWorksite" text="{IncidentSetData>/InjWorkSide}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_AddressOfInjury}"/>
-										<Text text="Address"/>
+										<Text id="txtAddressofIncident" text="{IncidentSetData>/AddressInj}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_Suburb}"/>
-										<Text text="Suburb"/>
+										<Text id="txtInjurySuburb" text="{IncidentSetData>/SuburbInj}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_State}"/>
-										<Text text="Queensland"/>
+										<Text id="txtInjuryState" text="{IncidentSetData>/Employerstate}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_Postcode}"/>
-										<Text text="Postcode"/>
+										<Text id="txtInjuryPostcode" text="{IncidentSetData>/PostcodeInj}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryDateTime}"/>
-										<Text text="Sep 5, 2022"/>
-										<Label text="{i18n>WizardInjuryDetailsFormLabel_FirstNoticeInjuryCondition}"/>
-										<Text text="Oct 1, 2022"/>
-										<Label text="{i18n>WizardInjuryDetailsFormLabel_StoppedWorkDateTime}"/>
-										<Text text="Jan 11, 2022"/>
+										<Text
+											text="{ path: 'IncidentSetData>/Sdate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy HH:mm:ss' }}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ReportInjuryToEmployee}"/>
-										<Text text="Jan 11, 2022"/>
+										<Text
+											text="{ path: 'IncidentSetData>/Rdate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ResposibleManAtWorkplace}"/>
-										<Text text="Employer Name"/>
+										<Text id="txtEmployerResponsible" text="{IncidentSetData>/Name1}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ActivityonTimeofInjury}"/>
-										<Text text="Activity1"/>
+										<Text id="txtActivityOnTimeOfInjury" text="{IncidentSetData>/Activitywheninjureddesc}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_AccidentReportingStation}"/>
-										<Text text="Name of the police station"/>
+										<Text id="txtInjuryPoliceStationReported" text="{IncidentSetData>/InjPsName}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_RegNoOfInvoledVehicle}"/>
-										<Text text="Regristation number of vehicle"/>
+										<Text id="txtRegNoOfVehicles" text="{IncidentSetData>/InjRegNo}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_State}"/>
-										<Text text="Queensland"/>
+										<Text id="txtVehicleState" text="{IncidentSetData>/InjState}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question1}"/>
-										<Text text="Yes/No"/>
+										<Text id="txtInjuryQue1" text="{IncidentSetData>/InjCondMs}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question2}"/>
-										<Text text="Name of the person"/>
+										<Text id="txtInjuryQue2" text="{IncidentSetData>/InjNamePersonR}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question3}"/>
-										<Text text="reason behind the delay"/>
+										<Text id="txtInjuryQue3" text="{IncidentSetData>/InjNrepoDelay}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question4}"/>
-										<Text text="Names and daytime contact detail of Person witnessed the incident"/>
+										<Text id="txtInjuryQue4" text="{IncidentSetData>/InjWitDet}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question5}"/>
-										<Text text="previous Injury"/>
+										<Text id="txtInjuryQue5" text="{IncidentSetData>/InjPrev}"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -117,58 +116,59 @@
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_NameofOrg}"/>
-										<Text text="Name of organization"/>
+										<Text id="txtEmpNameOfOrg" text="{IncidentSetData>/Orgname}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_AddressOfUsualWorkplace}"/>
-										<Text text="Street address of your workplace"/>
+										<Text id="txtEmpStreetAdd" text="{IncidentSetData>/EmpStreetAdd}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_Suburb}"/>
-										<Text text="Suburb"/>
+										<Text id="txtEmpOrgSuburb" text="{IncidentSetData>/EmpSuburb}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_State}"/>
-										<Text text="Queensland"/>
+										<Text id="txtEmpOrgState" text="{IncidentSetData>/Employerstate}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_Postcode}"/>
-										<Text text="Postcode"/>
+										<Text id="txtEmpOrgPostcode" text="{IncidentSetData>/EmpPostcode}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_NameandContactofEmployer}"/>
-										<Text text="Name and daytime contact number of employer"/>
+										<Text id="txtEmpNameAndContact" text="{IncidentSetData>/Employercontact}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_UsualOccupation}"/>
-										<Text text="Occupation"/>
+										<Text id="txtEmpOccupation" text="{IncidentSetData>/Usualoccupation}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_FollowingAppiesToYou}"/>
-										<Text text="no.1"/>
+										<Text id="txtEmpAppliesToYou" text="{IncidentSetData>/Reasontoapply}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_WhenStartWorkingForEmployer}"/>
-										<Text text="Sep 15, 2022"/>
+										<Text
+											text="{ path: 'IncidentSetData>/Startdate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
 										<core:Title text="{i18n>WizardEmployementDetailsSecTitle_PleaseSelectAny}" level="H5"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_ADirectorofMyEmployersCompany}"/>
-										<Text text="Name 1"/>
+										<Text id="txtEmpDirectorofMyEmployersComp" text="{IncidentSetData>/Directorcheck}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_APartnerofMyEmployerCompany}"/>
-										<Text text="Name 1"/>
+										<Text id="txtEmpPartnerinMyEmployersComp" text="{IncidentSetData>/Partnercheck}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_ASoleTrader}"/>
-										<Text text="Name 1"/>
+										<Text id="txtEmpSoleTrader" text="{IncidentSetData>/Soletradercheck}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_ARelativeofMyEmployer}"/>
-										<Text text="Name 1"/>
+										<Text id="txtEmpRelativeofMyEmployer" text="{IncidentSetData>/Relativecheck}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_question1}"/>
-										<Text text="Yes/No"/>
+										<Text id="txtEmpOtherEmployment" text="{IncidentSetData>/OtherEmployement}"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
 						</WizardStep>
 						<WizardStep id="workerEarningStep" title="{i18n>claimFormWizardWorkersprimaryearning}">
-							<VBox class="sapUiSmallMargin">
+							<VBox class="sapUiTinyMargin">
 								<form:SimpleForm id="workerEarningForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
 									labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 									singleContainerFullSize="false">
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question1}"/>
-										<Text text="Hours of work"/>
+										<Text id="txtWorkerQue1" text="{IncidentSetData>/WpeStdHrsWeek}"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question2}"/>
-										<Text text="Usual working hours"/>
+										<Text id="txtWorkerQue2" text="{IncidentSetData>/WpeUsuWeeklyHrs}"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_question3}"/>
-										<Text text="Pre-tax hourly rate"/>
-										<core:Title text="" level="H5"/>
+										<Text id="txtWorkerQue3" text="{IncidentSetData>/WpePreTaxHrRt}"/>
+										<!--<core:Title text="" level="H5"/>-->
 										<Label text="{i18n>WizardworkerEarningFormLabel_question4}"/>
-										<Text text="Pre-tax weekly earnings"/>
+										<Text id="txtWorkerQue4" text="{IncidentSetData>/WpePtaxWkEr}"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_WeeklyShiftAllowence}"/>
-										<Text text="Weekly shift"/>
+										<Text id="txtWorkerWeeklyShiftAllowence" text="{IncidentSetData>/WpeWklyAllw}"/>
 										<Label text="{i18n>WizardworkerEarningFormLabel_WeeklyOvertime}"/>
-										<Text text="Overtime hours"/>
+										<Text id="txtWorkerWeeklyOvertime" text="{IncidentSetData>/WpeWostd}"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -181,22 +181,25 @@
 									<form:content>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question1}"/>
-										<Text text="Name and contact details of hospital"/>
+										<Text id="txtReturToWorkQue1" text="{IncidentSetData>/RtwDetails}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ReturnDateQuestion}"/>
-										<Text text="Sep 8, 2022"/>
+										<Text
+											text="{ path: 'IncidentSetData>/RtwEmpDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question2}"/>
-										<Text text="Duty1"/>
+										<Text id="txtReturToWorkOue2" text="{IncidentSetData>/Duties}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question3}"/>
-										<Text text="Yes/No"/>
+										<Text id="txtReturToWorkOue3" text="{IncidentSetData>/RtwNempDetails}"/>
 										<core:Title level="H5"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question4}"/>
-										<Text text="Yes/No"/>
+										<Text id="txtReturToWorkOue4" text="{IncidentSetData>/NrtwIdp}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ClaimFormSubmissionDate}"/>
-										<Text text="Sep 8, 2022"/>
+										<Text id="txtReturToWorkClaimFormSubmissionDate"
+											text="{ path: 'IncidentSetData>/EmpClmfrmDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question5}"/>
-										<Text text="1"/>
+										<Text id="txtReturToWorkOue5" text="{IncidentSetData>/EmpClmForm}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_MedicalCertificateSubmissionDate}"/>
-										<Text text="Sep 8, 2022"/>
+										<Text
+											text="{ path: 'IncidentSetData>/EmpMcertDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -210,9 +213,10 @@
 								singleContainerFullSize="false">
 								<form:content>
 									<core:Title text="{i18n>WizardworkerDecFormmLabel_WorkerSignature}"/>
-									<Image src="image/download.png" width="100px" height="100px"/>
+									<Image src="{IncidentSetData>/Signature}" width="100px" height="100px"/>
 									<core:Title text="{i18n>WizardworkerDecFormmLabel_Date}"/>
-									<Text text="Sep 8, 2022"/>
+									<Text id="txtDeclarationDate"
+										text="{ path: 'IncidentSetData>/DDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
 								</form:content>
 							</form:SimpleForm>
 						</WizardStep>
@@ -223,46 +227,46 @@
 								<form:content>
 									<core:Title text="" level="H5"/>
 									<Label text="{i18n>WizardEmployerLodgement_question1}"/>
-									<DatePicker/>
+									<DatePicker id="inputElDateClmfrm"/>
 									<Label text="{i18n>WizardEmployerLodgement_question2}"/>
-									<DatePicker/>
+									<DatePicker id="inputEmpMcertDate"/>
 									<Label text="{i18n>WizardEmployerLodgement_question3}"/>
-									<DatePicker/>
+									<DatePicker id="inputELDATE"/>
 									<Label text="{i18n>WizardEmployerLodgement_estimatedCostOfClaimToDate}"/>
-									<Input/>
+									<Input id="inputElEstCostClm" type="Number"/>
 									<core:Title text="{i18n>WizardEmployerLodgementHowManyDaysHaveBeenLost}" level="H5"/>
 									<Label text="{i18n>WizardEmployerLodgement_Days}"/>
-									<Input/>
+									<Input id="inputDay1" type="Number" liveChange="InputNumberDaysHoursLodgement"/>
 									<Label text="{i18n>WizardEmployerLodgement_Hours}"/>
-									<Input/>
+									<Input id="inputShour" type="Number" liveChange="InputNumberDaysHoursLodgement"/>
 									<Label text="{i18n>WizardEmployerLodgement_employeeSignature}"/>
-									<Image src="image/download.png" width="100px" height="100px"/>
+									<VBox>
+										<core:HTML id="html"></core:HTML>
+										<Button id="clear" text="Clear" press="clearButton"></Button>
+									</VBox>
 									<Label text="{i18n>WizardEmployerLodgement_Date}"/>
-									<DatePicker/>
+									<DatePicker id="inputElDate"/>
 									<Label text="{i18n>WizardEmployerLodgement_Name}"/>
-									<Input/>
+									<Input id="inputName1"/>
 									<Label text="{i18n>WizardEmployerLodgement_Position}"/>
-									<Input/>
+									<Input id="inputNamePosition" type="Number" liveChange="InputNumberPositionLodgement"/>
 									<Label text="{i18n>WizardEmployerLodgement_employersSchemeRegistrationNumber}"/>
-									<Input/>
+									<Input id="inputElSchRegNo" type="Number"/>
 								</form:content>
 							</form:SimpleForm>
 						</WizardStep>
 						<WizardStep id="attachmentStep" title="{i18n>claimFormWizardAttachments}">
 							<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="deleteAttachmentListItems"
 								typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"
-								uploadTerminated="onUploadTerminated" items="{ path: '/items', templateShareable: false }"
-								numberOfAttachmentsText="{i18n>WizardAttachmentsListTitle}(1)" uploadEnabled="true">
+								uploadTerminated="onUploadTerminated" items="{AttachmentModel>/}"
+								numberOfAttachmentsText="{i18n>WizardAttachmentsListTitle}" uploadEnabled="true">
 								<items>
-									<UploadCollectionItem documentId="{documentId}" fileName="{fileName}" mimeType="{mimeType}" thumbnailUrl="{thumbnailUrl}" url="{url}"
-										enableEdit="true" enableDelete="true" visibleDelete="true" visibleEdit="true" attributes="{path : 'attributes', templateShareable : false}"
-										statuses="{path : 'statuses', templateShareable : false}" selected="{selected}">
-										<attributes>
-											<ObjectAttribute title="{title}" text="{path : 'text', formatter : '.formatAttribute'}" active="{active}" press="onAttributePress"/>
-										</attributes>
-										<statuses>
-											<ObjectStatus title="{title}" text="{text}" state="{state}"/>
-										</statuses>
+									<UploadCollectionItem id="uploadCollectionTable" documentId="{AttachmentModel>ArcDocId}" fileName="{AttachmentModel>Filename}"
+										url="{AttachmentModel>url}"  enableDelete="{AttachmentModel>ButtonVisibility}" visibleDelete="{AttachmentModel>ButtonVisibility}" visibleEdit="false">
+										<!--<attributes>-->
+										<!--	<ObjectAttribute title="{AttachmentModel>title}" text="{path : 'text', formatter : '.formatAttribute'}" active="{InjuryTabModel>active}"-->
+										<!--		press="onAttributePress"/>-->
+										<!--</attributes>-->
 									</UploadCollectionItem>
 								</items>
 							</UploadCollection>

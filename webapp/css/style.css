@@ -1,7 +1,11 @@
 /* Enter your custom styles here */
-
+.signature-pad{
+	border: #00000069 1px solid;
+}
 .sapMIBar-CTX .sapMTitle {
     color: #32363a;
     text-shadow: none;
     font-weight: bold;
 }
+
+

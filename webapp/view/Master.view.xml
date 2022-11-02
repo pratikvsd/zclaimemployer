@@ -2,11 +2,12 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="masterPage" title="{i18n>masterPageTitle}">
 		<content>
-			<List mode="SingleSelectMaster" selectionChange="clickClaimBtn" items="{/employerdata}">
+			<List id="list" itemPress="clickClaimBtn" items="{/IncidentsSet}">
 				<items>
-					<ObjectListItem title="{empName}" type="Active" press="onListItemPress" number="{empNo.}">
-						<ObjectAttribute text="{inquryType}"/>
-						<ObjectAttribute text="{inquryDate}"/>
+					<ObjectListItem id="objlist" title="{FamilyName}" type="Active" press="onListItemPress" number="{ManagerPernr}">
+						<ObjectAttribute text="{BodypartDes}"/>
+						<ObjectAttribute
+							text="{path:'IDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy ' }}"/>
 					</ObjectListItem>
 				</items>
 			</List>
