@@ -416,10 +416,10 @@ sap.ui.define([
 			if (inputEmpMcertDate.getValue() !== "" || inputEmpMcertDate.getDateValue() !== null) {
 				var EmpMcertDate = new Date(inputEmpMcertDate.getDateValue()).toISOString();
 			}
-			if (txtReturToWorkClaimFormSubmissionDate.getText() !== "" || txtReturToWorkClaimFormSubmissionDate.getText() !== null) {
+			if (txtReturToWorkClaimFormSubmissionDate.getText() !== "" ) {
 				var EmpClmfrmDate = new Date(txtReturToWorkClaimFormSubmissionDate.getText()).toISOString();
 			}
-			if (txtDeclarationDate.getText() !== "" || txtDeclarationDate.getText() !== null) {
+			if (txtDeclarationDate.getText() !== "" ) {
 				var DDate = new Date(txtDeclarationDate.getText()).toISOString();
 			}
 			if (inputELDATE.getValue() !== "" || inputELDATE.getDateValue() !== null) {
