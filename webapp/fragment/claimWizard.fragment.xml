@@ -249,7 +249,7 @@
 									<Label text="{i18n>WizardEmployerLodgement_Name}"/>
 									<Input id="inputName1"/>
 									<Label text="{i18n>WizardEmployerLodgement_Position}"/>
-									<Input id="inputNamePosition" type="Number" liveChange="InputNumberPositionLodgement"/>
+									<Input id="inputNamePosition" />
 									<Label text="{i18n>WizardEmployerLodgement_employersSchemeRegistrationNumber}"/>
 									<Input id="inputElSchRegNo" type="Number"/>
 								</form:content>

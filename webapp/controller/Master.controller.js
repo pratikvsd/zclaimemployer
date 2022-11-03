@@ -12,7 +12,9 @@ sap.ui.define([
 		"46174613A696D6167652F6A7065673B6261736536342C2F396A2F34414151536B5A4A5267414241514141415141424141442F3467496F53554E445831425354305A4A544555414151454141414959414141414141517741414274626E5279556B64434946685A576941414141414141414141414141414141426859334E77414141414141414141414141414141414141414141414141414141414141414141414141415141413974594141514141414144544C5141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141416C6B5A584E6A";
 
 	return Controller.extend("safetysuitezclaimemployer.controller.Master", {
+
 		onInit: function() {
+			// this._UserID = sap.ushell.Container.getService("UserInfo").getId();
 			this.userName = 'JPRAKASH';
 			this.attachmentsId = [];
 		},
@@ -22,12 +24,6 @@ sap.ui.define([
 				oEvent.getSource().setValue(oEvent.getSource().getValue().slice(0, -1));
 			}
 		}, // For the maxlength of number in Date and hour field in employer lodgement.
-
-		InputNumberPositionLodgement: function(oEvent) {
-			if (oEvent.getSource().getValue().length > 6) {
-				oEvent.getSource().setValue(oEvent.getSource().getValue().slice(0, -1));
-			}
-		}, // For the maxlength of number in position field in employer lodgement.
 
 		clickClaimBtn: function(oEvent) {
 			var SelectedRecord = oEvent.getParameter("listItem").getBindingContext().getObject();
@@ -243,11 +239,6 @@ sap.ui.define([
 			oUploadCollection.getModel("AttachmentModel").refresh();
 			var aItems = oUploadCollection.getItems();
 			sap.ui.getCore().byId("UploadCollection").setNumberOfAttachmentsText("Employee Attachments(" + aItems.length + ")");
-
-			// delay the success message for to notice onChange message
-			setTimeout(function() {
-				sap.m.MessageToast.show("UploadComplete event triggered.");
-			}, 4000);
 		}, // For file upload process.
 
 		onBeforeUploadStarts: function(oEvent) {
@@ -410,99 +401,107 @@ sap.ui.define([
 		}, // To clear the signature.
 
 		claimWizardSubmitBtn: function(oEvent) {
-				debugger;
-				this._oWizard = sap.ui.getCore().byId("claimFormWizard");
-				var txtReturToWorkClaimFormSubmissionDate = sap.ui.getCore().byId("txtReturToWorkClaimFormSubmissionDate");
-				var txtDeclarationDate = sap.ui.getCore().byId("txtDeclarationDate");
-				// var inputElDateClmfrm = sap.ui.getCore().byId("inputElDateClmfrm");
-				var inputEmpMcertDate = sap.ui.getCore().byId("inputEmpMcertDate");
-				var inputNamePosition = sap.ui.getCore().byId("inputNamePosition");
-				var inputElEstCostClm = sap.ui.getCore().byId("inputElEstCostClm");
-				var inputDay1 = sap.ui.getCore().byId("inputDay1");
-				var inputShour = sap.ui.getCore().byId("inputShour");
-				var inputELDATE = sap.ui.getCore().byId("inputELDATE");
-				var inputName1 = sap.ui.getCore().byId("inputName1");
-				var inputElSchRegNo = sap.ui.getCore().byId("inputElSchRegNo");
-				if (inputEmpMcertDate.getDateValue() !== undefined || inputEmpMcertDate.getDateValue() !== null) {
-					var EmpMcertDate = new Date(inputEmpMcertDate.getDateValue()).toISOString();
-				}
-				if (txtReturToWorkClaimFormSubmissionDate.getText() !== undefined || txtReturToWorkClaimFormSubmissionDate.getText() !== null) {
-					var EmpClmfrmDate = new Date(txtReturToWorkClaimFormSubmissionDate.getText()).toISOString();
-				}
-				if (txtDeclarationDate.getText() !== undefined || txtDeclarationDate.getText() !== null) {
-					var DDate = new Date(txtDeclarationDate.getText()).toISOString();
-				}
-				if (inputELDATE.getDateValue() !== undefined || inputELDATE.getDateValue() !== null) {
-					var ElDate = new Date(inputELDATE.getDateValue()).toISOString();
-				}
-				var canvas = document.getElementById("signature-pad");
-				this.signString = btoa(encodeURI(canvas.toDataURL('image/jpeg').replace("data:image/jpeg:base64,", "")));
-				if (this.roughString === this.signString) {
-					this.signString = "";
-				}
-				if (oEvent.getSource().getId() === "claimWizardSubmitBtn") {
-					if (!this.oApproveDialog) {
-						this.oApproveDialog = new sap.m.Dialog({
-							type: sap.m.DialogType.Message,
-							title: "Confirm",
-							content: new sap.m.Text({
-								text: "Do you want to submit this claim?"
-							}),
-							beginButton: new sap.m.Button({
-								type: sap.m.ButtonType.Emphasized,
-								text: "Submit",
-								press: function(oEvent) {
-									debugger;
-									var payload = {
-										"Pernr": this.managerPerner,
-										"Clmno": this.getView().getModel("IncidentSetData").getData().Clmno,
-										"Filename": "",
-										"Employeeposition": inputNamePosition.getValue(),
-										"EmpClmfrmDate": !EmpClmfrmDate ? "" : EmpClmfrmDate,
-										"DDate": !DDate ? "" : DDate,
-										"EmpMcertDate": !EmpMcertDate ? "" : EmpMcertDate,
-										"ElEstCostClm": inputElEstCostClm.getValue(),
-										"Name1": inputName1.getValue(),
-										"Day1": inputDay1.getValue(),
-										"Shour": inputShour.getValue(),
-										"ElDate": !ElDate ? "" : ElDate,
-										"ElSchRegNo": inputElSchRegNo.getValue(),
-										"EmplSig": this.signString,
-										"Attachments": this.attachmentsId.toString()
-									};
+			debugger;
+			this._oWizard = sap.ui.getCore().byId("claimFormWizard");
+			var txtReturToWorkClaimFormSubmissionDate = sap.ui.getCore().byId("txtReturToWorkClaimFormSubmissionDate");
+			var txtDeclarationDate = sap.ui.getCore().byId("txtDeclarationDate");
+			var inputEmpMcertDate = sap.ui.getCore().byId("inputEmpMcertDate");
+			var inputNamePosition = sap.ui.getCore().byId("inputNamePosition");
+			var inputElEstCostClm = sap.ui.getCore().byId("inputElEstCostClm");
+			var inputDay1 = sap.ui.getCore().byId("inputDay1");
+			var inputShour = sap.ui.getCore().byId("inputShour");
+			var inputELDATE = sap.ui.getCore().byId("inputELDATE");
+			var inputName1 = sap.ui.getCore().byId("inputName1");
+			var inputElSchRegNo = sap.ui.getCore().byId("inputElSchRegNo");
+			if (inputEmpMcertDate.getValue() !== "" || inputEmpMcertDate.getDateValue() !== null) {
+				var EmpMcertDate = new Date(inputEmpMcertDate.getDateValue()).toISOString();
+			}
+			if (txtReturToWorkClaimFormSubmissionDate.getText() !== "" || txtReturToWorkClaimFormSubmissionDate.getText() !== null) {
+				var EmpClmfrmDate = new Date(txtReturToWorkClaimFormSubmissionDate.getText()).toISOString();
+			}
+			if (txtDeclarationDate.getText() !== "" || txtDeclarationDate.getText() !== null) {
+				var DDate = new Date(txtDeclarationDate.getText()).toISOString();
+			}
+			if (inputELDATE.getValue() !== "" || inputELDATE.getDateValue() !== null) {
+				var ElDate = new Date(inputELDATE.getDateValue()).toISOString();
+			}
+			if (inputElEstCostClm.getValue() !== "" || inputElEstCostClm.getValue() !== null) {
+				var ElEstCostClm = inputElEstCostClm.getValue();
+			}
+			var canvas = document.getElementById("signature-pad");
+			this.signString = btoa(encodeURI(canvas.toDataURL('image/jpeg').replace("data:image/jpeg:base64,", "")));
+			if (this.roughString === this.signString) {
+				this.signString = "";
+			}
+			if (oEvent.getSource().getId() === "claimWizardSubmitBtn") {
+				if (!this.oApproveDialog) {
+					this.oApproveDialog = new sap.m.Dialog({
+						type: sap.m.DialogType.Message,
+						title: "Confirm",
+						content: new sap.m.Text({
+							text: "Do you want to submit this claim?"
+						}),
+						beginButton: new sap.m.Button({
+							type: sap.m.ButtonType.Emphasized,
+							text: "Submit",
+							press: function(oEvent) {
+								debugger;
+								var payload = {
+									"Pernr": this.managerPerner,
+									"Casno": this.Casno,
+									"Filename": "",
+									"Employeeposition": inputNamePosition.getValue(),
+									"EmpClmfrmDate": !EmpClmfrmDate ? "" : EmpClmfrmDate,
+									"DDate": !DDate ? "" : DDate,
+									"EmpMcertDate": !EmpMcertDate ? "" : EmpMcertDate,
+									"ElEstCostClm": !ElEstCostClm ? "" : ElEstCostClm,
+									"Name1": inputName1.getValue(),
+									"Day1": inputDay1.getValue(),
+									"Shour": inputShour.getValue(),
+									"ElDate": !ElDate ? "" : ElDate,
+									"ElSchRegNo": inputElSchRegNo.getValue(),
+									"EmplSig": this.signString,
+									"Attachments": this.attachmentsId.toString()
+								};
+								this.oApproveDialog.close();
+								var that = this;
+								this.getView().getModel().create("/EmployerLodgementSet", payload, {
+									success: function(oData, oResponse) {
+										var sSource = that.getView().getModel().sServiceUrl + "/InjuryFormSet(Casno='" + that.Casno + "',Userid='" + that.userName +
+											"')/$value";
+										sap.m.MessageBox.success(
+											that.Casno + " Claim submitted successfully", {
+												actions: [sap.m.MessageBox.Action.OK],
+												onClose: function(sAction) {
+													that.empDialog.close();
+													sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
+													sap.ui.getCore().byId("claimWizardSubmitBtn").setEnabled(false);
+													that._oWizard.setCurrentStep("personalDetailStep");
+													that._pdfViewer = new sap.m.PDFViewer();
+													that.getView().addDependent(that._pdfViewer);
+													that._pdfViewer.setSource(sSource);
+													that._pdfViewer.setTitle("Claim Form");
+													that._pdfViewer.open();
+												}
+											}
+										);
 
-									this.oApproveDialog.close();
-									var that = this;
-									this.getView().getModel().create("/EmployerLodgementSet", payload, {
-										success: function(oData, oResponse) {
-											debugger;
-											var sSource = that.getView().getModel().sServiceUrl + "/InjuryFormSet(Casno='" + that.Casno + "',Userid='" + that.userName +
-												"')/$value";
-											that.empDialog.close();
-											sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
-											sap.ui.getCore().byId("claimWizardSubmitBtn").setEnabled(false);
-											that._oWizard.setCurrentStep("personalDetailStep");
-											that._pdfViewer = new sap.m.PDFViewer();
-											that.getView().addDependent(that._pdfViewer);
-											that._pdfViewer.setSource(sSource);
-											that._pdfViewer.setTitle("Details of Claim Form");
-											that._pdfViewer.open();
-										},
-										error: function(error) {}
-									});
-								}.bind(this)
-							}),
-							endButton: new sap.m.Button({
-								text: "Cancel",
-								press: function() {
-									this.oApproveDialog.close();
-								}.bind(this)
-							})
-						});
-					}
-					this.oApproveDialog.open();
-				}
-			} // The Submit functionality.
+									},
 
+									error: function(error) {}
+								});
+							}.bind(this)
+						}),
+						endButton: new sap.m.Button({
+							text: "Cancel",
+							press: function() {
+								this.oApproveDialog.close();
+							}.bind(this)
+						})
+					});
+				}
+				this.oApproveDialog.open();
+			}
+		}
 	});
 });
