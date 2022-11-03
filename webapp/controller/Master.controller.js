@@ -482,6 +482,7 @@ sap.ui.define([
 													that._pdfViewer.setSource(sSource);
 													that._pdfViewer.setTitle("Claim Form");
 													that._pdfViewer.open();
+													that.getView().byId("list").getModel().refresh();
 												}
 											}
 										);
