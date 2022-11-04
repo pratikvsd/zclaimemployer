@@ -14,7 +14,7 @@ sap.ui.define([
 	return Controller.extend("safetysuitezclaimemployer.controller.Master", {
 
 		onInit: function() {
-			// this._UserID = sap.ushell.Container.getService("UserInfo").getId();
+			// this.userName = sap.ushell.Container.getService("UserInfo").getId();
 			this.userName = 'JPRAKASH';
 			this.attachmentsId = [];
 		},
@@ -55,7 +55,6 @@ sap.ui.define([
 										that.empDialog.open();
 										sap.ui.getCore().byId("UploadCollection").setUploadUrl("/sap/opu/odata/cnetohs/VWA_CLAIM_SRV/Files");
 										that.onSign();
-
 										var IncidentSetData = new sap.ui.model.json.JSONModel(oData);
 										that.getView().setModel(IncidentSetData, "IncidentSetData");
 										var uname = new sap.ui.model.Filter("Userid", "EQ", that.userName);
@@ -64,7 +63,6 @@ sap.ui.define([
 										that.getView().getModel().read("/Files", {
 											filters: Filter,
 											success: function(fData) {
-
 												for (var j = 0; j < fData.results.length; j++) {
 													fData.results[j].url = that.getView().getModel().sServiceUrl + "/Files(ArcDocId='" + fData.results[j].ArcDocId +
 														"',Draftid='',Userid='" + that.userName + "')/$value";
@@ -74,11 +72,8 @@ sap.ui.define([
 												AttachmentModel.setData(fData.results);
 												sap.ui.getCore().byId("UploadCollection").setModel(AttachmentModel, "AttachmentModel");
 											},
-											error: function() {
-												debugger;
-											}
+											error: function() {}
 										});
-
 									},
 									error: function(error) {}
 								});
@@ -188,10 +183,12 @@ sap.ui.define([
 
 		handleWizardCancel: function(oEvent) {
 			debugger;
+			// this.getView().byId("inputElDateClmfrm").setValue("");
 			this.empDialog.close();
 			this._oWizard.setCurrentStep(this.initalWizardStep);
 			sap.ui.getCore().byId("claimWizardPrevBtn").setVisible(false);
 			sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
+			this.onClearLodgementForm();
 
 		}, // To cancel the wizard.
 
@@ -331,7 +328,7 @@ sap.ui.define([
 						x: x,
 						y: y
 					};
-				};
+				}
 
 				function on_mousedown(e) {
 					e.preventDefault();
@@ -351,7 +348,7 @@ sap.ui.define([
 					context.moveTo(xy.x, xy.y);
 					pixels.push(xy.x, xy.y);
 					xyLast = xy;
-				};
+				}
 
 				function on_mousemove(e, finish) {
 					e.preventDefault();
@@ -379,7 +376,7 @@ sap.ui.define([
 					xyAddLast = xyAdd;
 					xyLast = xy;
 
-				};
+				}
 
 				function on_mouseup(e) {
 					remove_event_listeners();
@@ -401,7 +398,6 @@ sap.ui.define([
 		}, // To clear the signature.
 
 		claimWizardSubmitBtn: function(oEvent) {
-			debugger;
 			this._oWizard = sap.ui.getCore().byId("claimFormWizard");
 			var txtReturToWorkClaimFormSubmissionDate = sap.ui.getCore().byId("txtReturToWorkClaimFormSubmissionDate");
 			var txtDeclarationDate = sap.ui.getCore().byId("txtDeclarationDate");
@@ -416,10 +412,10 @@ sap.ui.define([
 			if (inputEmpMcertDate.getValue() !== "" || inputEmpMcertDate.getDateValue() !== null) {
 				var EmpMcertDate = new Date(inputEmpMcertDate.getDateValue()).toISOString();
 			}
-			if (txtReturToWorkClaimFormSubmissionDate.getText() !== "" ) {
+			if (txtReturToWorkClaimFormSubmissionDate.getText() !== "") {
 				var EmpClmfrmDate = new Date(txtReturToWorkClaimFormSubmissionDate.getText()).toISOString();
 			}
-			if (txtDeclarationDate.getText() !== "" ) {
+			if (txtDeclarationDate.getText() !== "") {
 				var DDate = new Date(txtDeclarationDate.getText()).toISOString();
 			}
 			if (inputELDATE.getValue() !== "" || inputELDATE.getDateValue() !== null) {
@@ -445,7 +441,6 @@ sap.ui.define([
 							type: sap.m.ButtonType.Emphasized,
 							text: "Submit",
 							press: function(oEvent) {
-								debugger;
 								var payload = {
 									"Pernr": this.managerPerner,
 									"Casno": this.Casno,
@@ -474,6 +469,7 @@ sap.ui.define([
 												actions: [sap.m.MessageBox.Action.OK],
 												onClose: function(sAction) {
 													that.empDialog.close();
+													that.onClearLodgementForm();
 													sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
 													sap.ui.getCore().byId("claimWizardSubmitBtn").setEnabled(false);
 													that._oWizard.setCurrentStep("personalDetailStep");
@@ -503,6 +499,20 @@ sap.ui.define([
 				}
 				this.oApproveDialog.open();
 			}
+		}, // submit the form 
+
+		onClearLodgementForm: function() {
+			sap.ui.getCore().byId("inputElDateClmfrm").setValue();
+			sap.ui.getCore().byId("inputEmpMcertDate").setValue();
+			sap.ui.getCore().byId("inputNamePosition").setValue();
+			sap.ui.getCore().byId("inputElEstCostClm").setValue();
+			sap.ui.getCore().byId("inputDay1").setValue();
+			sap.ui.getCore().byId("inputShour").setValue();
+			sap.ui.getCore().byId("inputELDATE").setValue();
+			sap.ui.getCore().byId("inputName1").setValue();
+			sap.ui.getCore().byId("inputElSchRegNo").setValue();
+			sap.ui.getCore().byId("inputElDate").setValue();
+
 		}
 	});
 });
