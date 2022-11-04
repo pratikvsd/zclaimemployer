@@ -37,13 +37,13 @@ sap.ui.define([
 			if (!this.oDefaultMessageDialog) {
 				this.oDefaultMessageDialog = new sap.m.Dialog({
 					type: sap.m.DialogType.Message,
-					title: "Information",
+					title: this.getView().getModel("i18n").getResourceBundle().getText("Information"),
 					content: new sap.m.Text({
-						text: "Please Review the claim information lodged by the employee"
+						text: this.getView().getModel("i18n").getResourceBundle().getText("InformationMessageDialogText")
 					}),
 					beginButton: new sap.m.Button({
 						type: sap.m.ButtonType.Emphasized,
-						text: "Accept",
+						text: this.getView().getModel("i18n").getResourceBundle().getText("Accept"),
 						press: function() {
 							this.oDefaultMessageDialog.close();
 							var that = this;
@@ -63,11 +63,13 @@ sap.ui.define([
 										that.getView().getModel().read("/Files", {
 											filters: Filter,
 											success: function(fData) {
-												for (var j = 0; j < fData.results.length; j++) {
-													fData.results[j].url = that.getView().getModel().sServiceUrl + "/Files(ArcDocId='" + fData.results[j].ArcDocId +
-														"',Draftid='',Userid='" + that.userName + "')/$value";
-													fData.results[j].ButtonVisibility = false;
-													that.attachmentsId.push(fData.results[j].ArcDocId);
+												if (fData.results.length > 0) {
+													for (var j = 0; j < fData.results.length; j++) {
+														fData.results[j].url = that.getView().getModel().sServiceUrl + "/Files(ArcDocId='" + fData.results[j].ArcDocId +
+															"',Draftid='',Userid='" + that.userName + "')/$value";
+														fData.results[j].ButtonVisibility = false;
+														that.attachmentsId.push(fData.results[j].ArcDocId);
+													}
 												}
 												AttachmentModel.setData(fData.results);
 												sap.ui.getCore().byId("UploadCollection").setModel(AttachmentModel, "AttachmentModel");
@@ -433,9 +435,9 @@ sap.ui.define([
 				if (!this.oApproveDialog) {
 					this.oApproveDialog = new sap.m.Dialog({
 						type: sap.m.DialogType.Message,
-						title: "Confirm",
+						title: this.getView().getModel("i18n").getResourceBundle().getText("Confirm"),
 						content: new sap.m.Text({
-							text: "Do you want to submit this claim?"
+							text: this.getView().getModel("i18n").getResourceBundle().getText("comfirmationMessage")
 						}),
 						beginButton: new sap.m.Button({
 							type: sap.m.ButtonType.Emphasized,
@@ -465,8 +467,8 @@ sap.ui.define([
 										var sSource = that.getView().getModel().sServiceUrl + "/InjuryFormSet(Casno='" + that.Casno + "',Userid='" + that.userName +
 											"')/$value";
 										sap.m.MessageBox.success(
-											that.Casno + " Claim submitted successfully", {
-												actions: [sap.m.MessageBox.Action.OK],
+											that.Casno + " "+ that.getView().getModel("i18n").getResourceBundle().getText("ClaimSuccessMessage"),{
+												actions: [that.getView().getModel("i18n").getResourceBundle().getText("ok")],
 												onClose: function(sAction) {
 													that.empDialog.close();
 													that.onClearLodgementForm();
@@ -476,7 +478,7 @@ sap.ui.define([
 													that._pdfViewer = new sap.m.PDFViewer();
 													that.getView().addDependent(that._pdfViewer);
 													that._pdfViewer.setSource(sSource);
-													that._pdfViewer.setTitle("Claim Form");
+														that._pdfViewer.setTitle(that.getView().getModel("i18n").getResourceBundle().getText("SamrtFormTitle"));
 													that._pdfViewer.open();
 													that.getView().byId("list").getModel().refresh();
 												}
@@ -502,17 +504,17 @@ sap.ui.define([
 		}, // submit the form 
 
 		onClearLodgementForm: function() {
-			sap.ui.getCore().byId("inputElDateClmfrm").setValue();
-			sap.ui.getCore().byId("inputEmpMcertDate").setValue();
-			sap.ui.getCore().byId("inputNamePosition").setValue();
-			sap.ui.getCore().byId("inputElEstCostClm").setValue();
-			sap.ui.getCore().byId("inputDay1").setValue();
-			sap.ui.getCore().byId("inputShour").setValue();
-			sap.ui.getCore().byId("inputELDATE").setValue();
-			sap.ui.getCore().byId("inputName1").setValue();
-			sap.ui.getCore().byId("inputElSchRegNo").setValue();
-			sap.ui.getCore().byId("inputElDate").setValue();
+				sap.ui.getCore().byId("inputElDateClmfrm").setValue();
+				sap.ui.getCore().byId("inputEmpMcertDate").setValue();
+				sap.ui.getCore().byId("inputNamePosition").setValue();
+				sap.ui.getCore().byId("inputElEstCostClm").setValue();
+				sap.ui.getCore().byId("inputDay1").setValue();
+				sap.ui.getCore().byId("inputShour").setValue();
+				sap.ui.getCore().byId("inputELDATE").setValue();
+				sap.ui.getCore().byId("inputName1").setValue();
+				sap.ui.getCore().byId("inputElSchRegNo").setValue();
+				sap.ui.getCore().byId("inputElDate").setValue();
 
-		}
+			} // for clearing the form
 	});
 });
