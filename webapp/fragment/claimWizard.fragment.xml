@@ -213,7 +213,7 @@
 								singleContainerFullSize="false">
 								<form:content>
 									<core:Title text="{i18n>WizardworkerDecFormmLabel_WorkerSignature}"/>
-									<Image src="{IncidentSetData>/Signature}" width="100px" height="100px"/>
+									<Image id="signImg" width="100px" height="100px"/>
 									<core:Title text="{i18n>WizardworkerDecFormmLabel_Date}"/>
 									<Text id="txtDeclarationDate"
 										text="{ path: 'IncidentSetData>/DDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>

@@ -8,8 +8,6 @@ sap.ui.define([
 ], function(Controller, Fragment, MessageBox, Device, UploadCollectionParameter, Dialog) {
 	"use strict";
 	var AttachmentModel = new sap.ui.model.json.JSONModel();
-	this.roughString =
-		"46174613A696D6167652F6A7065673B6261736536342C2F396A2F34414151536B5A4A5267414241514141415141424141442F3467496F53554E445831425354305A4A544555414151454141414959414141414141517741414274626E5279556B64434946685A576941414141414141414141414141414141426859334E77414141414141414141414141414141414141414141414141414141414141414141414141415141413974594141514141414144544C5141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141416C6B5A584E6A";
 
 	return Controller.extend("safetysuitezclaimemployer.controller.Master", {
 
@@ -17,6 +15,9 @@ sap.ui.define([
 			// this.userName = sap.ushell.Container.getService("UserInfo").getId();
 			this.userName = 'JPRAKASH';
 			this.attachmentsId = [];
+			this.roughString =
+				"ZGF0YTppbWFnZS9qcGVnO2Jhc2U2NCwvOWovNEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQvNGdJb1NVTkRYMUJTVDBaSlRFVUFBUUVBQUFJWUFBQUFBQVF3QUFCdGJuUnlVa2RDSUZoWldpQUFBQUFBQUFBQUFBQUFBQUJoWTNOd0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFRQUE5dFlBQVFBQUFBRFRMUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBbGtaWE5qQUFBQThBQUFBSFJ5V0ZsYUFBQUJaQUFBQUJSbldGbGFBQUFCZUFBQUFCUmlXRmxhQUFBQmpBQUFBQlJ5VkZKREFBQUJvQUFBQUNoblZGSkRBQUFCb0FBQUFDaGlWRkpEQUFBQm9BQUFBQ2gzZEhCMEFBQUJ5QUFBQUJSamNISjBBQUFCM0FBQUFEeHRiSFZqQUFBQUFBQUFBQUVBQUFBTVpXNVZVd0FBQUZnQUFBQWNBSE1BVWdCSEFFSUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFGaFpXaUFBQUFBQUFBQnZvZ0FBT1BVQUFBT1FXRmxhSUFBQUFBQUFBR0taQUFDM2hRQUFHTnBZV1ZvZ0FBQUFBQUFBSktBQUFBK0VBQUMyejNCaGNtRUFBQUFBQUFRQUFBQUNabVlBQVBLbkFBQU5XUUFBRTlBQUFBcGJBQUFBQUFBQUFBQllXVm9nQUFBQUFBQUE5dFlBQVFBQUFBRFRMVzFzZFdNQUFBQUFBQUFBQVFBQUFBeGxibFZUQUFBQUlBQUFBQndBUndCdkFHOEFad0JzQUdVQUlBQkpBRzRBWXdBdUFDQUFNZ0F3QURFQU52L2JBRU1BQXdJQ0FnSUNBd0lDQWdNREF3TUVCZ1FFQkFRRUNBWUdCUVlKQ0FvS0NRZ0pDUW9NRHd3S0N3NExDUWtORVEwT0R4QVFFUkFLREJJVEVoQVREeEFRRVAvYkFFTUJBd01EQkFNRUNBUUVDQkFMQ1FzUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFUC9BQUJFSUFNZ0F5QU1CSWdBQ0VRRURFUUgveEFBVkFBRUJBQUFBQUFBQUFBQUFBQUFBQUFBQUNmL0VBQlFRQVFBQUFBQUFBQUFBQUFBQUFBQUFBQUQveEFBVUFRRUFBQUFBQUFBQUFBQUFBQUFBQUFBQS84UUFGQkVCQUFBQUFBQUFBQUFBQUFBQUFBQUFBUC9hQUF3REFRQUNFUU1SQUQ4QXFtQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUQvOWs9";
+
 		},
 
 		InputNumberDaysHoursLodgement: function(oEvent) {
@@ -47,12 +48,12 @@ sap.ui.define([
 						press: function() {
 							this.oDefaultMessageDialog.close();
 							var that = this;
-							this.getView().getModel().read("/getIncidentSet(Casno='" + SelectedRecord.Casno + "',ManagerPernr='" + this.managerPerner +
+							this.getView().getModel().read("/getIncidentSet(Casno='" + this.Casno + "',ManagerPernr='" + this.managerPerner +
 								"')", {
 									success: function(oData, oResponse) {
-
 										oData.Signature = atob(oData.Signature);
 										that.empDialog.open();
+										sap.ui.getCore().byId("signImg").setSrc(oData.Signature);
 										sap.ui.getCore().byId("UploadCollection").setUploadUrl("/sap/opu/odata/cnetohs/VWA_CLAIM_SRV/Files");
 										that.onSign();
 										var IncidentSetData = new sap.ui.model.json.JSONModel(oData);
@@ -184,7 +185,7 @@ sap.ui.define([
 		}, // Code for the previous button in main claim wizard control.
 
 		handleWizardCancel: function(oEvent) {
-			debugger;
+		
 			// this.getView().byId("inputElDateClmfrm").setValue("");
 			this.empDialog.close();
 			this._oWizard.setCurrentStep(this.initalWizardStep);
@@ -397,6 +398,11 @@ sap.ui.define([
 			var canvas = document.getElementById("signature-pad");
 			var context = canvas.getContext("2d");
 			context.clearRect(0, 0, canvas.width, canvas.height);
+			var signaturePad = new SignaturePad(document.getElementById('signature-pad'), {
+				  backgroundColor: '#ffffff',
+				  penColor: 'rgb(0, 0, 0)',
+				  penWidth : '1'
+			})
 		}, // To clear the signature.
 
 		claimWizardSubmitBtn: function(oEvent) {
@@ -467,7 +473,7 @@ sap.ui.define([
 										var sSource = that.getView().getModel().sServiceUrl + "/InjuryFormSet(Casno='" + that.Casno + "',Userid='" + that.userName +
 											"')/$value";
 										sap.m.MessageBox.success(
-											that.Casno + " "+ that.getView().getModel("i18n").getResourceBundle().getText("ClaimSuccessMessage"),{
+											that.Casno + " " + that.getView().getModel("i18n").getResourceBundle().getText("ClaimSuccessMessage"), {
 												actions: [that.getView().getModel("i18n").getResourceBundle().getText("ok")],
 												onClose: function(sAction) {
 													that.empDialog.close();
@@ -478,7 +484,7 @@ sap.ui.define([
 													that._pdfViewer = new sap.m.PDFViewer();
 													that.getView().addDependent(that._pdfViewer);
 													that._pdfViewer.setSource(sSource);
-														that._pdfViewer.setTitle(that.getView().getModel("i18n").getResourceBundle().getText("SamrtFormTitle"));
+													that._pdfViewer.setTitle(that.getView().getModel("i18n").getResourceBundle().getText("SamrtFormTitle"));
 													that._pdfViewer.open();
 													that.getView().byId("list").getModel().refresh();
 												}
@@ -504,16 +510,16 @@ sap.ui.define([
 		}, // submit the form 
 
 		onClearLodgementForm: function() {
-				sap.ui.getCore().byId("inputElDateClmfrm").setValue();
-				sap.ui.getCore().byId("inputEmpMcertDate").setValue();
-				sap.ui.getCore().byId("inputNamePosition").setValue();
-				sap.ui.getCore().byId("inputElEstCostClm").setValue();
-				sap.ui.getCore().byId("inputDay1").setValue();
-				sap.ui.getCore().byId("inputShour").setValue();
-				sap.ui.getCore().byId("inputELDATE").setValue();
-				sap.ui.getCore().byId("inputName1").setValue();
-				sap.ui.getCore().byId("inputElSchRegNo").setValue();
-				sap.ui.getCore().byId("inputElDate").setValue();
+				sap.ui.getCore().byId("inputElDateClmfrm").setValue("");
+				sap.ui.getCore().byId("inputEmpMcertDate").setValue("");
+				sap.ui.getCore().byId("inputNamePosition").setValue("");
+				sap.ui.getCore().byId("inputElEstCostClm").setValue("");
+				sap.ui.getCore().byId("inputDay1").setValue("");
+				sap.ui.getCore().byId("inputShour").setValue("");
+				sap.ui.getCore().byId("inputELDATE").setValue("");
+				sap.ui.getCore().byId("inputName1").setValue("");
+				sap.ui.getCore().byId("inputElSchRegNo").setValue("");
+				sap.ui.getCore().byId("inputElDate").setValue("");
 
 			} // for clearing the form
 	});
