@@ -3,7 +3,7 @@ sap.ui.define([
 	"sap/ui/core/Fragment",
 	"sap/m/MessageBox",
 	"sap/ui/Device",
-	"safetysuitezclaimemployee/libs/signature_pad",
+	"safetysuitezclaimemployer/libs/signature_pad",
 	"sap/m/UploadCollectionParameter"
 
 ], function(Controller, Fragment, MessageBox, Device, UploadCollectionParameter, Dialog,signaturePad) {
