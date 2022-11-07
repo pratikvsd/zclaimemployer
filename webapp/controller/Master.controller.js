@@ -63,7 +63,7 @@ sap.ui.define([
 										var IncidentSetData = new sap.ui.model.json.JSONModel(oData);
 										that.getView().setModel(IncidentSetData, "IncidentSetData");
 										var uname = new sap.ui.model.Filter("Userid", "EQ", that.userName);
-										var casno = new sap.ui.model.Filter("Casno", "EQ", SelectedRecord.Casno);
+										var casno = new sap.ui.model.Filter("Casno", "EQ", this.Casno);
 										var Filter = [uname, casno];
 										that.getView().getModel().read("/Files", {
 											filters: Filter,
