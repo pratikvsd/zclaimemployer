@@ -56,7 +56,7 @@ sap.ui.define([
 										oData.Signature = "data:image/bmp;base64,"+oData.Signature;
 										that.empDialog.open();
 										var canvas = document.getElementById("signature-pad");
-										this.signaturePad = new SignaturePad(canvas, {
+										that.signaturePad = new SignaturePad(canvas, {
 											backgroundColor: 'rgba(255, 255, 255, 1)',
 											penColor: 'rgb(0, 0, 0)'
 										});
