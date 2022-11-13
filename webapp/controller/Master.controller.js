@@ -1,3 +1,4 @@
+jQuery.sap.require("safetysuitezclaimemployer.libs.canvas2image");
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/Fragment",
@@ -6,18 +7,18 @@ sap.ui.define([
 	"safetysuitezclaimemployer/libs/signature_pad",
 	"sap/m/UploadCollectionParameter"
 
-], function(Controller, Fragment, MessageBox, Device, UploadCollectionParameter, Dialog,signaturePad) {
+], function(Controller, Fragment, MessageBox, Device, UploadCollectionParameter, Dialog, signaturePad) {
 	"use strict";
 	var AttachmentModel = new sap.ui.model.json.JSONModel();
 
 	return Controller.extend("safetysuitezclaimemployer.controller.Master", {
 
 		onInit: function() {
-            if (sap.ushell.Container) {
-                this.userName = sap.ushell.Container.getService("UserInfo").getId();
-            } else {
-                this.userName = "JPRAKASH";
-            }
+			if (sap.ushell.Container) {
+				this.userName = sap.ushell.Container.getService("UserInfo").getId();
+			} else {
+				this.userName = "JPRAKASH";
+			}
 			this.attachmentsId = [];
 			this.roughString =
 				"ZGF0YTppbWFnZS9qcGVnO2Jhc2U2NCwvOWovNEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQvNGdJb1NVTkRYMUJTVDBaSlRFVUFBUUVBQUFJWUFBQUFBQVF3QUFCdGJuUnlVa2RDSUZoWldpQUFBQUFBQUFBQUFBQUFBQUJoWTNOd0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFRQUE5dFlBQVFBQUFBRFRMUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBbGtaWE5qQUFBQThBQUFBSFJ5V0ZsYUFBQUJaQUFBQUJSbldGbGFBQUFCZUFBQUFCUmlXRmxhQUFBQmpBQUFBQlJ5VkZKREFBQUJvQUFBQUNoblZGSkRBQUFCb0FBQUFDaGlWRkpEQUFBQm9BQUFBQ2gzZEhCMEFBQUJ5QUFBQUJSamNISjBBQUFCM0FBQUFEeHRiSFZqQUFBQUFBQUFBQUVBQUFBTVpXNVZVd0FBQUZnQUFBQWNBSE1BVWdCSEFFSUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFGaFpXaUFBQUFBQUFBQnZvZ0FBT1BVQUFBT1FXRmxhSUFBQUFBQUFBR0taQUFDM2hRQUFHTnBZV1ZvZ0FBQUFBQUFBSktBQUFBK0VBQUMyejNCaGNtRUFBQUFBQUFRQUFBQUNabVlBQVBLbkFBQU5XUUFBRTlBQUFBcGJBQUFBQUFBQUFBQllXVm9nQUFBQUFBQUE5dFlBQVFBQUFBRFRMVzFzZFdNQUFBQUFBQUFBQVFBQUFBeGxibFZUQUFBQUlBQUFBQndBUndCdkFHOEFad0JzQUdVQUlBQkpBRzRBWXdBdUFDQUFNZ0F3QURFQU52L2JBRU1BQXdJQ0FnSUNBd0lDQWdNREF3TUVCZ1FFQkFRRUNBWUdCUVlKQ0FvS0NRZ0pDUW9NRHd3S0N3NExDUWtORVEwT0R4QVFFUkFLREJJVEVoQVREeEFRRVAvYkFFTUJBd01EQkFNRUNBUUVDQkFMQ1FzUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFUC9BQUJFSUFNZ0F5QU1CSWdBQ0VRRURFUUgveEFBVkFBRUJBQUFBQUFBQUFBQUFBQUFBQUFBQUNmL0VBQlFRQVFBQUFBQUFBQUFBQUFBQUFBQUFBQUQveEFBVUFRRUFBQUFBQUFBQUFBQUFBQUFBQUFBQS84UUFGQkVCQUFBQUFBQUFBQUFBQUFBQUFBQUFBUC9hQUF3REFRQUNFUU1SQUQ4QXFtQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUQvOWs9";
@@ -57,9 +58,14 @@ sap.ui.define([
 									success: function(oData, oResponse) {
 										oData.Signature = atob(oData.Signature);
 										that.empDialog.open();
+										var canvas = document.getElementById("signature-pad");
+										this.signaturePad = new SignaturePad(canvas, {
+											backgroundColor: 'rgba(255, 255, 255, 1)',
+											penColor: 'rgb(0, 0, 0)'
+										});
 										sap.ui.getCore().byId("signImg").setSrc(oData.Signature);
 										sap.ui.getCore().byId("UploadCollection").setUploadUrl("/sap/opu/odata/cnetohs/VWA_CLAIM_SRV/Files");
-										that.onSign();
+										
 										var IncidentSetData = new sap.ui.model.json.JSONModel(oData);
 										that.getView().setModel(IncidentSetData, "IncidentSetData");
 										var uname = new sap.ui.model.Filter("Userid", "EQ", that.userName);
@@ -189,7 +195,7 @@ sap.ui.define([
 		}, // Code for the previous button in main claim wizard control.
 
 		handleWizardCancel: function(oEvent) {
-		
+
 			// this.getView().byId("inputElDateClmfrm").setValue("");
 			this.empDialog.close();
 			this._oWizard.setCurrentStep(this.initalWizardStep);
@@ -287,7 +293,7 @@ sap.ui.define([
 			sap.ui.getCore().byId("UploadCollection").setNumberOfAttachmentsText("Employee Attachments(" + Items.length + ")");
 		}, // To delete the files from the attchment list.
 
-		onSign: function() {
+		/*onSign: function() {
 			var canvas = document.getElementById("signature-pad");
 			var signaturePad = new SignaturePad(canvas, {
 				backgroundColor: '#FFFFFF'
@@ -399,13 +405,10 @@ sap.ui.define([
 				canvas.addEventListener('mousedown', on_mousedown, false);
 			}
 
-		}, // The signature canvas.
+		},*/ // The signature canvas.
 
 		clearButton: function(oEvent) {
-			var canvas = document.getElementById("signature-pad");
-			var context = canvas.getContext("2d");
-			context.clearRect(0, 0, canvas.width, canvas.height);
-			this.onSign();
+			this.signaturePad.clear();
 		}, // To clear the signature.
 
 		claimWizardSubmitBtn: function(oEvent) {
@@ -420,6 +423,10 @@ sap.ui.define([
 			var inputELDATE = sap.ui.getCore().byId("inputELDATE");
 			var inputName1 = sap.ui.getCore().byId("inputName1");
 			var inputElSchRegNo = sap.ui.getCore().byId("inputElSchRegNo");
+			var canvas = document.getElementById("signature-pad");
+			var oBMP = Canvas2Image.convertToBMP(canvas);
+        	var str = oBMP.src;
+        	this.signString = str.replace("data:image/bmp;base64,", "");
 			if (inputEmpMcertDate.getValue() !== "" || inputEmpMcertDate.getDateValue() !== null) {
 				var EmpMcertDate = new Date(inputEmpMcertDate.getDateValue()).toISOString();
 			}
