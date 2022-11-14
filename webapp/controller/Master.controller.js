@@ -439,11 +439,6 @@ sap.ui.define([
 			if (inputElEstCostClm.getValue() !== "" || inputElEstCostClm.getValue() !== null) {
 				var ElEstCostClm = inputElEstCostClm.getValue();
 			}
-			var canvas = document.getElementById("signature-pad");
-			this.signString = btoa(encodeURI(canvas.toDataURL('image/jpeg').replace("data:image/jpeg:base64,", "")));
-			if (this.roughString === this.signString) {
-				this.signString = "";
-			}
 			if (oEvent.getSource().getId() === "claimWizardSubmitBtn") {
 				if (!this.oApproveDialog) {
 					this.oApproveDialog = new sap.m.Dialog({
