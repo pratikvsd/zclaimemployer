@@ -81,8 +81,7 @@
 										<Text
 											text="{ path: 'IncidentSetData>/Sdate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy HH:mm:ss' }}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ReportInjuryToEmployee}"/>
-										<Text
-											text="{ path: 'IncidentSetData>/Rdate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
+										<Text text="{ path: 'IncidentSetData>/Rdate', type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-dd' }, pattern:'MMM dd,yyyy' }}"/>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ResposibleManAtWorkplace}"/>
 										<Text id="txtEmployerResponsible" text="{IncidentSetData>/Name1}"/>
@@ -133,7 +132,7 @@
 										<Text id="txtEmpAppliesToYou" text="{IncidentSetData>/Reasontoapply}"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_WhenStartWorkingForEmployer}"/>
 										<Text
-											text="{ path: 'IncidentSetData>/Startdate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
+											text="{ path: 'IncidentSetData>/Startdate', type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-dd' }, pattern:'MMM dd,yyyy' }}"/>
 										<core:Title text="{i18n>WizardEmployementDetailsSecTitle_PleaseSelectAny}" level="H5"/>
 										<Label text="{i18n>WizardEmployementDetailsFormLabel_ADirectorofMyEmployersCompany}"/>
 										<Text id="txtEmpDirectorofMyEmployersComp" text="{IncidentSetData>/Directorcheck}"/>
@@ -184,7 +183,7 @@
 										<Text id="txtReturToWorkQue1" text="{IncidentSetData>/RtwDetails}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ReturnDateQuestion}"/>
 										<Text
-											text="{ path: 'IncidentSetData>/RtwEmpDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
+											text="{ path: 'IncidentSetData>/RtwEmpDate', type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-dd' }, pattern:'MMM dd,yyyy' }}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question2}"/>
 										<Text id="txtReturToWorkOue2" text="{IncidentSetData>/Duties}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question3}"/>
@@ -194,12 +193,12 @@
 										<Text id="txtReturToWorkOue4" text="{IncidentSetData>/NrtwIdp}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_ClaimFormSubmissionDate}"/>
 										<Text id="txtReturToWorkClaimFormSubmissionDate"
-											text="{ path: 'IncidentSetData>/EmpClmfrmDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
+											text="{ path: 'IncidentSetData>/EmpClmfrmDate', type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-dd' }, pattern:'MMM dd,yyyy' }}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_question5}"/>
 										<Text id="txtReturToWorkOue5" text="{IncidentSetData>/EmpClmForm}"/>
 										<Label text="{i18n>WizardreturntoWorkFormLabel_MedicalCertificateSubmissionDate}"/>
 										<Text
-											text="{ path: 'IncidentSetData>/EmpMcertDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
+											text="{ path: 'IncidentSetData>/EmpMcertDate', type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-dd' }, pattern:'MMM dd,yyyy' }}"/>
 									</form:content>
 								</form:SimpleForm>
 							</VBox>
@@ -216,7 +215,7 @@
 									<Image id="signImg" width="100px" height="100px"/>
 									<core:Title text="{i18n>WizardworkerDecFormmLabel_Date}"/>
 									<Text id="txtDeclarationDate"
-										text="{ path: 'IncidentSetData>/DDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy' }}"/>
+										text="{ path: 'IncidentSetData>/DDate', type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-dd' }, pattern:'MMM dd,yyyy' }}"/>
 								</form:content>
 							</form:SimpleForm>
 						</WizardStep>
@@ -249,7 +248,7 @@
 									<Label text="{i18n>WizardEmployerLodgement_Name}"/>
 									<Input id="inputName1"/>
 									<Label text="{i18n>WizardEmployerLodgement_Position}"/>
-									<Input id="inputNamePosition" />
+									<Input id="inputNamePosition"/>
 									<Label text="{i18n>WizardEmployerLodgement_employersSchemeRegistrationNumber}"/>
 									<Input id="inputElSchRegNo" type="Number"/>
 								</form:content>
@@ -258,11 +257,12 @@
 						<WizardStep id="attachmentStep" title="{i18n>claimFormWizardAttachments}">
 							<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="deleteAttachmentListItems"
 								typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"
-								uploadTerminated="onUploadTerminated" items="{AttachmentModel>/}"
-								numberOfAttachmentsText="{i18n>WizardAttachmentsListTitle}" uploadEnabled="true">
+								uploadTerminated="onUploadTerminated" items="{AttachmentModel>/}" numberOfAttachmentsText="{i18n>WizardAttachmentsListTitle}"
+								uploadEnabled="true">
 								<items>
 									<UploadCollectionItem id="uploadCollectionTable" documentId="{AttachmentModel>ArcDocId}" fileName="{AttachmentModel>Filename}"
-										url="{AttachmentModel>url}"  enableDelete="{AttachmentModel>ButtonVisibility}" visibleDelete="{AttachmentModel>ButtonVisibility}" visibleEdit="false">
+										url="{AttachmentModel>url}" enableDelete="{AttachmentModel>ButtonVisibility}" visibleDelete="{AttachmentModel>ButtonVisibility}"
+										visibleEdit="false">
 										<!--<attributes>-->
 										<!--	<ObjectAttribute title="{AttachmentModel>title}" text="{path : 'text', formatter : '.formatAttribute'}" active="{InjuryTabModel>active}"-->
 										<!--		press="onAttributePress"/>-->
