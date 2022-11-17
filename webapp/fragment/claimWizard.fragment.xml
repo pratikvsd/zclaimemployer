@@ -16,9 +16,9 @@
 									<Label text="{i18n>WizardPersonalDetailFormLabel_FamilyName}"/>
 									<Text id="txtFamilyName" text="{IncidentSetData>/FamilyName}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_GivenName}"/>
-									<Text id="txtGivenName" text="{IncidentSetData>/Othnam}"/>
+									<Text id="txtGivenName" text="{IncidentSetData>/Conname}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_OtherKnown}"/>
-									<Text id="txtMaidenName" text="{IncidentSetData>/Conname}"/>
+									<Text id="txtMaidenName" text="{IncidentSetData>/Othnam}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_DOB}"/>
 									<Text
 										text="{path:'IncidentSetData>/Dateofbirth', type: 'sap.ui.model.odata.type.Date', formatOptions: { style: 'medium', strictParsing: true } }"/>
@@ -79,9 +79,10 @@
 										<Text id="txtInjuryPostcode" text="{IncidentSetData>/PostcodeInj}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryDateTime}"/>
 										<Text
-											text="{ path: 'IncidentSetData>/Sdate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy HH:mm:ss' }}"/>
+											text="{ path: 'IncidentSetData>/Idate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy HH:mm:ss' }}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ReportInjuryToEmployee}"/>
-										<Text text="{ path: 'IncidentSetData>/Rdate', type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-dd' }, pattern:'MMM dd,yyyy' }}"/>
+										<Text
+											text="{ path: 'IncidentSetData>/Rdate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern:'MMM dd,yyyy HH:mm:ss' }}"/>
 										<core:Title text="" level="H5"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ResposibleManAtWorkplace}"/>
 										<Text id="txtEmployerResponsible" text="{IncidentSetData>/Name1}"/>
