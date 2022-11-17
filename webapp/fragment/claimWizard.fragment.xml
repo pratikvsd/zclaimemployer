@@ -62,7 +62,7 @@
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryBodyPart}"/>
 										<Text id="txtInjuryBodyPart" text="{IncidentSetData>/BodypartDes}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryType}"/>
-										<Text id="txtInjurytype" text="{IncidentSetData>/Injurytype}"/>
+										<Text id="txtInjurytype" text="{IncidentSetData>/InjDesc}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_HowInjured}"/>
 										<Text id="txtHowWereYouInjured" text="{IncidentSetData>/InjHapDes}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_TaskWhenInjured}"/>
@@ -79,7 +79,7 @@
 										<Text id="txtInjuryPostcode" text="{IncidentSetData>/PostcodeInj}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryDateTime}"/>
 										<Text
-											text="{ path: 'IncidentSetData>/Idate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy HH:mm:ss' }}"/>
+											text="{ path: 'IncidentSetData>/IDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy HH:mm:ss' }}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_ReportInjuryToEmployee}"/>
 										<Text
 											text="{ path: 'IncidentSetData>/Rdate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern:'MMM dd,yyyy HH:mm:ss' }}"/>
@@ -96,6 +96,12 @@
 										<Text id="txtVehicleState" text="{IncidentSetData>/InjState}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question1}"/>
 										<Text id="txtInjuryQue1" text="{IncidentSetData>/InjCondMs}"/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_FirstNoticeInjuryCondition}"/>
+										<Text
+											text="{ path: 'IncidentSetData>/Crdate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern:'MMM dd,yyyy HH:mm:ss' }}"/>
+										<Label required="true" text="{i18n>WizardInjuryDetailsFormLabel_StoppedWorkDateTime}"/>
+											<Text
+											text="{ path: 'IncidentSetData>/Sdate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern:'MMM dd,yyyy HH:mm:ss' }}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question2}"/>
 										<Text id="txtInjuryQue2" text="{IncidentSetData>/InjNamePersonR}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question3}"/>

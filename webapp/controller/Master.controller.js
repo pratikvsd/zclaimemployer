@@ -53,7 +53,7 @@ sap.ui.define([
 							this.getView().getModel().read("/getIncidentSet(Casno='" + this.Casno + "',ManagerPernr='" + this.managerPerner +
 								"')", {
 									success: function(oData, oResponse) {
-										oData.Signature = "data:image/bmp;base64,"+oData.Signature;
+										oData.Signature = "data:image/bmp;base64," + oData.Signature;
 										that.empDialog.open();
 										var canvas = document.getElementById("signature-pad");
 										that.signaturePad = new SignaturePad(canvas, {
@@ -62,7 +62,7 @@ sap.ui.define([
 										});
 										sap.ui.getCore().byId("signImg").setSrc(oData.Signature);
 										sap.ui.getCore().byId("UploadCollection").setUploadUrl("/sap/opu/odata/cnetohs/VWA_CLAIM_SRV/Files");
-										
+
 										var IncidentSetData = new sap.ui.model.json.JSONModel(oData);
 										that.getView().setModel(IncidentSetData, "IncidentSetData");
 										var uname = new sap.ui.model.Filter("Userid", "EQ", that.userName);
@@ -204,13 +204,13 @@ sap.ui.define([
 
 		onChange: function(oEvent) {
 			var oUploadCollection = oEvent.getSource();
-			var oCustomerRequestToken = new UploadCollectionParameter({
+			var oCustomerRequestToken = new sap.m.UploadCollectionParameter({
 				name: "x-requested-with",
 				value: "X"
 			});
 			oUploadCollection.addHeaderParameter(oCustomerRequestToken);
 
-			var oCustomerAcceptToken = new UploadCollectionParameter({
+			var oCustomerAcceptToken = new sap.m.UploadCollectionParameter({
 				name: "Accept",
 				value: "application/json;odata=verbose"
 			});
@@ -250,7 +250,7 @@ sap.ui.define([
 
 		onBeforeUploadStarts: function(oEvent) {
 			var oModel = this.getView().getModel();
-			var oCustomerHeaderSlug = new UploadCollectionParameter({
+			var oCustomerHeaderSlug = new sap.m.UploadCollectionParameter({
 				name: "slug",
 				value: encodeURIComponent(oEvent.getParameter("fileName"))
 			});
@@ -258,7 +258,7 @@ sap.ui.define([
 			oModel.refreshSecurityToken();
 			var oHeaders = oModel.oHeaders;
 			var sToken = oHeaders['x-csrf-token'];
-			var oCustomerHeaderToken = new UploadCollectionParameter({
+			var oCustomerHeaderToken = new sap.m.UploadCollectionParameter({
 				name: "x-csrf-token",
 				value: sToken
 			});
@@ -422,8 +422,8 @@ sap.ui.define([
 			var inputElSchRegNo = sap.ui.getCore().byId("inputElSchRegNo");
 			var canvas = document.getElementById("signature-pad");
 			var oBMP = Canvas2Image.convertToBMP(canvas);
-        	var str = oBMP.src;
-        	this.signString = str.replace("data:image/bmp;base64,", "");
+			var str = oBMP.src;
+			this.signString = str.replace("data:image/bmp;base64,", "");
 			if (inputEmpMcertDate.getValue() !== "" || inputEmpMcertDate.getDateValue() !== null) {
 				var EmpMcertDate = new Date(inputEmpMcertDate.getDateValue()).toISOString();
 			}
