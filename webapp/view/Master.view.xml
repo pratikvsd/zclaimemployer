@@ -2,12 +2,16 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="masterPage" title="{i18n>masterPageTitle}">
 		<content>
-			<List id="list" itemPress="clickClaimBtn" items="{/IncidentsSet}">
+			<SearchField placeholder="Search for..." liveChange="onSearch"/>
+			<List id="list" itemPress="clickClaimBtn" items="{JsonDataModel>/}">
 				<items>
-					<ObjectListItem id="objlist" title="{FamilyName}" type="Active" press="onListItemPress" number="{ManagerPernr}">
-						<ObjectAttribute text="{BodypartDes}"/>
+					<ObjectListItem id="objlist" title="{JsonDataModel>FamilyName} {JsonDataModel>Conname}" type="Active" number="{JsonDataModel>Casno}">
+						<ObjectAttribute text="{JsonDataModel>BodypartDes}"/>
+						<firstStatus>
+							<ObjectStatus text="{JsonDataModel>ManagerPernr}"/>
+						</firstStatus>
 						<ObjectAttribute
-							text="{path:'IDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy ' }}"/>
+							text="{path:'JsonDataModel>IDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy ' }}"/>
 					</ObjectListItem>
 				</items>
 			</List>

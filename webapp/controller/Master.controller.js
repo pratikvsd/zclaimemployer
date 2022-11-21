@@ -7,7 +7,7 @@ sap.ui.define([
 	"safetysuitezclaimemployer/libs/signature_pad",
 	"sap/m/UploadCollectionParameter"
 
-], function(Controller, Fragment, MessageBox, Device, UploadCollectionParameter, Dialog, signaturePad) {
+], function(Controller, Fragment, MessageBox, Device, signaturePad, UploadCollectionParameter) {
 	"use strict";
 	var AttachmentModel = new sap.ui.model.json.JSONModel();
 
@@ -20,6 +20,16 @@ sap.ui.define([
 				this.userName = "JPRAKASH";
 			}
 			this.attachmentsId = [];
+
+			var oModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/cnetohs/VWA_CLAIM_SRV/", true);
+			var that = this;
+			oModel.read("/IncidentsSet", {
+				success: function(oData) {
+					var JsonDataModel = new sap.ui.model.json.JSONModel();
+					JsonDataModel.setData(oData.results);
+					that.getView().byId("list").setModel(JsonDataModel, "JsonDataModel");
+				}
+			});
 		},
 
 		InputNumberDaysHoursLodgement: function(oEvent) {
@@ -29,9 +39,10 @@ sap.ui.define([
 		}, // For the maxlength of number in Date and hour field in employer lodgement.
 
 		clickClaimBtn: function(oEvent) {
-			var SelectedRecord = oEvent.getParameter("listItem").getBindingContext().getObject();
-			this.managerPerner = SelectedRecord.ManagerPernr;
+			var bindingPath = oEvent.getParameter("listItem").oBindingContexts.JsonDataModel.sPath;
+			var SelectedRecord = oEvent.getSource().getModel("JsonDataModel").getObject(bindingPath);
 			this.Casno = SelectedRecord.Casno;
+			this.managerPerner = SelectedRecord.ManagerPernr;
 			if (!this.empDialog) {
 				this.empDialog = new sap.ui.xmlfragment("safetysuitezclaimemployer.fragment.claimWizard", this);
 				this.getView().addDependent(this.empDialog);
@@ -53,6 +64,7 @@ sap.ui.define([
 							this.getView().getModel().read("/getIncidentSet(Casno='" + this.Casno + "',ManagerPernr='" + this.managerPerner +
 								"')", {
 									success: function(oData, oResponse) {
+										oData.MaxDate = new Date();
 										oData.Signature = "data:image/bmp;base64," + oData.Signature;
 										that.empDialog.open();
 										var canvas = document.getElementById("signature-pad");
@@ -290,120 +302,6 @@ sap.ui.define([
 			sap.ui.getCore().byId("UploadCollection").setNumberOfAttachmentsText("Employee Attachments(" + Items.length + ")");
 		}, // To delete the files from the attchment list.
 
-		/*onSign: function() {
-			var canvas = document.getElementById("signature-pad");
-			var signaturePad = new SignaturePad(canvas, {
-				backgroundColor: '#FFFFFF'
-			});
-			var context = canvas.getContext("2d");
-			canvas.width = 200;
-			canvas.height = 200;
-			context.fillStyle = "#fff";
-			context.strokeStyle = "#444";
-			context.lineWidth = 1.5;
-			context.lineCap = "round";
-			context.fillRect(0, 0, canvas.width, canvas.height);
-			var disableSave = true;
-			var pixels = [];
-			var cpixels = [];
-			var xyLast = {};
-			var xyAddLast = {};
-			var calculate = false; { //functions
-				function remove_event_listeners() {
-					canvas.removeEventListener('mousemove', on_mousemove, false);
-					canvas.removeEventListener('mouseup', on_mouseup, false);
-					canvas.removeEventListener('touchmove', on_mousemove, false);
-					canvas.removeEventListener('touchend', on_mouseup, false);
-
-					document.body.removeEventListener('mouseup', on_mouseup, false);
-					document.body.removeEventListener('touchend', on_mouseup, false);
-				}
-
-				function get_coords(e) {
-					var x, y;
-
-					if (e.changedTouches && e.changedTouches[0]) {
-						var canvasArea = canvas.getBoundingClientRect();
-						var offsety = canvasArea.top || 0;
-						var offsetx = canvasArea.left || 0;
-
-						x = e.changedTouches[0].pageX - offsetx;
-						y = e.changedTouches[0].pageY - offsety;
-					} else if (e.layerX || 0 == e.layerX) {
-						x = e.layerX;
-						y = e.layerY;
-					} else if (e.offsetX || 0 == e.offsetX) {
-						x = e.offsetX;
-						y = e.offsetY;
-					}
-
-					return {
-						x: x,
-						y: y
-					};
-				}
-
-				function on_mousedown(e) {
-					e.preventDefault();
-					e.stopPropagation();
-
-					canvas.addEventListener('mouseup', on_mouseup, false);
-					canvas.addEventListener('mousemove', on_mousemove, false);
-					canvas.addEventListener('touchend', on_mouseup, false);
-					canvas.addEventListener('touchmove', on_mousemove, false);
-					document.body.addEventListener('mouseup', on_mouseup, false);
-					document.body.addEventListener('touchend', on_mouseup, false);
-
-					var empty = false;
-					var xy = get_coords(e);
-					context.beginPath();
-					pixels.push('moveStart');
-					context.moveTo(xy.x, xy.y);
-					pixels.push(xy.x, xy.y);
-					xyLast = xy;
-				}
-
-				function on_mousemove(e, finish) {
-					e.preventDefault();
-					e.stopPropagation();
-
-					var xy = get_coords(e);
-					var xyAdd = {
-						x: (xyLast.x + xy.x) / 2,
-						y: (xyLast.y + xy.y) / 2
-					};
-
-					if (calculate) {
-						var xLast = (xyAddLast.x + xyLast.x + xyAdd.x) / 3;
-						var yLast = (xyAddLast.y + xyLast.y + xyAdd.y) / 3;
-						pixels.push(xLast, yLast);
-					} else {
-						calculate = true;
-					}
-
-					context.quadraticCurveTo(xyLast.x, xyLast.y, xyAdd.x, xyAdd.y);
-					pixels.push(xyAdd.x, xyAdd.y);
-					context.stroke();
-					context.beginPath();
-					context.moveTo(xyAdd.x, xyAdd.y);
-					xyAddLast = xyAdd;
-					xyLast = xy;
-
-				}
-
-				function on_mouseup(e) {
-					remove_event_listeners();
-					disableSave = false;
-					context.stroke();
-					pixels.push('e');
-					calculate = false;
-				};
-				canvas.addEventListener('touchstart', on_mousedown, false);
-				canvas.addEventListener('mousedown', on_mousedown, false);
-			}
-
-		},*/ // The signature canvas.
-
 		clearButton: function(oEvent) {
 			this.signaturePad.clear();
 		}, // To clear the signature.
@@ -488,13 +386,18 @@ sap.ui.define([
 													that._pdfViewer.setSource(sSource);
 													that._pdfViewer.setTitle(that.getView().getModel("i18n").getResourceBundle().getText("SamrtFormTitle"));
 													that._pdfViewer.open();
-													that.getView().byId("list").getModel().refresh();
+													
+													that.getView().getModel().read("/IncidentsSet", {
+														success: function(oData) {
+															var JsonDataModel = new sap.ui.model.json.JSONModel();
+															JsonDataModel.setData(oData.results);
+															that.getView().byId("list").setModel(JsonDataModel, "JsonDataModel");
+														}
+													});
 												}
 											}
 										);
-
 									},
-
 									error: function(error) {}
 								});
 							}.bind(this)
@@ -512,17 +415,28 @@ sap.ui.define([
 		}, // submit the form 
 
 		onClearLodgementForm: function() {
-				sap.ui.getCore().byId("inputElDateClmfrm").setValue("");
-				sap.ui.getCore().byId("inputEmpMcertDate").setValue("");
-				sap.ui.getCore().byId("inputNamePosition").setValue("");
-				sap.ui.getCore().byId("inputElEstCostClm").setValue("");
-				sap.ui.getCore().byId("inputDay1").setValue("");
-				sap.ui.getCore().byId("inputShour").setValue("");
-				sap.ui.getCore().byId("inputELDATE").setValue("");
-				sap.ui.getCore().byId("inputName1").setValue("");
-				sap.ui.getCore().byId("inputElSchRegNo").setValue("");
-				sap.ui.getCore().byId("inputElDate").setValue("");
+			sap.ui.getCore().byId("inputElDateClmfrm").setValue("");
+			sap.ui.getCore().byId("inputEmpMcertDate").setValue("");
+			sap.ui.getCore().byId("inputNamePosition").setValue("");
+			sap.ui.getCore().byId("inputElEstCostClm").setValue("");
+			sap.ui.getCore().byId("inputDay1").setValue("");
+			sap.ui.getCore().byId("inputShour").setValue("");
+			sap.ui.getCore().byId("inputELDATE").setValue("");
+			sap.ui.getCore().byId("inputName1").setValue("");
+			sap.ui.getCore().byId("inputElSchRegNo").setValue("");
+			sap.ui.getCore().byId("inputElDate").setValue("");
 
-			} // for clearing the form
+		}, // for clearing the form
+
+		onSearch: function(oEvent) {
+				var oFilter = [];
+				var searchValue = oEvent.getSource().getValue();
+				var filters = [new sap.ui.model.Filter("Casno", sap.ui.model.FilterOperator.Contains, searchValue),
+					new sap.ui.model.Filter("FamilyName", sap.ui.model.FilterOperator.Contains, searchValue)
+				];
+				oFilter = new sap.ui.model.Filter(filters, false);
+				this.getView().byId("list").getBinding("items").filter(oFilter);
+			} //search field
+
 	});
 });
