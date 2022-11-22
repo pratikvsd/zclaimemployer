@@ -432,7 +432,8 @@ sap.ui.define([
 				var oFilter = [];
 				var searchValue = oEvent.getSource().getValue();
 				var filters = [new sap.ui.model.Filter("Casno", sap.ui.model.FilterOperator.Contains, searchValue),
-					new sap.ui.model.Filter("FamilyName", sap.ui.model.FilterOperator.Contains, searchValue)
+					new sap.ui.model.Filter("FamilyName", sap.ui.model.FilterOperator.Contains, searchValue),
+					new sap.ui.model.Filter("Conname", sap.ui.model.FilterOperator.Contains, searchValue)
 				];
 				oFilter = new sap.ui.model.Filter(filters, false);
 				this.getView().byId("list").getBinding("items").filter(oFilter);

@@ -2,8 +2,8 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="masterPage" title="{i18n>masterPageTitle}">
 		<content>
-			<SearchField placeholder="Search for..." liveChange="onSearch"/>
-			<List id="list" itemPress="clickClaimBtn" items="{JsonDataModel>/}">
+			<SearchField placeholder="Search Family name or Casno." liveChange="onSearch"/>
+			<List noDataText="No Data available" id="list" itemPress="clickClaimBtn" items="{JsonDataModel>/}">
 				<items>
 					<ObjectListItem id="objlist" title="{JsonDataModel>FamilyName} {JsonDataModel>Conname}" type="Active" number="{JsonDataModel>Casno}">
 						<ObjectAttribute text="{JsonDataModel>BodypartDes}"/>
