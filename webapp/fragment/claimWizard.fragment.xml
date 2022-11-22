@@ -74,7 +74,7 @@
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_Suburb}"/>
 										<Text id="txtInjurySuburb" text="{IncidentSetData>/SuburbInj}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_State}"/>
-										<Text id="txtInjuryState" text="{IncidentSetData>/Employerstate}"/>
+										<Text id="txtInjuryState" text="{IncidentSetData>/State}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_Postcode}"/>
 										<Text id="txtInjuryPostcode" text="{IncidentSetData>/PostcodeInj}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_InjuryDateTime}"/>

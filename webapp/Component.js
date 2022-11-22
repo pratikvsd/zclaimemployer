@@ -26,7 +26,6 @@ sap.ui.define([
 		},
 
 		createContent: function() {
-			// debugger;
 			var oApp = new sap.ui.view("app", {
 				viewName: "safetysuitezclaimemployer.view.App",
 				type: "XML"
