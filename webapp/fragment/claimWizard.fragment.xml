@@ -29,7 +29,7 @@
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Suburb}"/>
 									<Text id="txtSuburb" text="{IncidentSetData>/Suburb}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_State}"/>
-									<Text id="txtPersnlDetlState" text="{IncidentSetData>/State}"/>
+									<Text id="txtPersnlDetlState" text="{IncidentSetData>/StateId}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_Postcode}"/>
 									<Text id="txtPostalAddress" text="{IncidentSetData>/Pstlz}"/>
 									<Label text="{i18n>WizardPersonalDetailFormLabel_PAFC}"/>
@@ -99,7 +99,7 @@
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_FirstNoticeInjuryCondition}"/>
 										<Text
 											text="{ path: 'IncidentSetData>/Crdate', type:'sap.ui.model.type.DateTime', formatOptions: {source:{ pattern:'dd/MM/yyyy HH:mm:ss'}, pattern:'MMM dd,yyyy HH:mm:ss' }}"/>
-										<Label required="true" text="{i18n>WizardInjuryDetailsFormLabel_StoppedWorkDateTime}"/>
+										<Label text="{i18n>WizardInjuryDetailsFormLabel_StoppedWorkDateTime}"/>
 											<Text
 											text="{ path: 'IncidentSetData>/Sdate', type:'sap.ui.model.type.DateTime', formatOptions: {source:{ pattern:'dd/MM/yyyy HH:mm:ss'}, pattern:'MMM dd,yyyy HH:mm:ss' }}"/>
 										<Label text="{i18n>WizardInjuryDetailsFormLabel_question2}"/>
@@ -233,11 +233,11 @@
 								<form:content>
 									<core:Title text="" level="H5"/>
 									<Label text="{i18n>WizardEmployerLodgement_question1}"/>
-									<DatePicker id="inputElDateClmfrm" maxDate="{IncidentSetData>/MaxDate}"/>
+									<DatePicker id="inputEmpClmfrmDate" value="{ path: 'IncidentSetData>/EmpClmfrmDate', type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-dd' }, pattern:'MMM dd,yyyy' }}" maxDate="{IncidentSetData>/MaxDate}"/>
 									<Label text="{i18n>WizardEmployerLodgement_question2}"/>
-									<DatePicker id="inputEmpMcertDate" maxDate="{IncidentSetData>/MaxDate}"/>
+									<DatePicker id="inputEmpMcertDate" value="{ path: 'IncidentSetData>/EmpMcertDate', type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-dd' }, pattern:'MMM dd,yyyy' }}" maxDate="{IncidentSetData>/MaxDate}"/>
 									<Label text="{i18n>WizardEmployerLodgement_question3}"/>
-									<DatePicker id="inputELDATE" maxDate="{IncidentSetData>/MaxDate}"/>
+									<DatePicker id="inputElDate" maxDate="{IncidentSetData>/MaxDate}" displayFormat="MMM dd,yyyy"/>
 									<Label text="{i18n>WizardEmployerLodgement_estimatedCostOfClaimToDate}"/>
 									<Input id="inputElEstCostClm" type="Number"/>
 									<core:Title text="{i18n>WizardEmployerLodgementHowManyDaysHaveBeenLost}" level="H5"/>
@@ -251,7 +251,7 @@
 										<Button id="clear" text="Clear" press="clearButton"></Button>
 									</VBox>
 									<Label text="{i18n>WizardEmployerLodgement_Date}"/>
-									<DatePicker id="inputElDate" maxDate="{IncidentSetData>/MaxDate}"/>
+									<DatePicker id="inputEmSigdate" maxDate="{IncidentSetData>/MaxDate}" displayFormat="MMM dd,yyyy"/>
 									<Label text="{i18n>WizardEmployerLodgement_Name}"/>
 									<Input id="inputName1"/>
 									<Label text="{i18n>WizardEmployerLodgement_Position}"/>

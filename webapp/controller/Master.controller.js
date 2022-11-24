@@ -308,33 +308,34 @@ sap.ui.define([
 
 		claimWizardSubmitBtn: function(oEvent) {
 			this._oWizard = sap.ui.getCore().byId("claimFormWizard");
-			var txtReturToWorkClaimFormSubmissionDate = sap.ui.getCore().byId("txtReturToWorkClaimFormSubmissionDate");
-			var txtDeclarationDate = sap.ui.getCore().byId("txtDeclarationDate");
+			// var txtReturToWorkClaimFormSubmissionDate = sap.ui.getCore().byId("txtReturToWorkClaimFormSubmissionDate");
+			var inputEmSigdate = sap.ui.getCore().byId("inputEmSigdate");
+			var inputEmpClmfrmDate = sap.ui.getCore().byId("inputEmpClmfrmDate");
 			var inputEmpMcertDate = sap.ui.getCore().byId("inputEmpMcertDate");
 			var inputNamePosition = sap.ui.getCore().byId("inputNamePosition");
 			var inputElEstCostClm = sap.ui.getCore().byId("inputElEstCostClm");
 			var inputDay1 = sap.ui.getCore().byId("inputDay1");
 			var inputShour = sap.ui.getCore().byId("inputShour");
-			var inputELDATE = sap.ui.getCore().byId("inputELDATE");
+			var inputElDate = sap.ui.getCore().byId("inputElDate");
 			var inputName1 = sap.ui.getCore().byId("inputName1");
 			var inputElSchRegNo = sap.ui.getCore().byId("inputElSchRegNo");
 			var canvas = document.getElementById("signature-pad");
 			var oBMP = Canvas2Image.convertToBMP(canvas);
 			var str = oBMP.src;
 			this.signString = str.replace("data:image/bmp;base64,", "");
-			if (inputEmpMcertDate.getValue() !== "" || inputEmpMcertDate.getDateValue() !== null) {
-				var EmpMcertDate = new Date(inputEmpMcertDate.getDateValue()).toISOString();
+			if (inputEmpClmfrmDate.getValue() !== "") {
+				var EmpClmfrmDate = new Date(inputEmpClmfrmDate.getValue()).toLocaleDateString("fr-CA",{year:"numeric", month:"2-digit", day:"2-digit"});
 			}
-			if (txtReturToWorkClaimFormSubmissionDate.getText() !== "") {
-				var EmpClmfrmDate = new Date(txtReturToWorkClaimFormSubmissionDate.getText()).toISOString();
+			if (inputEmpMcertDate.getValue() !== "" ) {
+				var EmpMcertDate = new Date(inputEmpMcertDate.getValue()).toLocaleDateString("fr-CA",{year:"numeric", month:"2-digit", day:"2-digit"});
 			}
-			if (txtDeclarationDate.getText() !== "") {
-				var DDate = new Date(txtDeclarationDate.getText()).toISOString();
+			if (inputEmSigdate.getValue() !== ""  ) {
+				var EmSigdate = new Date(inputEmSigdate.getValue()).toLocaleDateString("fr-CA",{year:"numeric", month:"2-digit", day:"2-digit"});
 			}
-			if (inputELDATE.getValue() !== "" || inputELDATE.getDateValue() !== null) {
-				var ElDate = new Date(inputELDATE.getDateValue()).toISOString();
+			if (inputElDate.getValue() !== "" ) {
+				var ElDate = new Date(inputElDate.getValue()).toLocaleDateString("fr-CA",{year:"numeric", month:"2-digit", day:"2-digit"});
 			}
-			if (inputElEstCostClm.getValue() !== "" || inputElEstCostClm.getValue() !== null) {
+			if (inputElEstCostClm.getValue() !== "" ) {
 				var ElEstCostClm = inputElEstCostClm.getValue();
 			}
 			if (oEvent.getSource().getId() === "claimWizardSubmitBtn") {
@@ -355,7 +356,7 @@ sap.ui.define([
 									"Filename": "",
 									"Employeeposition": inputNamePosition.getValue(),
 									"EmpClmfrmDate": !EmpClmfrmDate ? "" : EmpClmfrmDate,
-									"DDate": !DDate ? "" : DDate,
+									"EmSigdate": !EmSigdate ? "" : EmSigdate,
 									"EmpMcertDate": !EmpMcertDate ? "" : EmpMcertDate,
 									"ElEstCostClm": !ElEstCostClm ? "" : ElEstCostClm,
 									"Name1": inputName1.getValue(),
@@ -415,18 +416,18 @@ sap.ui.define([
 		}, // submit the form 
 
 		onClearLodgementForm: function() {
-			sap.ui.getCore().byId("inputElDateClmfrm").setValue("");
+			sap.ui.getCore().byId("inputEmpClmfrmDate").setValue("");
 			sap.ui.getCore().byId("inputEmpMcertDate").setValue("");
 			sap.ui.getCore().byId("inputNamePosition").setValue("");
 			sap.ui.getCore().byId("inputElEstCostClm").setValue("");
 			sap.ui.getCore().byId("inputDay1").setValue("");
 			sap.ui.getCore().byId("inputShour").setValue("");
-			sap.ui.getCore().byId("inputELDATE").setValue("");
+			sap.ui.getCore().byId("inputElDate").setValue("");
 			sap.ui.getCore().byId("inputName1").setValue("");
 			sap.ui.getCore().byId("inputElSchRegNo").setValue("");
-			sap.ui.getCore().byId("inputElDate").setValue("");
+			sap.ui.getCore().byId("inputEmSigdate").setValue("");
 
-		}, // for clearing the form
+		}, // ti clear the form
 
 		onSearch: function(oEvent) {
 				var oFilter = [];
