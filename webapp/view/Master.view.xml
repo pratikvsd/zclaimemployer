@@ -11,7 +11,7 @@
 							<ObjectStatus text="{JsonDataModel>ManagerPernr}"/>
 						</firstStatus>
 						<ObjectAttribute
-							text="{path:'JsonDataModel>IDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss.msZ' }, pattern: 'MMM dd,yyyy ' }}"/>
+							text="{path:'JsonDataModel>IDate', type:'sap.ui.model.type.DateTime', formatOptions: { source: { pattern: 'MM/dd/yyyy, HH:mm:ss a' }, pattern: 'MMM d,y, h:mm:ss a' }}"/>
 					</ObjectListItem>
 				</items>
 			</List>
