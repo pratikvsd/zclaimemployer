@@ -324,16 +324,16 @@ sap.ui.define([
 			var str = oBMP.src;
 			this.signString = str.replace("data:image/bmp;base64,", "");
 			if (inputEmpClmfrmDate.getValue() !== "") {
-				var EmpClmfrmDate = new Date(inputEmpClmfrmDate.getValue()).toLocaleDateString("fr-CA",{year:"numeric", month:"2-digit", day:"2-digit"});
+				var EmpClmfrmDate = new Date(inputEmpClmfrmDate.getValue()).toLocaleDateString("fr-BE",{year:"numeric", month:"2-digit", day:"2-digit"});
 			}
 			if (inputEmpMcertDate.getValue() !== "" ) {
-				var EmpMcertDate = new Date(inputEmpMcertDate.getValue()).toLocaleDateString("fr-CA",{year:"numeric", month:"2-digit", day:"2-digit"});
+				var EmpMcertDate = new Date(inputEmpMcertDate.getValue()).toLocaleDateString("fr-BE",{year:"numeric", month:"2-digit", day:"2-digit"});
 			}
 			if (inputEmSigdate.getValue() !== ""  ) {
-				var EmSigdate = new Date(inputEmSigdate.getValue()).toLocaleDateString("fr-CA",{year:"numeric", month:"2-digit", day:"2-digit"});
+				var EmSigdate = new Date(inputEmSigdate.getValue()).toLocaleDateString("fr-BE",{year:"numeric", month:"2-digit", day:"2-digit"});
 			}
 			if (inputElDate.getValue() !== "" ) {
-				var ElDate = new Date(inputElDate.getValue()).toLocaleDateString("fr-CA",{year:"numeric", month:"2-digit", day:"2-digit"});
+				var ElDate = new Date(inputElDate.getValue()).toLocaleDateString("fr-BE",{year:"numeric", month:"2-digit", day:"2-digit"});
 			}
 			if (inputElEstCostClm.getValue() !== "" ) {
 				var ElEstCostClm = inputElEstCostClm.getValue();
