@@ -237,7 +237,7 @@
 									<Label text="{i18n>WizardEmployerLodgement_question2}"/>
 									<DatePicker id="inputEmpMcertDate" value="{ path: 'IncidentSetData>/EmpMcertDate', type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'dd/MM/yyyy' }, pattern:'MMM dd,yyyy' }}" maxDate="{IncidentSetData>/MaxDate}"/>
 									<Label text="{i18n>WizardEmployerLodgement_question3}"/>
-									<DatePicker id="inputElDate" maxDate="{IncidentSetData>/MaxDate}" displayFormat="MMM dd,yyyy"/>
+									<DatePicker id="inputElDate" maxDate="{IncidentSetData>/MaxDate}" valueFormat="MMM dd,yyyy" displayFormat="MMM dd,yyyy"/>
 									<Label text="{i18n>WizardEmployerLodgement_estimatedCostOfClaimToDate}"/>
 									<Input id="inputElEstCostClm" type="Number"/>
 									<core:Title text="{i18n>WizardEmployerLodgementHowManyDaysHaveBeenLost}" level="H5"/>
@@ -251,7 +251,7 @@
 										<Button id="clear" text="Clear" press="clearButton"></Button>
 									</VBox>
 									<Label text="{i18n>WizardEmployerLodgement_Date}"/>
-									<DatePicker id="inputEmSigdate" maxDate="{IncidentSetData>/MaxDate}" displayFormat="MMM dd,yyyy"/>
+									<DatePicker id="inputEmSigdate" maxDate="{IncidentSetData>/MaxDate}" valueFormat="MMM dd,yyyy" displayFormat="MMM dd,yyyy"/>
 									<Label text="{i18n>WizardEmployerLodgement_Name}"/>
 									<Input id="inputName1"/>
 									<Label text="{i18n>WizardEmployerLodgement_Position}"/>

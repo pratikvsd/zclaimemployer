@@ -311,108 +311,123 @@ sap.ui.define([
 			// var txtReturToWorkClaimFormSubmissionDate = sap.ui.getCore().byId("txtReturToWorkClaimFormSubmissionDate");
 			var inputEmSigdate = sap.ui.getCore().byId("inputEmSigdate");
 			var inputEmpClmfrmDate = sap.ui.getCore().byId("inputEmpClmfrmDate");
-			var inputEmpMcertDate = sap.ui.getCore().byId("inputEmpMcertDate");
-			var inputNamePosition = sap.ui.getCore().byId("inputNamePosition");
-			var inputElEstCostClm = sap.ui.getCore().byId("inputElEstCostClm");
-			var inputDay1 = sap.ui.getCore().byId("inputDay1");
-			var inputShour = sap.ui.getCore().byId("inputShour");
-			var inputElDate = sap.ui.getCore().byId("inputElDate");
-			var inputName1 = sap.ui.getCore().byId("inputName1");
-			var inputElSchRegNo = sap.ui.getCore().byId("inputElSchRegNo");
-			var canvas = document.getElementById("signature-pad");
-			var oBMP = Canvas2Image.convertToBMP(canvas);
-			var str = oBMP.src;
-			this.signString = str.replace("data:image/bmp;base64,", "");
-			if (inputEmpClmfrmDate.getValue() !== "") {
-				var EmpClmfrmDate = new Date(inputEmpClmfrmDate.getValue()).toLocaleDateString("fr-BE",{year:"numeric", month:"2-digit", day:"2-digit"});
-			}
-			if (inputEmpMcertDate.getValue() !== "" ) {
-				var EmpMcertDate = new Date(inputEmpMcertDate.getValue()).toLocaleDateString("fr-BE",{year:"numeric", month:"2-digit", day:"2-digit"});
-			}
-			if (inputEmSigdate.getValue() !== ""  ) {
-				var EmSigdate = new Date(inputEmSigdate.getValue()).toLocaleDateString("fr-BE",{year:"numeric", month:"2-digit", day:"2-digit"});
-			}
-			if (inputElDate.getValue() !== "" ) {
-				var ElDate = new Date(inputElDate.getValue()).toLocaleDateString("fr-BE",{year:"numeric", month:"2-digit", day:"2-digit"});
-			}
-			if (inputElEstCostClm.getValue() !== "" ) {
-				var ElEstCostClm = inputElEstCostClm.getValue();
-			}
-			if (oEvent.getSource().getId() === "claimWizardSubmitBtn") {
-				if (!this.oApproveDialog) {
-					this.oApproveDialog = new sap.m.Dialog({
-						type: sap.m.DialogType.Message,
-						title: this.getView().getModel("i18n").getResourceBundle().getText("Confirm"),
-						content: new sap.m.Text({
-							text: this.getView().getModel("i18n").getResourceBundle().getText("comfirmationMessage")
-						}),
-						beginButton: new sap.m.Button({
-							type: sap.m.ButtonType.Emphasized,
-							text: "Submit",
-							press: function(oEvent) {
-								var payload = {
-									"Pernr": this.managerPerner,
-									"Casno": this.Casno,
-									"Filename": "",
-									"Employeeposition": inputNamePosition.getValue(),
-									"EmpClmfrmDate": !EmpClmfrmDate ? "" : EmpClmfrmDate,
-									"EmSigdate": !EmSigdate ? "" : EmSigdate,
-									"EmpMcertDate": !EmpMcertDate ? "" : EmpMcertDate,
-									"ElEstCostClm": !ElEstCostClm ? "" : ElEstCostClm,
-									"Name1": inputName1.getValue(),
-									"Day1": inputDay1.getValue(),
-									"Shour": inputShour.getValue(),
-									"ElDate": !ElDate ? "" : ElDate,
-									"ElSchRegNo": inputElSchRegNo.getValue(),
-									"EmplSig": this.signString,
-									"Attachments": this.attachmentsId.toString()
-								};
-								this.oApproveDialog.close();
-								var that = this;
-								this.getView().getModel().create("/EmployerLodgementSet", payload, {
-									success: function(oData, oResponse) {
-										var sSource = that.getView().getModel().sServiceUrl + "/InjuryFormSet(Casno='" + that.Casno + "',Userid='" + that.userName +
-											"')/$value";
-										sap.m.MessageBox.success(
-											that.Casno + " " + that.getView().getModel("i18n").getResourceBundle().getText("ClaimSuccessMessage"), {
-												actions: [that.getView().getModel("i18n").getResourceBundle().getText("ok")],
-												onClose: function(sAction) {
-													that.empDialog.close();
-													that.onClearLodgementForm();
-													sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
-													sap.ui.getCore().byId("claimWizardSubmitBtn").setEnabled(false);
-													that._oWizard.setCurrentStep("personalDetailStep");
-													that._pdfViewer = new sap.m.PDFViewer();
-													that.getView().addDependent(that._pdfViewer);
-													that._pdfViewer.setSource(sSource);
-													that._pdfViewer.setTitle(that.getView().getModel("i18n").getResourceBundle().getText("SamrtFormTitle"));
-													that._pdfViewer.open();
-													
-													that.getView().getModel().read("/IncidentsSet", {
-														success: function(oData) {
-															var JsonDataModel = new sap.ui.model.json.JSONModel();
-															JsonDataModel.setData(oData.results);
-															that.getView().byId("list").setModel(JsonDataModel, "JsonDataModel");
-														}
-													});
-												}
-											}
-										);
-									},
-									error: function(error) {}
+			if (!this.oApproveDialog) {
+				this.oApproveDialog = new sap.m.Dialog({
+					type: sap.m.DialogType.Message,
+					title: this.getView().getModel("i18n").getResourceBundle().getText("Confirm"),
+					content: new sap.m.Text({
+						text: this.getView().getModel("i18n").getResourceBundle().getText("comfirmationMessage")
+					}),
+					beginButton: new sap.m.Button({
+						type: sap.m.ButtonType.Emphasized,
+						text: "Submit",
+						press: function(oEvent) {
+							var inputEmpMcertDate = sap.ui.getCore().byId("inputEmpMcertDate");
+							var inputNamePosition = sap.ui.getCore().byId("inputNamePosition");
+							var inputElEstCostClm = sap.ui.getCore().byId("inputElEstCostClm");
+							var inputDay1 = sap.ui.getCore().byId("inputDay1");
+							var inputShour = sap.ui.getCore().byId("inputShour");
+							var inputElDate = sap.ui.getCore().byId("inputElDate");
+							var inputName1 = sap.ui.getCore().byId("inputName1");
+							var inputElSchRegNo = sap.ui.getCore().byId("inputElSchRegNo");
+							var canvas = document.getElementById("signature-pad");
+							var oBMP = Canvas2Image.convertToBMP(canvas);
+							var str = oBMP.src;
+							this.signString = str.replace("data:image/bmp;base64,", "");
+							if (inputEmpClmfrmDate.getValue() !== "") {
+								var EmpClmfrmDate = new Date(inputEmpClmfrmDate.getValue()).toLocaleDateString("fr-BE", {
+									year: "numeric",
+									month: "2-digit",
+									day: "2-digit"
 								});
-							}.bind(this)
-						}),
-						endButton: new sap.m.Button({
-							text: "Cancel",
-							press: function() {
-								this.oApproveDialog.close();
-							}.bind(this)
-						})
-					});
-				}
-				this.oApproveDialog.open();
+							}
+							if (inputEmpMcertDate.getValue() !== "") {
+								var EmpMcertDate = new Date(inputEmpMcertDate.getValue()).toLocaleDateString("fr-BE", {
+									year: "numeric",
+									month: "2-digit",
+									day: "2-digit"
+								});
+							}
+							if (inputEmSigdate.getValue() !== "") {
+								var EmSigdate = new Date(inputEmSigdate.getValue()).toLocaleDateString("fr-BE", {
+									year: "numeric",
+									month: "2-digit",
+									day: "2-digit"
+								});
+							}
+							if (inputElDate.getValue() !== "") {
+								var ElDate = new Date(inputElDate.getValue()).toLocaleDateString("fr-BE", {
+									year: "numeric",
+									month: "2-digit",
+									day: "2-digit"
+								});
+							}
+							if (inputElEstCostClm.getValue() !== "") {
+								var ElEstCostClm = inputElEstCostClm.getValue();
+							}
+							var payload = {
+								"Pernr": this.managerPerner,
+								"Casno": this.Casno,
+								"Filename": "",
+								"Employeeposition": inputNamePosition.getValue(),
+								"EmpClmfrmDate": !EmpClmfrmDate ? "" : EmpClmfrmDate,
+								"EmSigdate": !EmSigdate ? "" : EmSigdate,
+								"EmpMcertDate": !EmpMcertDate ? "" : EmpMcertDate,
+								"ElEstCostClm": !ElEstCostClm ? "" : ElEstCostClm,
+								"Name1": inputName1.getValue(),
+								"Day1": inputDay1.getValue(),
+								"Shour": inputShour.getValue(),
+								"ElDate": !ElDate ? "" : ElDate,
+								"ElSchRegNo": inputElSchRegNo.getValue(),
+								"EmplSig": this.signString,
+								"Attachments": this.attachmentsId.toString()
+							};
+							this.oApproveDialog.close();
+							var that = this;
+							this.getView().getModel().create("/EmployerLodgementSet", payload, {
+								success: function(oData, oResponse) {
+									var sSource = that.getView().getModel().sServiceUrl + "/InjuryFormSet(Casno='" + that.Casno + "',Userid='" + that.userName +
+										"')/$value";
+									sap.m.MessageBox.success(
+										that.Casno + " " + that.getView().getModel("i18n").getResourceBundle().getText("ClaimSuccessMessage"), {
+											actions: [that.getView().getModel("i18n").getResourceBundle().getText("ok")],
+											onClose: function(sAction) {
+												that.empDialog.close();
+												that.onClearLodgementForm();
+												sap.ui.getCore().byId("claimWizardNextBtn").setVisible(true);
+												sap.ui.getCore().byId("claimWizardSubmitBtn").setEnabled(false);
+												that._oWizard.setCurrentStep("personalDetailStep");
+												that._pdfViewer = new sap.m.PDFViewer();
+												that.getView().addDependent(that._pdfViewer);
+												that._pdfViewer.setSource(sSource);
+												that._pdfViewer.setTitle(that.getView().getModel("i18n").getResourceBundle().getText("SamrtFormTitle"));
+												that._pdfViewer.open();
+
+												that.getView().getModel().read("/IncidentsSet", {
+													success: function(oData) {
+														var JsonDataModel = new sap.ui.model.json.JSONModel();
+														JsonDataModel.setData(oData.results);
+														that.getView().byId("list").setModel(JsonDataModel, "JsonDataModel");
+													}
+												});
+											}
+										}
+									);
+								},
+								error: function(error) {}
+							});
+						}.bind(this)
+					}),
+					endButton: new sap.m.Button({
+						text: "Cancel",
+						press: function() {
+							this.oApproveDialog.close();
+						}.bind(this)
+					})
+				});
 			}
+			this.oApproveDialog.open();
+
 		}, // submit the form 
 
 		onClearLodgementForm: function() {
