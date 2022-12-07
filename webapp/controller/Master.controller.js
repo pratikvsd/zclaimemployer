@@ -66,6 +66,8 @@ sap.ui.define([
 									success: function(oData, oResponse) {
 										oData.MaxDate = new Date();
 										oData.Signature = "data:image/bmp;base64," + oData.Signature;
+										oData.Attachments = oData.Attachments.split(",");
+										that.attachmentsId.push(oData.Attachments);
 										that.empDialog.open();
 										var canvas = document.getElementById("signature-pad");
 										that.signaturePad = new SignaturePad(canvas, {
@@ -92,6 +94,8 @@ sap.ui.define([
 													}
 												}
 												AttachmentModel.setData(fData.results);
+												sap.ui.getCore().byId("UploadCollection").setNumberOfAttachmentsText(that.getView().getModel("i18n").getResourceBundle()
+													.getText("WizardAttachmentsListTitle") + "(" + fData.results.length + ")");
 												sap.ui.getCore().byId("UploadCollection").setModel(AttachmentModel, "AttachmentModel");
 											},
 											error: function() {}
@@ -236,6 +240,7 @@ sap.ui.define([
 			var oUploadCollection = sap.ui.getCore().byId("UploadCollection");
 			if (oUploadCollection.getModel("AttachmentModel").getData().length === undefined) {
 				var oData = [];
+				this.attachmentsId[0] = [];
 			} else {
 				var oData = oUploadCollection.getModel("AttachmentModel").getData();
 			}
@@ -252,7 +257,7 @@ sap.ui.define([
 			if (oUploadCollection.getModel("AttachmentModel").getData().length === undefined) {
 				oUploadCollection.getModel("AttachmentModel").setData(oData);
 			}
-			this.attachmentsId.push(docid);
+			this.attachmentsId[0].push(docid);
 			//sap.ui.getCore().byId("uploadCollectionTable").setUrl(oEvent.mParameters.mParameters.headers.location);
 			// Sets the text to the label
 			oUploadCollection.getModel("AttachmentModel").refresh();
@@ -289,17 +294,18 @@ sap.ui.define([
 					}
 				}
 			}
-			if (this.attachmentsId.length > 0) {
-				for (var j = 0; j < this.attachmentsId.length; j++) {
-					if (this.attachmentsId[j] === sItemToDeleteId) {
-						this.attachmentsId.splice(j, 1);
+			if (this.attachmentsId[0].length > 0) {
+				for (var j = 0; j < this.attachmentsId[0].length; j++) {
+					if (this.attachmentsId[0][j] === sItemToDeleteId) {
+						this.attachmentsId[0].splice(j, 1);
 						break;
 					}
 				}
 			}
 			sap.ui.getCore().byId("UploadCollection").getModel("AttachmentModel").setData(oData);
 			var Items = sap.ui.getCore().byId("UploadCollection").getItems();
-			sap.ui.getCore().byId("UploadCollection").setNumberOfAttachmentsText("Employee Attachments(" + Items.length + ")");
+			sap.ui.getCore().byId("UploadCollection").setNumberOfAttachmentsText(this.getView().getModel("i18n").getResourceBundle().getText(
+				"WizardAttachmentsListTitle") + "(" + Items.length + ")");
 		}, // To delete the files from the attchment list.
 
 		clearButton: function(oEvent) {
@@ -442,7 +448,7 @@ sap.ui.define([
 			sap.ui.getCore().byId("inputElSchRegNo").setValue("");
 			sap.ui.getCore().byId("inputEmSigdate").setValue("");
 
-		}, // ti clear the form
+		}, // to clear the form
 
 		onSearch: function(oEvent) {
 				var oFilter = [];
